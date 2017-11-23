@@ -1,0 +1,10 @@
+{
+	"development": {
+		"dest_path": "./build/assets/",
+		"environment": "development"
+	},
+	"production": {
+		"dest_path": "./build/assets/",
+		"environment": "production"
+	}
+}
