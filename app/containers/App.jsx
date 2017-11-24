@@ -1,62 +1,38 @@
 // npm libs
 import React from 'react';
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import Route from 'react-router-dom/Route';
-import Switch from 'react-router-dom/Switch';
-import { AppContainer } from 'react-hot-loader';
-import { ConnectedRouter } from 'react-router-redux';
-import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 
-// containers
-import Home from 'containers/Home';
+// theme
+import createStylesheet from 'styles/createStylesheet';
 
-// components
-import Header from 'components/Header';
+const styles = createStylesheet(theme => ({
+  container: {
+    backgroundColor: theme.color.backgroundPrimary,
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    margin: ' 0 auto',
+    maxWidth: theme.maxWidthContainer,
+  },
+  bodyContainer: {
+    backgroundColor: theme.color.backgroundPrimary,
+    color: theme.color.textPrimary,
+    flex: 1,
+    overflow: 'auto',
+    padding: theme.spacing.medium,
+  },
+}));
 
-// redux
-import { history, store } from 'state';
-
-const renderApp = () => (
-  <BrowserRouter>
-    <Provider store={store}>
-      <section
-        style={{
-          backgroundColor: '#888',
-          display: 'flex',
-          flex: 1,
-          flexDirection: 'column',
-          margin: ' 0 auto',
-          maxWidth: 500,
-        }}
-      >
-        <Header />
-        <section
-          style={{
-            backgroundColor: '#222',
-            color: '#999',
-            flex: 1,
-            overflow: 'auto',
-            padding: 15,
-          }}
-        >
-          <ConnectedRouter history={history}>
-            <Switch>
-              <Route exact path={'/'} component={Home} />
-            </Switch>
-          </ConnectedRouter>
-        </section>
-      </section>
-    </Provider>
-  </BrowserRouter>
+const App = ({ body, header }) => (
+  <section style={styles.container}>
+    {header()}
+    <section style={styles.bodyContainer}>{body()}</section>
+  </section>
 );
 
-const App = () => {
-  if (APP_SETTINGS.environment === 'development') {
-    return <AppContainer>{renderApp()}</AppContainer>;
-  }
-  return renderApp();
+App.propTypes = {
+  body: PropTypes.func.isRequired,
+  header: PropTypes.func.isRequired,
 };
-
-App.propTypes = {};
 
 export default App;

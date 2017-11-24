@@ -6,8 +6,7 @@ html, body {
 }
 
 body{
-  background-color: #151515;
-  font-family: 'Open Sans';
+  font-family: 'Lato';
 }
 
 p, h1, h2, h3, h4, h5, h6{
@@ -41,39 +40,39 @@ a{
 }
 
 .u-position-right-bottom{
-  position: absolute;
   bottom: 0;
+  position: absolute;
   right: 0;
 }
 
 .u-position-left-bottom{
-  position: absolute;
   bottom: 0;
   left: 0;
+  position: absolute;
 }
 
 .u-position-left-top{
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
 }
 
 .u-position-right-top{
   position: absolute;
-  top: 0;
   right: 0;
+  top: 0;
 }
 
 .u-position-bottom{
-  position: absolute;
   bottom: 0;
   left: 0;
+  position: absolute;
 }
 
 .u-cut-text{
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .u-material-icons--18{

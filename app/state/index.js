@@ -8,7 +8,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 
 // redux
-import reducers from './ducks';
+import reducers from 'state/reducers';
 
 // react router config
 const history = createHistory();

@@ -1,15 +1,14 @@
 {
-  "name": "my-react-boilerplate",
+  "name": "zef-app",
   "version": "0.0.1",
-  "description": "My own React Boilerplate",
+  "description": "React application",
   "keywords": [
-    "react",
-    "boilerplate"
+    "react"
   ],
-  "homepage": "https://github.com/diegofrayo/my-react-boilerplate#readme",
+  "homepage": "https://github.com/diegofrayo/zef-app#readme",
   "bugs": {
     "email": "diegofrayo@gmail.com",
-    "url": "https://github.com/diegofrayo/my-react-boilerplate/issues"
+    "url": "https://github.com/diegofrayo/zef-app/issues"
   },
   "license": "ISC",
   "author": {
@@ -20,7 +19,7 @@
   "main": "app/index.jsx",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diegofrayo/my-react-boilerplate.git"
+    "url": "git+https://github.com/diegofrayo/zef-app.git"
   },
   "scripts": {
     "start:all": "gulp build-dev && node config/webpack.config.dev.server.js",

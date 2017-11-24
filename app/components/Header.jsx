@@ -4,18 +4,18 @@ import React from 'react';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = createStylesheet(() => ({
+const styles = createStylesheet(theme => ({
   container: {
     alignItems: 'center',
-    backgroundColor: '#111',
-    color: '#999',
+    backgroundColor: theme.color.backgroundSecondary,
+    color: theme.color.textSecondary,
     display: 'flex',
     flex: 0,
-    minHeight: 50,
-    padding: '0 15px',
+    minHeight: theme.headerHeight,
+    padding: `0 ${theme.spacing.medium}px`,
   },
 }));
 
-const Header = () => <header style={styles.container}>Header</header>;
+const Header = () => <header style={styles.container}>App Name</header>;
 
 export default Header;
