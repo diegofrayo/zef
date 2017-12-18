@@ -16,6 +16,7 @@ const styles = createStylesheet(theme => ({
   display: 'flex',
   flex: 1,
   height: '100vh',
+  padding: `${theme.spacing.base}px 0`,
 }));
 const target = document.createElement('main');
 target.setAttribute(
