@@ -1,22 +1,18 @@
-//------------------------------------------------------------------
-//-------------- Load Plugins And Their Settings -------------------
-const gulp = require('gulp'),
-	fs = require('fs'),
-	g = require('gulp-load-plugins')({
-		lazy: false
-	});
+const gulp = require('gulp');
+const fs = require('fs');
+const g = require('gulp-load-plugins')({ lazy: false });
 
 const htmlminOpts = {
 	removeComments: true,
 	collapseWhitespace: true,
 	removeEmptyAttributes: false,
 	collapseBooleanAttributes: true,
-	removeRedundantAttributes: true
+	removeRedundantAttributes: true,
 };
 
-var destPath;
-var environment;
-var settings;
+let destPath;
+let environment;
+let settings;
 
 try {
 	settings = JSON.parse(fs.readFileSync('./config.app.json', 'utf8'));
@@ -24,7 +20,6 @@ try {
 	g.util.log('MY LOG ==> ' + error);
 	process.exit();
 }
-
 
 
 //----------------------------------------------------
@@ -40,23 +35,22 @@ const createJSTags = (jsSources) => {
 };
 
 
-
 //----------------------------------------------------
 //------------------- JS Tasks -----------------------
 gulp.task('build-js', () => {
-	return gulp.src('./build/assets/bundle.js')
+	return gulp
+    .src('./build/assets/bundle.js')
 		.pipe(gulp.dest(destPath + '/js'));
 });
-
 
 
 //----------------------------------------------------
 //------------------- CSS Tasks -----------------------
 gulp.task('build-css', () => {
-	return gulp.src('./build/assets/styles.css')
+	return gulp
+    .src('./build/assets/styles.css')
 		.pipe(gulp.dest(destPath + '/css'));
 });
-
 
 
 //----------------------------------------------------
@@ -95,7 +89,6 @@ gulp.task('build-html', () => {
 });
 
 
-
 //----------------------------------------------------
 //------------------- Copy Assets Tasks --------------
 gulp.task('copy-assets', () => {
@@ -109,7 +102,6 @@ gulp.task('copy-assets', () => {
 });
 
 
-
 //-------------------------------------------------------
 //----------------- Builds Tasks ------------------------
 gulp.task('build-dev', () => {
@@ -121,7 +113,6 @@ gulp.task('build-dev', () => {
 		'build-html',
 		'copy-assets'
 	);
-
 });
 
 gulp.task('build-live', () => {
@@ -135,5 +126,4 @@ gulp.task('build-live', () => {
 		'build-html',
 		'copy-assets'
 	);
-
 });

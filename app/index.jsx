@@ -18,7 +18,9 @@ const styles = createStylesheet(theme => ({
   height: '100vh',
   padding: `${theme.spacing.base}px 0`,
 }));
+
 const target = document.createElement('main');
+
 target.setAttribute(
   'style',
   Object.keys(styles)
@@ -31,8 +33,7 @@ ReactDOM.render(<Root />, target);
 
 if (module.hot) {
   module.hot.accept('./containers/Root.jsx', () => {
-    // eslint-disable-next-line
-    const NextApp = require('./containers/Root.jsx').default;
+    const NextApp = require('./containers/Root.jsx').default; // eslint-disable-line
     ReactDOM.render(<NextApp />, target);
   });
 }

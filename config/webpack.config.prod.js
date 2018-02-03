@@ -15,15 +15,15 @@ module.exports = {
       new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings: false
-        }
+          warnings: false,
+        },
       }),
       new CleanWebpackPlugin(['build'], {
         root: path.join(__dirname, '../'),
         verbose: true,
-        dry: false
-      })
-    ]
+        dry: false,
+      }),
+    ],
   },
 
 };

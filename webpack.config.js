@@ -1,9 +1,12 @@
-module.exports = (env = {}) => {
+process.noDeprecation = true;
+
+module.exports = (env) => {
+
   const fs = require('fs');
   const path = require('path');
   const webpack = require('webpack');
 
-  const ENVIRONMENT = process.env.NODE_ENV;
+  const ENVIRONMENT = env.NODE_ENV;
   let environmentConfig;
   let isDevelopment;
   let settings = {};
@@ -72,7 +75,7 @@ module.exports = (env = {}) => {
     environmentConfig.webpackConfig
   );
 
-  if (!env.disableLint) {
+  if (env.ENABLE_LINT) {
     plugins.unshift(
       new webpack.LoaderOptionsPlugin({
         options: {

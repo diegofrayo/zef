@@ -18,7 +18,10 @@ module.exports = task('webpack.config.dev.server', () => new Promise((resolve) =
 
 	let count = 0;
 	const bs = Browsersync.create();
-	const webpackConfig = require('./../webpack.config')(process.env);
+	const webpackConfig = require('./../webpack.config')({
+    ENABLE_LINT: true,
+    NODE_ENV: process.env.NODE_ENV,
+  });
 	const compiler = webpack(webpackConfig);
 	const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
 		publicPath: webpackConfig.output.publicPath
