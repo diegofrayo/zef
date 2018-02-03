@@ -19,6 +19,7 @@ const styles = createStylesheet(theme => ({
   padding: `${theme.spacing.base}px 0`,
 }));
 
+// const target = document.getElementById('app');
 const target = document.createElement('main');
 
 target.setAttribute(
@@ -29,6 +30,7 @@ target.setAttribute(
 );
 
 document.body.appendChild(target);
+
 ReactDOM.render(<Root />, target);
 
 if (module.hot) {

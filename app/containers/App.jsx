@@ -1,13 +1,14 @@
 // npm libs
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = createStylesheet(theme => ({
+const styles = StyleSheet.create(createStylesheet(theme => ({
   container: {
-    backgroundColor: theme.color.backgroundPrimary.base,
+    backgroundColor: theme.color.white[100],
     borderRadius: 5,
     boxShadow: '0px 0px 10px 1px rgb(202, 202, 202)',
     display: 'flex',
@@ -18,18 +19,19 @@ const styles = createStylesheet(theme => ({
     overflow: 'hidden',
   },
   bodyContainer: {
-    backgroundColor: theme.color.backgroundPrimary.base,
-    color: theme.color.textPrimary.base,
+    backgroundColor: theme.color.white[100],
     flex: 1,
     overflow: 'auto',
     padding: theme.spacing.medium,
   },
-}));
+})));
 
 const App = ({ body, header }) => (
-  <section style={styles.container}>
+  <section className={css(styles.container)}>
     {header()}
-    <section style={styles.bodyContainer}>{body()}</section>
+    <section className={css(styles.bodyContainer)}>
+      {body()}
+    </section>
   </section>
 );
 

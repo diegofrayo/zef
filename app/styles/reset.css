@@ -28,7 +28,7 @@ i{
   vertical-align: middle;
 }
 
-img, span{
+img, span, a{
   vertical-align: middle;
 }
 
@@ -132,25 +132,25 @@ a{
   float: right !important;
 }
 
-//Extra small devices Phones
+/*Extra small devices Phones*/
 @media screen and (max-width : 767px)
 {
 
 }
 
-//Small devices Tablets
+/*Small devices Tablets*/
 @media screen and (max-width : 991px)
 {
 
 }
 
-//Medium devices Desktops
+/*Medium devices Desktops*/
 @media screen and (max-width : 1199px)
 {
 
 }
 
-//Large devices Desktops
+/*Large devices Desktops*/
 @media screen and (min-width : 1200px)
 {
 

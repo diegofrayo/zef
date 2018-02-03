@@ -15,15 +15,20 @@ import { store } from 'state';
 const renderApp = () => (
   <BrowserRouter>
     <Provider store={store}>
-      <App header={() => <Header />} body={() => <Router />} />
+      <App
+        header={() => <Header />}
+        body={() => <Router />}
+      />
     </Provider>
   </BrowserRouter>
 );
 
 const Root = () => {
+
   if (APP_SETTINGS.environment === 'development') {
     return <AppContainer>{renderApp()}</AppContainer>;
   }
+
   return renderApp();
 };
 

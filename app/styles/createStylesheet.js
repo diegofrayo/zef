@@ -1,8 +1,20 @@
+// npm libs
 import chroma from 'chroma-js';
 
-const tones = [100, 200, 300, 400, 500, 600, 700];
+const TONES = [100, 200, 300, 400, 500, 600, 700];
+
+// palette: https://coolors.co/20bf55-0b4f6c-01baef-fbfbff-757575
+const GREEN = '#20BF55';
+const DARK_BLUE = '#0B4F6C';
+const LIGHT_BLUE = '#01BAEF';
+const LIGHT_GRAY = '#FBFBFF';
+const DARK_GRAY = '#757575';
 
 export const theme = {
+
+  headerHeight: 50,
+  maxWidthContainer: 500,
+
   spacing: {
     base: 10,
     small: 5,
@@ -10,6 +22,7 @@ export const theme = {
     medium: 15,
     large: 20,
   },
+
   fontSize: {
     base: 16,
     xsmall: 12,
@@ -18,62 +31,58 @@ export const theme = {
     large: 18,
     xlarge: 20,
   },
+
+  fontWeight: {
+    thin: 100,
+    normal: 400,
+    semibold: 500,
+    bold: 700,
+  },
+
   color: {
-    body: '#FFF',
-    black: tones.reduce((acum, current, index) => {
+
+    black: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
-      acum[current] = chroma('#555')
-        .darken((index + 1) * 0.2)
+      acum[current] = chroma('#333')
+        .darken((index) * 0.2)
         .hex();
       return acum;
     }, {}),
-    backgroundPrimary: {
-      base: '#FFF',
-      ...tones.reduce((acum, current, index) => {
-        // eslint-disable-next-line
-        acum[current] = chroma('#FFF')
-          .darken((index + 1) * 0.2)
-          .hex();
-        return acum;
-      }, {}),
-    },
-    backgroundSecondary: {
-      base: '#CCC',
-      ...tones.reduce((acum, current, index) => {
-        // eslint-disable-next-line
-        acum[current] = chroma('#CCC')
-          .darken((index + 1) * 0.2)
-          .hex();
-        return acum;
-      }, {}),
-    },
+
+    white: TONES.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma('#FFF')
+        .darken((index) * 0.2)
+        .hex();
+      return acum;
+    }, {}),
+
+    blue: TONES.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma(LIGHT_BLUE)
+        .darken((index) * 0.2)
+        .hex();
+      return acum;
+    }, {}),
+
     textPrimary: {
-      base: '#111',
-      ...tones.reduce((acum, current, index) => {
-        // eslint-disable-next-line
-        acum[current] = chroma('#222')
-          .darken((index + 1) * 0.2)
-          .hex();
-        return acum;
-      }, {}),
+      base: DARK_GRAY,
     },
+
     textSecondary: {
-      base: '#555',
-      ...tones.reduce((acum, current, index) => {
-        // eslint-disable-next-line
-        acum[current] = chroma('#666')
-          .darken((index + 1) * 0.2)
-          .hex();
-        return acum;
-      }, {}),
+      base: LIGHT_GRAY,
     },
-    themeColor1: {
-      base: '#7ABD64',
+
+    brandPrimary: {
+      base: GREEN,
     },
-    themeColor2: '',
+
+    brandSecondary: {
+      base: DARK_BLUE,
+    },
+
   },
-  headerHeight: 50,
-  maxWidthContainer: 500,
+
 };
 
 export default fn => fn(theme);
