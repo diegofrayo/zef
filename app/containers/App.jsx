@@ -14,9 +14,14 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    margin: ' 0 auto',
+    margin: '10px auto',
     maxWidth: theme.maxWidthContainer,
     overflow: 'hidden',
+    position: 'relative',
+    '@media screen and (max-width : 767px)': {
+      borderRadius: 0,
+      margin: '0 auto',
+    },
   },
   bodyContainer: {
     backgroundColor: theme.color.white[100],

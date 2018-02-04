@@ -132,6 +132,10 @@ a{
   float: right !important;
 }
 
+.u-csr-default{
+  cursor: default;
+}
+
 /*Extra small devices Phones*/
 @media screen and (max-width : 767px)
 {
