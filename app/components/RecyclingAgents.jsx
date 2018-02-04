@@ -6,6 +6,9 @@ import { StyleSheet, css } from 'aphrodite';
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
+  description: {
+    marginBottom: theme.spacing.normal,
+  },
   placeContainer: {
     backgroundColor: theme.color.white[200],
     marginBottom: theme.spacing.base,
@@ -31,11 +34,6 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
 
 class RecyclingAgents extends React.Component {
 
-  constructor() {
-    super();
-    document.title = `${document.title} - ¿En dónde puedo reciclar?`;
-  }
-
   state = {
     places: [1, 2, 3, 4, 5].map(item => ({
       id: `key-${item}`,
@@ -43,9 +41,13 @@ class RecyclingAgents extends React.Component {
       address: `Address ${item}`,
       phone: '311 654 7896',
       email: `email${item}@domain.co`,
-      website: `https://fb.com/name-${item}`
+      website: `https://fb.com/name-${item}`,
     })),
   };
+
+  componentDidMount() {
+    document.title = `ZEF - ¿En dónde puedo reciclar?`;
+  }
 
   renderItem = place => (
     <article className={css(styles.placeContainer)} key={place.id}>
@@ -63,7 +65,7 @@ class RecyclingAgents extends React.Component {
         <span className={css(styles.placeEmail)}>{place.email}</span>
       </div>
       <div className={css(styles.textContainer)}>
-        <span className={css(styles.label)}>Sitio web: </span>{' '}
+        <span className={css(styles.label)}>Sitio web: </span>
         <a
           className={css(styles.placeWebsite)}
           href={place.website}
@@ -77,10 +79,12 @@ class RecyclingAgents extends React.Component {
   );
 
   render() {
-    // <p>A estos sitios puedes llevar los elementos que has reciclado.</p>
-    return (
-      <section>{this.state.places.map(this.renderItem)}</section>
-    );
+    return [
+      <p className={css(styles.description)} key="description">
+        A estos sitios puedes llevar los elementos que has reciclado.
+      </p>,
+      <section key="places">{this.state.places.map(this.renderItem)}</section>,
+    ];
   }
 }
 

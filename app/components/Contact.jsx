@@ -9,9 +9,8 @@ const styles = StyleSheet.create(createStylesheet(theme => ({})));
 
 class Contact extends React.Component {
 
-  constructor() {
-    super();
-    document.title = `${document.title} - Contácto`;
+  componentDidMount() {
+    document.title = `ZEF - Contácto`;
   }
 
   render() {

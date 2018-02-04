@@ -9,9 +9,8 @@ const styles = StyleSheet.create(createStylesheet(theme => ({})));
 
 class HowToRecycle extends React.Component {
 
-  constructor() {
-    super();
-    document.title = `${document.title} - ¿Cómo reciclar?`;
+  componentDidMount() {
+    document.title = `ZEF - ¿Cómo reciclar?`;
   }
 
   render() {

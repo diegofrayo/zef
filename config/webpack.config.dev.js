@@ -2,28 +2,20 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-
   webpackConfig: {
     devtool: 'source-map',
-    entry: [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
-    ],
+    entry: ['react-hot-loader/patch', 'webpack-hot-middleware/client'],
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, '../build/assets/'),
       publicPath: '/assets/',
     },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-    ],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
   },
-
-  configureBabel: (babelConfig) => {
+  configureBabel: babelConfig => {
     babelConfig.use[0].options.plugins.unshift('react-hot-loader/babel');
     babelConfig.use.unshift({
       loader: 'react-hot-loader/webpack',
     });
   },
-
 };

@@ -18,7 +18,6 @@ const styles = createStylesheet(theme => ({
   height: '100vh',
 }));
 
-// const target = document.getElementById('app');
 const target = document.createElement('main');
 
 target.setAttribute(

@@ -1,12 +1,12 @@
 process.noDeprecation = true;
 
-module.exports = (env) => {
+module.exports = (env = {}) => {
 
   const fs = require('fs');
   const path = require('path');
   const webpack = require('webpack');
 
-  const ENVIRONMENT = env.NODE_ENV;
+  const ENVIRONMENT = env.NODE_ENV || process.env.NODE_ENV;
   let environmentConfig;
   let isDevelopment;
   let settings = {};
@@ -72,7 +72,7 @@ module.exports = (env) => {
         ],
       },
     },
-    environmentConfig.webpackConfig
+    environmentConfig.webpackConfig,
   );
 
   if (env.ENABLE_LINT) {
@@ -83,7 +83,7 @@ module.exports = (env) => {
             configFile: path.join(__dirname, './.eslintrc'),
           },
         },
-      })
+      }),
     );
     config.module.rules.push({
       exclude: /(node_modules|webpack_cache|config)/,

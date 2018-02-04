@@ -3,13 +3,12 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-
   webpackConfig: {
     entry: [],
     output: {
       filename: 'bundle.js',
       path: path.join(__dirname, '../build/assets/'),
-      publicPath: '/assets/'
+      publicPath: '/assets/',
     },
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(),
@@ -25,5 +24,4 @@ module.exports = {
       }),
     ],
   },
-
 };
