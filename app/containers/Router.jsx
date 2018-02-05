@@ -11,9 +11,10 @@ import { history } from 'state';
 import { routes } from 'constants/index';
 
 // containers
-import RecyclingAgents from 'containers/RecyclingAgents';
-import HowToRecycle from 'containers/HowToRecycle';
 import Contact from 'containers/Contact';
+import Home from 'containers/Home';
+import HowToRecycle from 'containers/HowToRecycle';
+import RecyclingAgents from 'containers/RecyclingAgents';
 
 const Router = () => (
   <ConnectedRouter history={history}>
@@ -21,7 +22,7 @@ const Router = () => (
       <Route exact path={routes.CONTACT} component={Contact} />
       <Route exact path={routes.HOW_TO_RECYCLE} component={HowToRecycle} />
       <Route exact path={routes.RECYCLING_AGENTS} component={RecyclingAgents} />
-      <Route path={routes.HOME} component={RecyclingAgents} />
+      <Route exact path={routes.HOME} component={Home} />
     </Switch>
   </ConnectedRouter>
 );

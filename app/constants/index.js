@@ -1,4 +1,4 @@
-const ROOT = APP_SETTINGS.environment === 'development' ? '' : '/zef-app';
+const ROOT = APP_SETTINGS.environment === 'development' ? '' : '/zef';
 
 // eslint-disable-next-line
 export const routes = {

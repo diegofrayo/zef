@@ -2,12 +2,16 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
+// utils
+import UtilitiesService from 'utils/utilities';
+
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
   description: {
-    marginBottom: theme.spacing.normal,
+    fontSize: theme.fontSize.base,
+    marginBottom: theme.spacing.base,
   },
   placeContainer: {
     backgroundColor: theme.color.white[200],
@@ -15,8 +19,8 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     padding: theme.spacing.base,
   },
   placeName: {
-    marginBottom: theme.spacing.normal,
-    fontSize: theme.fontSize.large,
+    marginBottom: theme.spacing.base,
+    fontSize: theme.fontSize.medium,
   },
   textContainer: {
     marginBottom: theme.spacing.small,
@@ -46,7 +50,7 @@ class RecyclingAgents extends React.Component {
   };
 
   componentDidMount() {
-    document.title = `ZEF - ¿En dónde puedo reciclar?`;
+    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, '¿En dónde puedo reciclar?');
   }
 
   renderItem = place => (

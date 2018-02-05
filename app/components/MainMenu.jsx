@@ -25,6 +25,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   },
   container: {
     backgroundColor: theme.color.white[200],
+    boxShadow: '0 0 5px 1px #555',
     height: '100%',
     left: 0,
     position: 'absolute',
@@ -54,19 +55,20 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     borderBottom: `1px solid ${theme.color.white[300]}`,
     color: theme.color.textPrimary.base,
     cursor: 'pointer',
-    padding: `${theme.spacing.normal}px`,
+    padding: `${theme.spacing.base}px`,
+    marginLeft: theme.spacing.base,
   },
 })));
 
-const menuItemClick = (openMenu, route) => (event) => {
+const onClickMenuItem = (onClickOpenMenu, route) => () => {
   history.push(route);
-  openMenu(event);
+  onClickOpenMenu();
 };
 
 const MainMenu = props => [
   <div
     className={css(styles.backdrop, props.isMenuOpen ? styles.backdropVisible : false)}
-    onClick={props.openMenu}
+    onClick={props.onClickOpenMenu}
     key="backdrop"
   >
     {''}
@@ -76,18 +78,18 @@ const MainMenu = props => [
     key="menu-container"
   >
     <ul className={css(styles.menu)}>
-      <li className={css(styles.menuHeader)}>ZEF App</li>
-      <li className={css(styles.menuItem)} onClick={menuItemClick(props.openMenu, routes.HOME)}>
+      <li className={css(styles.menuHeader)}>{APP_SETTINGS.APP_TITLE}</li>
+      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}>
         <i className="material-icons">keyboard_arrow_right</i> <span>Inicio</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={menuItemClick(props.openMenu, routes.HOW_TO_RECYCLE)}>
+      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}>
         <i className="material-icons">keyboard_arrow_right</i> <span>¿Cómo reciclar?</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={menuItemClick(props.openMenu, routes.RECYCLING_AGENTS)}>
+      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}>
         <i className="material-icons">keyboard_arrow_right</i>
         <span>¿En dónde puedo reciclar?</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={menuItemClick(props.openMenu, routes.CONTACT)}>
+      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}>
         <i className="material-icons">keyboard_arrow_right</i> <span>Contácto</span>
       </li>
     </ul>
@@ -96,7 +98,7 @@ const MainMenu = props => [
 
 MainMenu.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
-  openMenu: PropTypes.func.isRequired,
+  onClickOpenMenu: PropTypes.func.isRequired,
 };
 
 export default MainMenu;

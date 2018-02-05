@@ -51,8 +51,11 @@ gulp.task('build-html', () => {
 
   const timestamp = +new Date();
 
-  let stream = gulp.src('./app/index.html');
   let jsSources;
+  let stream = gulp
+    .src('./app/index.html')
+    .pipe(g.replace('<!-- APP_TITLE -->', settings.APP_TITLE))
+    .pipe(g.replace('<!-- ASSETS_PATH -->', assetsPath));
 
   if (environment === 'development') {
 
@@ -68,7 +71,7 @@ gulp.task('build-html', () => {
 
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))
-      .pipe(g.rename('zef-app.html'))
+      .pipe(g.rename('zef.html'))
       .pipe(g.htmlmin(htmlminOpts))
       .pipe(gulp.dest(`${destRootPath}/templates`));
 
@@ -80,7 +83,7 @@ gulp.task('build-html', () => {
 //------------------- Copy Assets Tasks --------------
 gulp.task('copy-assets', () => {
   gulp.src('./assets/images/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/images`));
-  gulp.src('./app/vendor/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/js/vendor`));
+  gulp.src('./assets/js/vendor/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/js/vendor`));
 });
 
 
@@ -88,16 +91,18 @@ gulp.task('copy-assets', () => {
 //----------------- Builds Tasks ------------------------
 gulp.task('build-dev', () => {
   environment = 'development';
-  destRootPath = settings[environment].dest_root_path;
-  assetsPath = settings[environment].assets_path;
+  settings = settings[environment];
+  destRootPath = settings.dest_root_path;
+  assetsPath = settings.assets_path;
 
   g.runSequence('build-html', 'copy-assets');
 });
 
 gulp.task('build-live', () => {
   environment = 'production';
-  destRootPath = settings[environment].dest_root_path;
-  assetsPath = settings[environment].assets_path;
+  settings = settings[environment];
+  destRootPath = settings.dest_root_path;
+  assetsPath = settings.assets_path;
 
   g.runSequence('build-js', 'build-html', 'copy-assets');
 });

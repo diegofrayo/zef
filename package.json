@@ -1,14 +1,14 @@
 {
-  "name": "zef-app",
+  "name": "zef",
   "version": "0.0.1",
   "description": "React application",
   "keywords": [
     "react"
   ],
-  "homepage": "https://github.com/diegofrayo/zef-app#readme",
+  "homepage": "https://github.com/diegofrayo/zef#readme",
   "bugs": {
     "email": "diegofrayo@gmail.com",
-    "url": "https://github.com/diegofrayo/zef-app/issues"
+    "url": "https://github.com/diegofrayo/zef/issues"
   },
   "license": "ISC",
   "author": {
@@ -19,7 +19,7 @@
   "main": "app/index.jsx",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diegofrayo/zef-app.git"
+    "url": "git+https://github.com/diegofrayo/zef.git"
   },
   "scripts": {
     "start:all": "gulp build-dev && node config/webpack.config.dev.server.js",

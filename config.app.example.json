@@ -2,11 +2,13 @@
   "development": {
     "assets_path": "assets",
     "dest_root_path": "./build",
-    "environment": "development"
+    "environment": "development",
+    "APP_TITLE": "ZEF"
   },
   "production": {
-    "assets_path": "assets/zef-app",
+    "assets_path": "assets/zef",
     "dest_root_path": "./../website-router",
-    "environment": "production"
+    "environment": "production",
+    "APP_TITLE": "ZEF"
   }
 }

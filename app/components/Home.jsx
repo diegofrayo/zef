@@ -10,16 +10,16 @@ import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({})));
 
-class Contact extends React.Component {
+class Home extends React.Component {
 
   componentDidMount() {
-    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, 'Contácto');
+    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, 'Inicio');
   }
 
   render() {
-    return <section>Acerca de ésta aplicación</section>;
+    return <section>Inicio</section>;
   }
 
 }
 
-export default Contact;
+export default Home;

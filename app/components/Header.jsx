@@ -13,7 +13,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   container: {
     alignItems: 'center',
     backgroundColor: theme.color.brandPrimary.base,
-    color: theme.color.textSecondary.primary,
+    color: theme.color.black[700],
     display: 'flex',
     flex: 0,
     fontWeight: theme.fontWeight.bold,
@@ -24,6 +24,10 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     cursor: 'pointer',
     marginRight: theme.spacing.base,
   },
+  text: {
+    display: 'inline',
+    fontSize: theme.fontSize.large,
+  },
 })));
 
 class Header extends React.Component {
@@ -32,9 +36,8 @@ class Header extends React.Component {
     isMenuOpen: false,
   };
 
-  openMenu = (event) => {
-    event.stopPropagation();
-    this.setState((state, props) => ({
+  onClickOpenMenu = () => {
+    this.setState((state) => ({
       isMenuOpen: !state.isMenuOpen,
     }));
   };
@@ -42,8 +45,9 @@ class Header extends React.Component {
   render() {
     return (
       <header className={css(styles.container)}>
-        <i className={classnames(css(styles.menuIcon), 'material-icons')} onClick={this.openMenu}>menu</i> <span className="u-csr-default">ZEF</span>
-        <MainMenu isMenuOpen={this.state.isMenuOpen} openMenu={this.openMenu} />
+        <i className={classnames(css(styles.menuIcon), 'material-icons')} onClick={this.onClickOpenMenu}>menu</i>
+        <h1 className={css(styles.text)}>ZEF</h1>
+        <MainMenu isMenuOpen={this.state.isMenuOpen} onClickOpenMenu={this.onClickOpenMenu} />
       </header>
     );
   }

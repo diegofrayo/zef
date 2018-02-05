@@ -18,7 +18,6 @@ export const theme = {
   spacing: {
     base: 10,
     small: 5,
-    normal: 10,
     medium: 15,
     large: 20,
   },
@@ -27,9 +26,9 @@ export const theme = {
     base: 16,
     xsmall: 12,
     small: 14,
-    medium: 16,
-    large: 18,
-    xlarge: 20,
+    medium: 18,
+    large: 20,
+    xlarge: 22,
   },
 
   fontWeight: {
