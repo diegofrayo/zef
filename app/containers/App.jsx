@@ -8,7 +8,6 @@ import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
   container: {
-    backgroundColor: theme.color.white[100],
     borderRadius: 5,
     boxShadow: '0px 0px 10px 1px rgb(202, 202, 202)',
     display: 'flex',
@@ -24,7 +23,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     },
   },
   bodyContainer: {
-    backgroundColor: theme.color.white[100],
+    backgroundColor: theme.color.white[700],
     flex: 1,
     overflow: 'auto',
     padding: theme.spacing.medium,

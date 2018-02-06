@@ -24,7 +24,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     display: 'block',
   },
   container: {
-    backgroundColor: theme.color.white[200],
+    backgroundColor: theme.color.white[700],
     boxShadow: '0 0 5px 1px #555',
     height: '100%',
     left: 0,
@@ -43,8 +43,8 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     padding: 0,
   },
   menuHeader: {
-    backgroundColor: theme.color.white[500],
-    color: theme.color.black[100],
+    backgroundColor: theme.color.white[600],
+    color: theme.color.black[700],
     cursor: 'default',
     fontSize: theme.fontSize.xlarge,
     fontWeight: theme.fontWeight.bold,
@@ -52,11 +52,14 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     textAlign: 'center',
   },
   menuItem: {
-    borderBottom: `1px solid ${theme.color.white[300]}`,
-    color: theme.color.textPrimary.base,
+    borderBottom: `1px solid ${theme.color.white[650]}`,
+    color: theme.color.black[400],
     cursor: 'pointer',
     padding: `${theme.spacing.base}px`,
     paddingLeft: theme.spacing.medium,
+    ':hover': {
+      backgroundColor: theme.color.white[650],
+    },
   },
 })));
 

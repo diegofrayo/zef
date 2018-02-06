@@ -8,7 +8,11 @@ import UtilitiesService from 'utils/utilities';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({})));
+const styles = StyleSheet.create(createStylesheet(theme => ({
+  text: {
+    fontSize: theme.fontSize.base,
+  },
+})));
 
 class Home extends React.Component {
 
@@ -17,7 +21,7 @@ class Home extends React.Component {
   }
 
   render() {
-    return <section>Inicio</section>;
+    return <section className={css(styles.text)}>Inicio</section>;
   }
 
 }

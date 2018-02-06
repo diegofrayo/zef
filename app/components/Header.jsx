@@ -13,19 +13,21 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   container: {
     alignItems: 'center',
     backgroundColor: theme.color.brandPrimary.base,
-    color: theme.color.black[700],
+    color: theme.color.white[700],
     display: 'flex',
     flex: 0,
     fontWeight: theme.fontWeight.bold,
+    justifyContent: 'center',
     minHeight: theme.headerHeight,
-    padding: `0 ${theme.spacing.medium}px`,
   },
   menuIcon: {
     cursor: 'pointer',
-    marginRight: theme.spacing.base,
+    fontSize: 28,
+    left: 10,
+    position: 'absolute',
+    top: 10,
   },
   text: {
-    display: 'inline',
     fontSize: theme.fontSize.large,
   },
 })));

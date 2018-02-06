@@ -4,21 +4,37 @@
     "name": "Fundación Punto Cero",
     "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
     "address": "Carrera 21 Calle 24-12",
-    "location": "Armenia, Quindío, Colombia",
+    "location": "Armenia, Quindío",
     "phone": "",
     "email": "",
     "website": "",
-    "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "FundPuntocero" }
+    "tags": [
+      "botellas de plastico",
+      "carton",
+      "desechos tecnologicos",
+      "papel",
+      "pilas",
+      "tetrapak",
+      "vidrio"
+    ],
+    "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "/FundacionPuntocero" }
   },
   {
     "id": "fundacion-la-oportunidad",
     "name": "Fundación La Oportunidad",
     "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
     "address": "Salón comunal del barrio La Mariela",
-    "location": "Armenia, Quindío, Colombia",
+    "location": "Armenia, Quindío",
     "phone": "313 751 8677",
     "email": "",
     "website": "",
-    "fb_page": { "url": "https://www.facebook.com/claucri", "label": "FundacionLaOportunidad" }
+    "tags": [
+      "botellas de plastico",
+      "carton",
+      "papel",
+      "pilas",
+      "vidrio"
+    ],
+    "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" }
   }
 ]

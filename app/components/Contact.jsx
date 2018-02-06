@@ -8,7 +8,11 @@ import UtilitiesService from 'utils/utilities';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({})));
+const styles = StyleSheet.create(createStylesheet(theme => ({
+  text: {
+    fontSize: theme.fontSize.base,
+  },
+})));
 
 class Contact extends React.Component {
 
@@ -17,7 +21,7 @@ class Contact extends React.Component {
   }
 
   render() {
-    return <section>Acerca de ésta aplicación</section>;
+    return <section className={css(styles.text)}>Acerca de ésta aplicación</section>;
   }
 
 }

@@ -12,7 +12,7 @@ import createStylesheet from 'styles/createStylesheet';
 import 'styles/reset.css';
 
 const styles = createStylesheet(theme => ({
-  'background-color': theme.color.white[200],
+  'background-color': theme.color.white[650],
   display: 'flex',
   flex: 1,
   height: '100vh',
