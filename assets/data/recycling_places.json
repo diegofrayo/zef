@@ -1,0 +1,24 @@
+[
+  {
+    "id": "fundacion-punto-cero",
+    "name": "Fundación Punto Cero",
+    "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
+    "address": "Carrera 21 Calle 24-12",
+    "location": "Armenia, Quindío, Colombia",
+    "phone": "",
+    "email": "",
+    "website": "",
+    "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "FundPuntocero" }
+  },
+  {
+    "id": "fundacion-la-oportunidad",
+    "name": "Fundación La Oportunidad",
+    "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
+    "address": "Salón comunal del barrio La Mariela",
+    "location": "Armenia, Quindío, Colombia",
+    "phone": "313 751 8677",
+    "email": "",
+    "website": "",
+    "fb_page": { "url": "https://www.facebook.com/claucri", "label": "FundacionLaOportunidad" }
+  }
+]

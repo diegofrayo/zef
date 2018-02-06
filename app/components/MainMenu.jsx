@@ -56,7 +56,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     color: theme.color.textPrimary.base,
     cursor: 'pointer',
     padding: `${theme.spacing.base}px`,
-    marginLeft: theme.spacing.base,
+    paddingLeft: theme.spacing.medium,
   },
 })));
 

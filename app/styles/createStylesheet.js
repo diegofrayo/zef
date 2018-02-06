@@ -1,7 +1,7 @@
 // npm libs
 import chroma from 'chroma-js';
 
-const TONES = [100, 200, 300, 400, 500, 600, 700];
+const TONES = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700];
 
 // palette: https://coolors.co/20bf55-0b4f6c-01baef-fbfbff-757575
 const GREEN = '#20BF55';
@@ -42,7 +42,7 @@ export const theme = {
 
     black: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
-      acum[current] = chroma('#333')
+      acum[current] = chroma('#555')
         .darken((index) * 0.2)
         .hex();
       return acum;
@@ -50,8 +50,8 @@ export const theme = {
 
     white: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
-      acum[current] = chroma('#FFF')
-        .darken((index) * 0.2)
+      acum[current] = chroma('white')
+        .darken((index) * 0.1)
         .hex();
       return acum;
     }, {}),
@@ -59,7 +59,31 @@ export const theme = {
     blue: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma(LIGHT_BLUE)
-        .darken((index) * 0.2)
+        .darken((index) * 0.1)
+        .hex();
+      return acum;
+    }, {}),
+
+    red: TONES.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma('red')
+        .darken((index) * 0.1)
+        .hex();
+      return acum;
+    }, {}),
+
+    green: TONES.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma(GREEN)
+        .darken((index) * 0.1)
+        .hex();
+      return acum;
+    }, {}),
+
+    yellow: TONES.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma('yellow')
+        .darken((index) * 0.1)
         .hex();
       return acum;
     }, {}),

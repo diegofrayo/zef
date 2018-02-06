@@ -28,7 +28,7 @@ i{
   vertical-align: middle;
 }
 
-img, span, a{
+img, span, a, i{
   vertical-align: middle;
 }
 
@@ -114,6 +114,10 @@ a{
 
 .u-text-right{
   text-align: right !important;
+}
+
+.u-text-justify{
+  text-align: justify !important;
 }
 
 .u-hidden{

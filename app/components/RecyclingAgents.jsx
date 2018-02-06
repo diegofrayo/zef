@@ -1,6 +1,7 @@
 // npm libs
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import classnames from 'classnames';
 
 // utils
 import UtilitiesService from 'utils/utilities';
@@ -9,44 +10,61 @@ import UtilitiesService from 'utils/utilities';
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
-  description: {
+  pageDescription: {
     fontSize: theme.fontSize.base,
     marginBottom: theme.spacing.base,
   },
   placeContainer: {
+    boxShadow: '0 0 5px 1px #DDD',
+    cursor: 'default',
     backgroundColor: theme.color.white[200],
-    marginBottom: theme.spacing.base,
+    marginBottom: theme.spacing.medium,
     padding: theme.spacing.base,
-  },
-  placeName: {
-    marginBottom: theme.spacing.base,
-    fontSize: theme.fontSize.medium,
   },
   textContainer: {
     marginBottom: theme.spacing.small,
   },
-  label: {
-    fontWeight: theme.fontWeight.bold,
+  textContainerDescription: {
+    margin: `${theme.spacing.base}px 0`,
+  },
+  icon: {
+    fontSize: theme.fontSize.large,
+    marginRight: theme.spacing.small,
+  },
+  iconDescription: {
+    color: theme.color.black[700],
+  },
+  iconLocation: {
+    color: theme.color.yellow[700],
+  },
+  iconPhone: {
+    color: theme.color.red[100],
+  },
+  iconEmail: {
+    color: theme.color.red[100],
+  },
+  iconWebsite: {
+    color: theme.color.white[100],
+  },
+  iconFacebook: {
+    color: theme.color.blue[700],
+  },
+  placeName: {
+    color: 'black',
+    fontSize: theme.fontSize.medium,
   },
   placeEmail: {
     color: theme.color.blue[400],
   },
   placeWebsite: {
-    color: theme.color.blue[400],
+    color: theme.color.blue[200],
   },
 })));
 
 class RecyclingAgents extends React.Component {
 
   state = {
-    places: [1, 2, 3, 4, 5].map(item => ({
-      id: `key-${item}`,
-      name: `Name ${item}`,
-      address: `Address ${item}`,
-      phone: '311 654 7896',
-      email: `email${item}@domain.co`,
-      website: `https://fb.com/name-${item}`,
-    })),
+    places: require('./../../assets/data/recycling_places.json') // eslint-disable-line
   };
 
   componentDidMount() {
@@ -56,37 +74,64 @@ class RecyclingAgents extends React.Component {
   renderItem = place => (
     <article className={css(styles.placeContainer)} key={place.id}>
       <h1 className={css(styles.placeName)}>{place.name}</h1>
-      <div className={css(styles.textContainer)}>
-        <span className={css(styles.label)}>Dirección: </span>
-        <span>{place.address}</span>
-      </div>
-      <div className={css(styles.textContainer)}>
-        <span className={css(styles.label)}>Teléfono: </span>
-        <span>{place.phone}</span>
-      </div>
-      <div className={css(styles.textContainer)}>
-        <span className={css(styles.label)}>Email: </span>
-        <span className={css(styles.placeEmail)}>{place.email}</span>
-      </div>
-      <div className={css(styles.textContainer)}>
-        <span className={css(styles.label)}>Sitio web: </span>
-        <a
-          className={css(styles.placeWebsite)}
-          href={place.website}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {place.website}
-        </a>
-      </div>
+      {place.description && (
+        <div className={classnames(css(styles.textContainer), css(styles.textContainerDescription), 'u-text-justify')}>
+          <span>{place.description}</span>
+        </div>
+      )}
+      {(place.address || place.location) && (
+        <div className={css(styles.textContainer)}>
+          <i className={classnames(css(styles.icon), css(styles.iconLocation), 'fa fa-map-marker')}>{''}</i>
+          <span>{place.address} | {place.location}</span>
+        </div>
+      )}
+      {place.phone && (
+        <div className={css(styles.textContainer)}>
+          <i className={classnames(css(styles.icon), css(styles.iconPhone), 'fa fa-phone')}>{''}</i>
+          <span>{place.phone}</span>
+        </div>
+      )}
+      {place.email && (
+        <div className={css(styles.textContainer)}>
+          <i className={classnames(css(styles.icon), css(styles.iconEmail), 'fa fa-at')}>{''}</i>
+          <span className={css(styles.placeEmail)}>{place.email}</span>
+        </div>
+      )}
+      {place.website && (
+        <div className={css(styles.textContainer)}>
+          <i className={classnames(css(styles.icon), css(styles.iconWebsite), 'fa fa-link')}>{''}</i>
+          <a
+            className={css(styles.placeWebsite)}
+            href={place.website}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {place.website}
+          </a>
+        </div>
+      )}
+      {place.fb_page && (
+        <div className={css(styles.textContainer)}>
+          <i className={classnames(css(styles.icon), css(styles.iconFacebook), 'fa fa-facebook')}>{''}</i>
+          <a
+            className={css(styles.placeWebsite)}
+            href={place.fb_page.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            /{place.fb_page.label}
+          </a>
+        </div>
+      )}
     </article>
   );
 
   render() {
     return [
-      <p className={css(styles.description)} key="description">
+      <p className={css(styles.pageDescription)} key="description">
         A estos sitios puedes llevar los elementos que has reciclado.
       </p>,
+      <br />,
       <section key="places">{this.state.places.map(this.renderItem)}</section>,
     ];
   }
