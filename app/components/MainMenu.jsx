@@ -34,6 +34,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     transition: 'all .3s linear',
     width: '90%',
     willChange: 'transform',
+    zIndex: 1000,
   },
   containerVisible: {
     transform: 'translateX(0px)',
@@ -81,7 +82,10 @@ const MainMenu = props => [
     key="menu-container"
   >
     <ul className={css(styles.menu)}>
-      <li className={css(styles.menuHeader)}>{APP_SETTINGS.APP_TITLE}</li>
+      <li className={css(styles.menuHeader)}>
+        <i className="fa fa-trophy">{''}</i>
+        <span>{APP_SETTINGS.APP_TITLE}</span>
+      </li>
       <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}>
         <i className="material-icons">keyboard_arrow_right</i> <span>Inicio</span>
       </li>

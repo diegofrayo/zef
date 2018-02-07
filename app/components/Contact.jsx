@@ -9,19 +9,33 @@ import UtilitiesService from 'utils/utilities';
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
-  text: {
+  pageTitle: {
+    color: theme.color.titles,
+    marginBottom: theme.spacing.base,
+  },
+  pageDescription: {
+    color: theme.color.textPrimary,
     fontSize: theme.fontSize.base,
+    marginBottom: theme.spacing.base,
+    textAlign: 'justify',
   },
 })));
 
 class Contact extends React.Component {
 
+  pageTitle = 'Contácto';
+
   componentDidMount() {
-    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, 'Contácto');
+    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
   }
 
   render() {
-    return <section className={css(styles.text)}>Acerca de ésta aplicación</section>;
+    return [
+      <h2 key="page-title" className={css(styles.pageTitle)}>{this.pageTitle}</h2>,
+      <p className={css(styles.pageDescription)} key="page-description">
+        Descripción
+      </p>,
+    ];
   }
 
 }

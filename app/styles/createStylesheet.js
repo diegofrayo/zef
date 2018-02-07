@@ -5,7 +5,7 @@ const TONES = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700];
 
 // palette: https://coolors.co/20bf55-0b4f6c-01baef-fbfbff-757575
 const DARK_BLUE = '#0B4F6C';
-const DARK_GRAY = '#757575';
+// const DARK_GRAY = '#757575';
 const GREEN = '#20BF55';
 const LIGHT_GRAY = '#FBFBFF';
 // const LIGHT_BLUE = '#01BAEF';
@@ -88,10 +88,6 @@ export const theme = {
       return acum;
     }, {}),
 
-    textPrimary: {
-      base: DARK_GRAY,
-    },
-
     orange: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('orange')
@@ -100,17 +96,11 @@ export const theme = {
       return acum;
     }, {}),
 
-    textSecondary: {
-      base: LIGHT_GRAY,
-    },
-
-    brandPrimary: {
-      base: GREEN,
-    },
-
-    brandSecondary: {
-      base: DARK_BLUE,
-    },
+    titles: 'black',
+    textPrimary: '#242424',
+    textSecondary: LIGHT_GRAY,
+    brandPrimary: GREEN,
+    brandSecondary: DARK_BLUE,
 
   },
 

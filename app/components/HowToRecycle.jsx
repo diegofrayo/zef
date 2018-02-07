@@ -9,19 +9,33 @@ import UtilitiesService from 'utils/utilities';
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
-  text: {
+  pageTitle: {
+    color: theme.color.titles,
+    marginBottom: theme.spacing.base,
+  },
+  pageDescription: {
+    color: theme.color.textPrimary,
     fontSize: theme.fontSize.base,
+    marginBottom: theme.spacing.base,
+    textAlign: 'justify',
   },
 })));
 
 class HowToRecycle extends React.Component {
 
+  pageTitle = '¿Cómo reciclar?';
+
   componentDidMount() {
-    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, '¿Cómo reciclar?');
+    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
   }
 
   render() {
-    return <section className={css(styles.text)}>¿Cómo reciclar?</section>;
+    return [
+      <h2 key="page-title" className={css(styles.pageTitle)}>{this.pageTitle}</h2>,
+      <p className={css(styles.pageDescription)} key="page-description">
+        Descripción
+      </p>,
+    ];
   }
 
 }

@@ -11,9 +11,15 @@ import UtilitiesService from 'utils/utilities';
 import createStylesheet from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(createStylesheet(theme => ({
+  pageTitle: {
+    color: theme.color.titles,
+    marginBottom: theme.spacing.base,
+  },
   pageDescription: {
+    color: theme.color.textPrimary,
     fontSize: theme.fontSize.base,
     marginBottom: theme.spacing.base,
+    textAlign: 'justify',
   },
   placeContainer: {
     backgroundColor: theme.color.white[650],
@@ -23,17 +29,25 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     padding: theme.spacing.base,
   },
   textContainer: {
-    color: theme.color.black[700],
+    color: theme.color.textPrimary,
     marginBottom: theme.spacing.small,
   },
   textContainerDescription: {
-    color: theme.color.black[500],
+    color: theme.color.textPrimary,
     margin: `${theme.spacing.base}px 0 ${theme.spacing.small}px`,
     textAlign: 'justify',
   },
   textPlaceName: {
-    color: theme.color.black[700],
+    color: theme.color.titles,
     fontSize: theme.fontSize.medium,
+  },
+  textPlaceMap: {
+    borderBottom: `1px solid ${theme.color.orange[200]}`,
+    color: theme.color.orange[200],
+    fontSize: theme.fontSize.small,
+    marginLeft: theme.spacing.small,
+    position: 'relative',
+    top: -1,
   },
   textPlaceEmail: {
     color: theme.color.blue[100],
@@ -41,10 +55,10 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   textPlaceWebsite: {
     borderBottom: `1px solid ${theme.color.blue[100]}`,
     color: theme.color.blue[100],
-    paddingBottom: 1,
   },
   tagsContainer:{
     backgroundColor: theme.color.white[600],
+    color: theme.color.textPrimary,
     fontSize: theme.fontSize.small,
     margin: `${theme.spacing.base}px 0`,
     padding: theme.spacing.base,
@@ -67,6 +81,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     padding: theme.spacing.small,
   },
   detailsContainer: {
+    borderTop: `1px solid ${theme.color.white[600]}`,
     clear: 'both',
     transition: 'all .3s linear',
   },
@@ -103,13 +118,15 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
 
 class RecyclingAgents extends React.Component {
 
+  pageTitle = '¿En dónde puedo reciclar?';
+
   state = {
     places: require('./../../assets/data/recycling_places.json') // eslint-disable-line
       .map((place) => ({ show_details: false, ...place })),
   };
 
   componentDidMount() {
-    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, '¿En dónde puedo reciclar?');
+    UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
   }
 
   onClickShowPlaceDetails = (placeSelected) => () => {
@@ -123,7 +140,7 @@ class RecyclingAgents extends React.Component {
     }));
   };
 
-  renderItem = place => {
+  renderPlace = (place) => {
 
     const transitionStyles = {
       entering: css(styles.detailsContainerVisible),
@@ -142,7 +159,7 @@ class RecyclingAgents extends React.Component {
         )}
         <section className={css(styles.tagsContainer)}>
           <p>
-            A este sitio puedes llevar los estos elementos
+            A este sitio puedes llevar los siguientes elementos
           </p>
           {place.tags.map(this.renderTag(place.id))}
         </section>
@@ -175,17 +192,27 @@ class RecyclingAgents extends React.Component {
     );
   };
 
-  renderPlaceDetailsContainer = place => [
-    (place.address || place.location) && (
-      <div className={css(styles.textContainer)} key="text-place-location">
-        <i className={classnames(css(styles.icon), css(styles.iconLocation), 'fa fa-map-marker')}>
-          {''}
-        </i>
-        <span>
-          {place.address} | {place.location}
-        </span>
-      </div>
-    ),
+  renderTag = (placeId) => (tag) => (
+    <span className={css(styles.tag)} key={`${placeId}-${tag}`}>{tag}</span>
+  );
+
+  renderPlaceDetailsContainer = (place) => [
+    <div className={css(styles.textContainer)} key="text-place-location">
+      <i className={classnames(css(styles.icon), css(styles.iconLocation), 'fa fa-map-marker')}>
+        {''}
+      </i>
+      <span>
+        {place.address} | {place.city}
+      </span>
+      <a
+        className={css(styles.textPlaceMap)}
+        href={place.location}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        [Ver Mapa]
+      </a>
+    </div>,
     place.phone && (
       <div className={css(styles.textContainer)} key="text-place-phone">
         <i className={classnames(css(styles.icon), css(styles.iconPhone), 'fa fa-phone')}>{''}</i>
@@ -228,17 +255,14 @@ class RecyclingAgents extends React.Component {
     ),
   ];
 
-  renderTag = placeId => tag => (
-    <span className={css(styles.tag)} key={`${placeId}-${tag}`}>{tag}</span>
-  );
-
   render() {
     return [
-      <p className={css(styles.pageDescription)} key="description">
-        A estos sitios puedes llevar los elementos que has reciclado.
+      <h2 key="page-title" className={css(styles.pageTitle)}>{this.pageTitle}</h2>,
+      <p className={css(styles.pageDescription)} key="page-description">
+        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes tipos de elementos que has reciclado.
       </p>,
       <br key="separator" />,
-      <section key="places">{this.state.places.map(this.renderItem)}</section>,
+      <section key="places-container">{this.state.places.map(this.renderPlace)}</section>,
     ];
   }
 }
