@@ -30,7 +30,11 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   },
   textContainer: {
     color: theme.color.textPrimary,
-    marginBottom: theme.spacing.small,
+    display: 'flex',
+    fontSize: theme.fontSize.small,
+    fontWeight: theme.fontWeight.bold,
+    marginTop: theme.spacing.small + 2,
+    wordBreak: 'break-word',
   },
   textContainerDescription: {
     color: theme.color.textPrimary,
@@ -42,19 +46,25 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     fontSize: theme.fontSize.medium,
   },
   textPlaceMap: {
-    borderBottom: `1px solid ${theme.color.orange[200]}`,
     color: theme.color.orange[200],
-    fontSize: theme.fontSize.small,
-    marginLeft: theme.spacing.small,
-    position: 'relative',
-    top: -1,
+    paddingBottom: 1,
+    textDecoration: 'underline',
+  },
+  textPlacePhone: {
+    color: theme.color.red[100],
+    paddingBottom: 1,
   },
   textPlaceEmail: {
-    color: theme.color.blue[100],
+    color: theme.color.green[100],
   },
   textPlaceWebsite: {
-    borderBottom: `1px solid ${theme.color.blue[100]}`,
-    color: theme.color.blue[100],
+    color: theme.color.white[100],
+    textDecoration: 'underline',
+  },
+  textPlaceFacebook: {
+    color: theme.color.blue[500],
+    marginLeft: theme.spacing.small,
+    textDecoration: 'underline',
   },
   tagsContainer:{
     backgroundColor: theme.color.white[600],
@@ -90,10 +100,11 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
   },
   detailsContainerVisible: {
     opacity: 1,
-    padding: theme.spacing.base,
+    padding: theme.spacing.small,
   },
   icon: {
     fontSize: theme.fontSize.large,
+    fontWeight: theme.fontWeight.bold,
     marginRight: theme.spacing.small,
   },
   iconDetails: {
@@ -106,13 +117,13 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     color: theme.color.red[100],
   },
   iconEmail: {
-    color: theme.color.red[100],
+    color: theme.color.green[100],
   },
   iconWebsite: {
     color: theme.color.white[100],
   },
   iconFacebook: {
-    color: theme.color.blue[200],
+    color: theme.color.blue[500],
   },
 })));
 
@@ -122,7 +133,8 @@ class RecyclingAgents extends React.Component {
 
   state = {
     places: require('./../../assets/data/recycling_places.json') // eslint-disable-line
-      .map((place) => ({ show_details: false, ...place })),
+      .map((place) => ({ show_details: false, ...place }))
+      .sort(UtilitiesService.sort('name', 'asc')),
   };
 
   componentDidMount() {
@@ -138,6 +150,9 @@ class RecyclingAgents extends React.Component {
         return place;
       }),
     }));
+    if (!placeSelected.show_details) {
+      UtilitiesService.animateScroll(document.getElementById('app-content-container'), document.getElementById(placeSelected.id).offsetTop - 70, 500);
+    }
   };
 
   renderPlace = (place) => {
@@ -150,7 +165,7 @@ class RecyclingAgents extends React.Component {
     };
 
     return (
-      <article className={css(styles.placeContainer)} key={place.id}>
+      <article className={css(styles.placeContainer)} key={place.id} id={place.id}>
         <h1 className={css(styles.textPlaceName)}>{place.name}</h1>
         {place.description && (
           <div className={classnames(css(styles.textContainerDescription))}>
@@ -201,22 +216,19 @@ class RecyclingAgents extends React.Component {
       <i className={classnames(css(styles.icon), css(styles.iconLocation), 'fa fa-map-marker')}>
         {''}
       </i>
-      <span>
-        {place.address} | {place.city}
-      </span>
       <a
         className={css(styles.textPlaceMap)}
         href={place.location}
         target="_blank"
         rel="noopener noreferrer"
       >
-        [Ver Mapa]
+        <span>{place.address} | {place.city}</span>
       </a>
     </div>,
     place.phone && (
       <div className={css(styles.textContainer)} key="text-place-phone">
         <i className={classnames(css(styles.icon), css(styles.iconPhone), 'fa fa-phone')}>{''}</i>
-        <span>{place.phone}</span>
+        <span className={css(styles.textPlacePhone)}>{place.phone}</span>
       </div>
     ),
     place.email && (
@@ -239,12 +251,12 @@ class RecyclingAgents extends React.Component {
       </div>
     ),
     place.fb_page && (
-      <div className={css(styles.textContainer)} key="text-place-email">
+      <div className={css(styles.textContainer)} key="text-place-fb-page">
         <i className={classnames(css(styles.icon), css(styles.iconFacebook), 'fa fa-facebook')}>
           {''}
         </i>
         <a
-          className={css(styles.textPlaceWebsite)}
+          className={css(styles.textPlaceFacebook)}
           href={place.fb_page.url}
           target="_blank"
           rel="noopener noreferrer"

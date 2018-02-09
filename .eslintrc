@@ -36,25 +36,36 @@
     "jsx-a11y/no-static-element-interactions": 0,
     "linebreak-style": 0,
     "max-len": 0,
+    "multiline-comment-style": 0,
     "no-console": 0,
     "no-restricted-syntax": 1,
     "no-unused-vars": 1,
     "padded-blocks": 0,
     "quote-props": [1, "as-needed"],
-    "quotes": [1, "single", {
-      "avoidEscape": true,
-      "allowTemplateLiterals": true
-    }],
+    "quotes": [
+      1,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
     "react/jsx-no-duplicate-props": 1,
     "react/no-array-index-key": 1,
     "react/jsx-indent": [1, 2],
     "react/prefer-stateless-function": 1,
     "react/sort-comp": 0,
-    "react/forbid-prop-types": [1, {
-      "forbid": ["object", "any"]
-    }],
-    "react/no-unused-prop-types": [1, {
-      "skipShapeProps": true
-    }]
+    "react/forbid-prop-types": [
+      1,
+      {
+        "forbid": ["object", "any"]
+      }
+    ],
+    "react/no-unused-prop-types": [
+      1,
+      {
+        "skipShapeProps": true
+      }
+    ]
   }
 }

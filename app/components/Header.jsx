@@ -25,7 +25,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
     fontSize: 28,
     left: 10,
     position: 'absolute',
-    top: 10,
+    top: 12,
   },
   appTitle: {
     fontSize: theme.fontSize.large,

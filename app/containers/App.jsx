@@ -33,7 +33,7 @@ const styles = StyleSheet.create(createStylesheet(theme => ({
 const App = ({ body, header }) => (
   <section className={css(styles.container)}>
     {header()}
-    <section className={css(styles.bodyContainer)}>
+    <section className={css(styles.bodyContainer)} id="app-content-container">
       {body()}
     </section>
   </section>
