@@ -15,10 +15,7 @@ import { store } from 'state';
 const renderApp = () => (
   <BrowserRouter>
     <Provider store={store}>
-      <App
-        header={() => <Header />}
-        body={() => <Router />}
-      />
+      <App header={() => <Header />} body={() => <Router />} />
     </Provider>
   </BrowserRouter>
 );

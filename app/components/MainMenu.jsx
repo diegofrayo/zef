@@ -10,59 +10,61 @@ import { routes } from 'constants/index';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({
-  backdrop: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    display: 'none',
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-  },
-  backdropVisible: {
-    display: 'block',
-  },
-  container: {
-    backgroundColor: theme.color.white[700],
-    boxShadow: '0 0 5px 1px #555',
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    top: 0,
-    transform: `translateX(-${theme.maxWidthContainer}px)`,
-    transition: 'all .3s linear',
-    width: '90%',
-    willChange: 'transform',
-    zIndex: 1000,
-  },
-  containerVisible: {
-    transform: 'translateX(0px)',
-  },
-  menu: {
-    margin: 0,
-    padding: 0,
-  },
-  menuHeader: {
-    backgroundColor: theme.color.white[600],
-    color: theme.color.black[700],
-    cursor: 'default',
-    fontSize: theme.fontSize.xlarge,
-    fontWeight: theme.fontWeight.bold,
-    padding: '30px 10px',
-    textAlign: 'center',
-  },
-  menuItem: {
-    borderBottom: `1px solid ${theme.color.white[650]}`,
-    color: theme.color.black[400],
-    cursor: 'pointer',
-    padding: `${theme.spacing.base}px`,
-    paddingLeft: theme.spacing.medium,
-    ':hover': {
-      backgroundColor: theme.color.white[650],
+const styles = StyleSheet.create(
+  createStylesheet(theme => ({
+    backdrop: {
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      display: 'none',
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      top: 0,
+      width: '100%',
     },
-  },
-})));
+    backdropVisible: {
+      display: 'block',
+    },
+    container: {
+      backgroundColor: theme.color.white[700],
+      boxShadow: '0 0 5px 1px #555',
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      top: 0,
+      transform: `translateX(-${theme.maxWidthContainer}px)`,
+      transition: 'all .3s linear',
+      width: '90%',
+      willChange: 'transform',
+      zIndex: 1000,
+    },
+    containerVisible: {
+      transform: 'translateX(0px)',
+    },
+    menu: {
+      margin: 0,
+      padding: 0,
+    },
+    menuHeader: {
+      backgroundColor: theme.color.white[600],
+      color: theme.color.black[700],
+      cursor: 'default',
+      fontSize: theme.fontSize.xlarge,
+      fontWeight: theme.fontWeight.bold,
+      padding: '30px 10px',
+      textAlign: 'center',
+    },
+    menuItem: {
+      borderBottom: `1px solid ${theme.color.white[650]}`,
+      color: theme.color.black[400],
+      cursor: 'pointer',
+      padding: `${theme.spacing.base}px`,
+      paddingLeft: theme.spacing.medium,
+      ':hover': {
+        backgroundColor: theme.color.white[650],
+      },
+    },
+  })),
+);
 
 const onClickMenuItem = (onClickOpenMenu, route) => () => {
   history.push(route);
@@ -86,17 +88,29 @@ const MainMenu = props => [
         <i className="fa fa-trophy">{''}</i>
         <span>{APP_SETTINGS.APP_TITLE}</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}
+      >
         <i className="material-icons">keyboard_arrow_right</i> <span>Inicio</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}
+      >
         <i className="material-icons">keyboard_arrow_right</i> <span>¿Cómo reciclar?</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}
+      >
         <i className="material-icons">keyboard_arrow_right</i>
         <span>¿En dónde puedo reciclar?</span>
       </li>
-      <li className={css(styles.menuItem)} onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}
+      >
         <i className="material-icons">keyboard_arrow_right</i> <span>Contácto</span>
       </li>
     </ul>

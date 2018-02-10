@@ -5,15 +5,19 @@ const TONES = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700];
 
 // palette: https://coolors.co/20bf55-0b4f6c-01baef-fbfbff-757575
 const DARK_BLUE = '#0B4F6C';
-// const DARK_GRAY = '#757575';
+const DARK_GRAY = '#757575';
 const GREEN = '#20BF55';
+const LIGHT_BLUE = '#01BAEF';
 const LIGHT_GRAY = '#FBFBFF';
-// const LIGHT_BLUE = '#01BAEF';
 
 export const theme = {
 
   headerHeight: 50,
   maxWidthContainer: 500,
+
+  shadow: {
+    base: color => `0 0 5px 0 ${color}`,
+  },
 
   spacing: {
     base: 10,
@@ -43,7 +47,7 @@ export const theme = {
     black: [...TONES].reverse().reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('black')
-        .brighten(index * 0.2)
+        .brighten(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -51,7 +55,7 @@ export const theme = {
     white: [...TONES].reverse().reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('white')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -59,7 +63,7 @@ export const theme = {
     blue: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('blue')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -67,7 +71,7 @@ export const theme = {
     red: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('red')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -75,7 +79,7 @@ export const theme = {
     yellow: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('yellow')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -83,7 +87,7 @@ export const theme = {
     green: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('green')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -91,7 +95,7 @@ export const theme = {
     orange: TONES.reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('orange')
-        .darken(index * 0.2)
+        .darken(index * 0.15)
         .hex();
       return acum;
     }, {}),
@@ -101,6 +105,8 @@ export const theme = {
     textSecondary: LIGHT_GRAY,
     brandPrimary: GREEN,
     brandSecondary: DARK_BLUE,
+    LIGHT_BLUE,
+    DARK_GRAY,
 
   },
 

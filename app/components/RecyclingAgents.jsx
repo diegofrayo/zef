@@ -10,122 +10,133 @@ import UtilitiesService from 'utils/utilities';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({
-  pageTitle: {
-    color: theme.color.titles,
-    marginBottom: theme.spacing.base,
-  },
-  pageDescription: {
-    color: theme.color.textPrimary,
-    fontSize: theme.fontSize.base,
-    marginBottom: theme.spacing.base,
-    textAlign: 'justify',
-  },
-  placeContainer: {
-    backgroundColor: theme.color.white[650],
-    boxShadow: '0 0 5px 1px #DDD',
-    cursor: 'default',
-    marginBottom: theme.spacing.medium,
-    padding: theme.spacing.base,
-  },
-  textContainer: {
-    color: theme.color.textPrimary,
-    display: 'flex',
-    fontSize: theme.fontSize.small,
-    fontWeight: theme.fontWeight.bold,
-    marginTop: theme.spacing.small + 2,
-    wordBreak: 'break-word',
-  },
-  textContainerDescription: {
-    color: theme.color.textPrimary,
-    margin: `${theme.spacing.base}px 0 ${theme.spacing.small}px`,
-    textAlign: 'justify',
-  },
-  textPlaceName: {
-    color: theme.color.titles,
-    fontSize: theme.fontSize.medium,
-  },
-  textPlaceMap: {
-    color: theme.color.orange[200],
-    paddingBottom: 1,
-    textDecoration: 'underline',
-  },
-  textPlacePhone: {
-    color: theme.color.red[100],
-    paddingBottom: 1,
-  },
-  textPlaceEmail: {
-    color: theme.color.green[100],
-  },
-  textPlaceWebsite: {
-    color: theme.color.white[100],
-    textDecoration: 'underline',
-  },
-  textPlaceFacebook: {
-    color: theme.color.blue[500],
-    marginLeft: theme.spacing.small,
-    textDecoration: 'underline',
-  },
-  tagsContainer:{
-    backgroundColor: theme.color.white[600],
-    color: theme.color.textPrimary,
-    fontSize: theme.fontSize.small,
-    margin: `${theme.spacing.base}px 0`,
-    padding: theme.spacing.base,
-  },
-  tag: {
-    backgroundColor: theme.color.white[700],
-    borderRadius: theme.spacing.small,
-    color: theme.color.red[100],
-    display: 'inline-block',
-    fontSize: theme.fontSize.xsmall,
-    fontStyle: 'italic',
-    marginRight: theme.spacing.small,
-    marginTop: theme.spacing.small,
-    padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
-  },
-  buttonDetails: {
-    cursor: 'pointer',
-    float: 'right',
-    fontSize: theme.fontSize.xsmall,
-    padding: theme.spacing.small,
-  },
-  detailsContainer: {
-    borderTop: `1px solid ${theme.color.white[600]}`,
-    clear: 'both',
-    transition: 'all .3s linear',
-  },
-  detailsContainerHidden: {
-    opacity: 0,
-  },
-  detailsContainerVisible: {
-    opacity: 1,
-    padding: theme.spacing.small,
-  },
-  icon: {
-    fontSize: theme.fontSize.large,
-    fontWeight: theme.fontWeight.bold,
-    marginRight: theme.spacing.small,
-  },
-  iconDetails: {
-    fontSize: theme.fontSize.xsmall,
-  },
-  iconLocation: {
-    color: theme.color.orange[200],
-  },
-  iconPhone: {
-    color: theme.color.red[100],
-  },
-  iconEmail: {
-    color: theme.color.green[100],
-  },
-  iconWebsite: {
-    color: theme.color.white[100],
-  },
-  iconFacebook: {
-    color: theme.color.blue[500],
-  },
-})));
+const styles = StyleSheet.create(
+  createStylesheet(theme => ({
+    pageTitle: {
+      color: theme.color.titles,
+      marginBottom: theme.spacing.base,
+    },
+    pageDescription: {
+      color: theme.color.textPrimary,
+      fontSize: theme.fontSize.base,
+      marginBottom: theme.spacing.base,
+      textAlign: 'justify',
+    },
+    placeContainer: {
+      backgroundColor: theme.color.white[650],
+      boxShadow: theme.shadow.base('#DDD'),
+      cursor: 'default',
+      marginBottom: theme.spacing.medium,
+      padding: theme.spacing.base,
+    },
+    placeContainerSelected: {
+      boxShadow: theme.shadow.base('#999'),
+    },
+    textContainer: {
+      alignItems: 'center',
+      color: theme.color.textPrimary,
+      display: 'flex',
+      fontSize: theme.fontSize.small,
+      fontWeight: theme.fontWeight.bold,
+      marginTop: theme.spacing.small + 2,
+      wordBreak: 'break-word',
+    },
+    textContainerDescription: {
+      color: theme.color.textPrimary,
+      margin: `${theme.spacing.base}px 0 ${theme.spacing.small}px`,
+      textAlign: 'justify',
+    },
+    textPlaceName: {
+      color: theme.color.titles,
+      fontSize: theme.fontSize.medium,
+    },
+    textPlaceMap: {
+      color: theme.color.orange[200],
+      paddingBottom: 1,
+      textDecoration: 'underline',
+    },
+    textPlacePhone: {
+      color: theme.color.red[100],
+      paddingBottom: 1,
+    },
+    textPlaceEmail: {
+      color: theme.color.green[100],
+    },
+    textPlaceWebsite: {
+      color: theme.color.white[100],
+      textDecoration: 'underline',
+    },
+    textPlaceFacebook: {
+      color: theme.color.blue[500],
+      marginLeft: theme.spacing.small,
+      textDecoration: 'underline',
+    },
+    tagsContainer: {
+      boxShadow: theme.shadow.base('#DDD'),
+      margin: `${theme.spacing.base}px 0 ${theme.spacing.medium}px`,
+      padding: theme.spacing.base,
+    },
+    tag: {
+      backgroundColor: theme.color.white[700],
+      border: `1px solid ${theme.color.brandPrimary}`,
+      borderRadius: theme.spacing.small,
+      color: theme.color.brandPrimary,
+      display: 'inline-block',
+      fontSize: theme.fontSize.xsmall,
+      fontStyle: 'italic',
+      fontWeight: theme.fontWeight.bold,
+      marginRight: theme.spacing.small,
+      marginTop: theme.spacing.small,
+      padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
+    },
+    buttonDetails: {
+      cursor: 'pointer',
+      fontSize: theme.fontSize.small,
+      fontWeight: theme.fontWeight.bold,
+      padding: theme.spacing.small,
+      marginTop: theme.spacing.small,
+      textAlign: 'left',
+      textTransform: 'uppercase',
+    },
+    detailsContainer: {
+      borderTop: `1px solid ${theme.color.white[550]}`,
+      clear: 'both',
+      transition: 'all .3s linear',
+    },
+    detailsContainerHidden: {
+      opacity: 0,
+    },
+    detailsContainerVisible: {
+      opacity: 1,
+      padding: theme.spacing.small,
+    },
+    icon: {
+      fontSize: theme.fontSize.large,
+      fontWeight: theme.fontWeight.bold,
+      marginRight: theme.spacing.small,
+    },
+    iconDetails: {
+      fontSize: theme.fontSize.small,
+      position: 'relative',
+      top: 1,
+    },
+    iconLocation: {
+      color: theme.color.orange[200],
+    },
+    iconPhone: {
+      color: theme.color.red[100],
+    },
+    iconEmail: {
+      color: theme.color.green[100],
+    },
+    iconWebsite: {
+      color: theme.color.white[100],
+    },
+    iconFacebook: {
+      color: theme.color.blue[500],
+    },
+  })),
+);
 
 class RecyclingAgents extends React.Component {
 
@@ -133,7 +144,7 @@ class RecyclingAgents extends React.Component {
 
   state = {
     places: require('./../../assets/data/recycling_places.json') // eslint-disable-line
-      .map((place) => ({ show_details: false, ...place }))
+      .map(place => ({ show_more: { contact_info: false, elements_to_recycle: false }, ...place }))
       .sort(UtilitiesService.sort('name', 'asc')),
   };
 
@@ -141,21 +152,29 @@ class RecyclingAgents extends React.Component {
     UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
   }
 
-  onClickShowPlaceDetails = (placeSelected) => () => {
-    this.setState((state) => ({
-      places: state.places.map((place) => {
-        if (place.id === placeSelected.id) {
-          return { ...place, show_details: !placeSelected.show_details };
-        }
-        return place;
+  onClickExpandDetails = (placeSelected, attrName) => () => {
+    this.setState(
+      state => ({
+        places: state.places.map(place => {
+          if (place.id === placeSelected.id) {
+            return { ...place, show_more: { [attrName]: !placeSelected.show_more[attrName] } };
+          }
+          return { ...place, show_more: { contact_info: false, elements_to_recycle: false } };
+        }),
       }),
-    }));
-    if (!placeSelected.show_details) {
-      UtilitiesService.animateScroll(document.getElementById('app-content-container'), document.getElementById(placeSelected.id).offsetTop - 70, 500);
-    }
+      () => {
+        if (!placeSelected.show_more[attrName]) {
+          UtilitiesService.animateScroll(
+            document.getElementById('app-content-container'),
+            document.getElementById(placeSelected.id).offsetTop - 70,
+            500,
+          );
+        }
+      },
+    );
   };
 
-  renderPlace = (place) => {
+  renderPlace = place => {
 
     const transitionStyles = {
       entering: css(styles.detailsContainerVisible),
@@ -165,25 +184,29 @@ class RecyclingAgents extends React.Component {
     };
 
     return (
-      <article className={css(styles.placeContainer)} key={place.id} id={place.id}>
+      <article
+        className={classnames(
+          css(styles.placeContainer),
+          css(
+            (place.show_more.contact_info || place.show_more.elements_to_recycle) &&
+              styles.placeContainerSelected,
+          ),
+        )}
+        key={place.id}
+        id={place.id}
+      >
         <h1 className={css(styles.textPlaceName)}>{place.name}</h1>
         {place.description && (
           <div className={classnames(css(styles.textContainerDescription))}>
             <span>{place.description}</span>
           </div>
         )}
-        <section className={css(styles.tagsContainer)}>
-          <p>
-            A este sitio puedes llevar los siguientes elementos
-          </p>
-          {place.tags.map(this.renderTag(place.id))}
-        </section>
         <button
           type="button"
-          onClick={this.onClickShowPlaceDetails(place)}
+          onClick={this.onClickExpandDetails(place, 'elements_to_recycle')}
           className={css(styles.buttonDetails)}
         >
-          {place.show_details ? (
+          {place.show_more.elements_to_recycle ? (
             <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-minus')}>
               {''}
             </i>
@@ -192,14 +215,35 @@ class RecyclingAgents extends React.Component {
               {''}
             </i>
           )}
-          Detalles
+          <span className={classnames(place.show_more.elements_to_recycle && 'u-font-italic')}>Ver elementos que reciclan</span>
         </button>
-        <CSSTransitionGroup in={place.show_details} timeout={500}>
+        <CSSTransitionGroup in={place.show_more.elements_to_recycle} timeout={500}>
           {state => (
-            <section
-              className={classnames(css(styles.detailsContainer), transitionStyles[state])}
-            >
-              {place.show_details && this.renderPlaceDetailsContainer(place)}
+            <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
+              {place.show_more.elements_to_recycle && this.renderPlaceElementsToRecycle(place)}
+            </section>
+          )}
+        </CSSTransitionGroup>
+        <button
+          type="button"
+          onClick={this.onClickExpandDetails(place, 'contact_info')}
+          className={css(styles.buttonDetails)}
+        >
+          {place.show_more.contact_info ? (
+            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-minus')}>
+              {''}
+            </i>
+          ) : (
+            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-plus')}>
+              {''}
+            </i>
+          )}
+          <span className={classnames(place.show_more.contact_info && 'u-font-italic')}>Ver información de contácto</span>
+        </button>
+        <CSSTransitionGroup in={place.show_more.contact_info} timeout={500}>
+          {state => (
+            <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
+              {place.show_more.contact_info && this.renderPlaceContactInfo(place)}
             </section>
           )}
         </CSSTransitionGroup>
@@ -207,11 +251,15 @@ class RecyclingAgents extends React.Component {
     );
   };
 
-  renderTag = (placeId) => (tag) => (
-    <span className={css(styles.tag)} key={`${placeId}-${tag}`}>{tag}</span>
+  renderPlaceElementsToRecycle = place => place.tags.map(this.renderTag(place.id));
+
+  renderTag = placeId => tag => (
+    <span className={css(styles.tag)} key={`${placeId}-${tag}`}>
+      <i className={classnames('fa fa-check')}>{''}</i> {tag}
+    </span>
   );
 
-  renderPlaceDetailsContainer = (place) => [
+  renderPlaceContactInfo = place => [
     <div className={css(styles.textContainer)} key="text-place-location">
       <i className={classnames(css(styles.icon), css(styles.iconLocation), 'fa fa-map-marker')}>
         {''}
@@ -222,19 +270,19 @@ class RecyclingAgents extends React.Component {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>{place.address} | {place.city}</span>
+        {place.address} - {place.city}
       </a>
     </div>,
     place.phone && (
       <div className={css(styles.textContainer)} key="text-place-phone">
         <i className={classnames(css(styles.icon), css(styles.iconPhone), 'fa fa-phone')}>{''}</i>
-        <span className={css(styles.textPlacePhone)}>{place.phone}</span>
+        <p className={css(styles.textPlacePhone)}>{place.phone}</p>
       </div>
     ),
     place.email && (
       <div className={css(styles.textContainer)} key="text-place-email">
         <i className={classnames(css(styles.icon), css(styles.iconEmail), 'fa fa-at')}>{''}</i>
-        <span className={css(styles.textPlaceEmail)}>{place.email}</span>
+        <p className={css(styles.textPlaceEmail)}>{place.email}</p>
       </div>
     ),
     place.website && (
@@ -269,9 +317,12 @@ class RecyclingAgents extends React.Component {
 
   render() {
     return [
-      <h2 key="page-title" className={css(styles.pageTitle)}>{this.pageTitle}</h2>,
+      <h2 key="page-title" className={css(styles.pageTitle)}>
+        {this.pageTitle}
+      </h2>,
       <p className={css(styles.pageDescription)} key="page-description">
-        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes tipos de elementos que has reciclado.
+        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes
+        tipos de elementos que has reciclado.
       </p>,
       <br key="separator" />,
       <section key="places-container">{this.state.places.map(this.renderPlace)}</section>,

@@ -9,31 +9,35 @@ import MainMenu from 'components/MainMenu';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({
-  container: {
-    alignItems: 'center',
-    backgroundColor: theme.color.brandPrimary,
-    color: theme.color.white[700],
-    display: 'flex',
-    flex: 0,
-    fontWeight: theme.fontWeight.bold,
-    justifyContent: 'center',
-    minHeight: theme.headerHeight,
-  },
-  menuIcon: {
-    cursor: 'pointer',
-    fontSize: 28,
-    left: 10,
-    position: 'absolute',
-    top: 12,
-  },
-  appTitle: {
-    fontSize: theme.fontSize.large,
-  },
-  appIcon: {
-    fontSize: theme.fontSize.xlarge,
-  },
-})));
+const styles = StyleSheet.create(
+  createStylesheet(theme => ({
+    container: {
+      alignItems: 'center',
+      backgroundColor: theme.color.brandPrimary,
+      boxShadow: '0 0 5px 1px #cacaca',
+      color: theme.color.white[700],
+      display: 'flex',
+      flex: 0,
+      fontWeight: theme.fontWeight.bold,
+      justifyContent: 'center',
+      minHeight: theme.headerHeight,
+      zIndex: 100,
+    },
+    menuIcon: {
+      cursor: 'pointer',
+      fontSize: 28,
+      left: 10,
+      position: 'absolute',
+      top: 12,
+    },
+    appTitle: {
+      fontSize: theme.fontSize.large,
+    },
+    appIcon: {
+      fontSize: theme.fontSize.xlarge,
+    },
+  })),
+);
 
 class Header extends React.Component {
 
@@ -42,7 +46,7 @@ class Header extends React.Component {
   };
 
   onClickOpenMenu = () => {
-    this.setState((state) => ({
+    this.setState(state => ({
       isMenuOpen: !state.isMenuOpen,
     }));
   };
@@ -50,7 +54,12 @@ class Header extends React.Component {
   render() {
     return (
       <header className={css(styles.container)}>
-        <i className={classnames(css(styles.menuIcon), 'material-icons')} onClick={this.onClickOpenMenu}>menu</i>
+        <i
+          className={classnames(css(styles.menuIcon), 'material-icons')}
+          onClick={this.onClickOpenMenu}
+        >
+          menu
+        </i>
         <h1 className={css(styles.text)}>
           <i className={classnames(css(styles.appIcon), 'fa fa-trophy')}>{''}</i>
           <span>{APP_SETTINGS.APP_TITLE}</span>
@@ -59,7 +68,6 @@ class Header extends React.Component {
       </header>
     );
   }
-
 }
 
 export default Header;

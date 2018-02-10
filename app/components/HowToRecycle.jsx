@@ -8,18 +8,20 @@ import UtilitiesService from 'utils/utilities';
 // theme
 import createStylesheet from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(createStylesheet(theme => ({
-  pageTitle: {
-    color: theme.color.titles,
-    marginBottom: theme.spacing.base,
-  },
-  pageDescription: {
-    color: theme.color.textPrimary,
-    fontSize: theme.fontSize.base,
-    marginBottom: theme.spacing.base,
-    textAlign: 'justify',
-  },
-})));
+const styles = StyleSheet.create(
+  createStylesheet(theme => ({
+    pageTitle: {
+      color: theme.color.titles,
+      marginBottom: theme.spacing.base,
+    },
+    pageDescription: {
+      color: theme.color.textPrimary,
+      fontSize: theme.fontSize.base,
+      marginBottom: theme.spacing.base,
+      textAlign: 'justify',
+    },
+  })),
+);
 
 class HowToRecycle extends React.Component {
 
@@ -31,13 +33,14 @@ class HowToRecycle extends React.Component {
 
   render() {
     return [
-      <h2 key="page-title" className={css(styles.pageTitle)}>{this.pageTitle}</h2>,
+      <h2 key="page-title" className={css(styles.pageTitle)}>
+        {this.pageTitle}
+      </h2>,
       <p className={css(styles.pageDescription)} key="page-description">
         Descripción
       </p>,
     ];
   }
-
 }
 
 export default HowToRecycle;
