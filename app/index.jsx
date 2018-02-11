@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import Root from 'containers/Root';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 // styles
 import 'styles/reset.css';

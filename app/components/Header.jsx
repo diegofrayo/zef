@@ -7,14 +7,14 @@ import { StyleSheet, css } from 'aphrodite';
 import MainMenu from 'components/MainMenu';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     container: {
       alignItems: 'center',
       backgroundColor: theme.color.brandPrimary,
-      boxShadow: '0 0 5px 1px #cacaca',
+      boxShadow: theme.shadow.base(theme.color.white[200]),
       color: theme.color.white[700],
       display: 'flex',
       flex: 0,
@@ -22,19 +22,27 @@ const styles = StyleSheet.create(
       justifyContent: 'center',
       minHeight: theme.headerHeight,
       zIndex: 100,
+      [theme.mediaQueries.mobile.css]: {
+        minHeight: theme.headerHeight - 20,
+      },
     },
     menuIcon: {
       cursor: 'pointer',
       fontSize: 28,
-      left: 10,
+      left: 20,
       position: 'absolute',
-      top: 12,
+      top: 22,
+      [theme.mediaQueries.mobile.css]: {
+        left: 10,
+        top: 12,
+      },
     },
     appTitle: {
       fontSize: theme.fontSize.large,
     },
     appIcon: {
-      fontSize: theme.fontSize.xlarge,
+      fontSize: theme.fontSize.large,
+      marginRight: theme.spacing.small,
     },
   })),
 );

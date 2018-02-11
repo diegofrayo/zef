@@ -6,7 +6,7 @@ import { StyleSheet, css } from 'aphrodite';
 import UtilitiesService from 'utils/utilities';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({

@@ -4,30 +4,30 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     container: {
-      borderRadius: 5,
-      boxShadow: '0px 0px 10px 1px rgb(202, 202, 202)',
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
-      margin: '10px auto',
-      maxWidth: theme.maxWidthContainer,
       overflow: 'hidden',
       position: 'relative',
-      '@media screen and (max-width : 767px)': {
+      [theme.mediaQueries.mobile.css]: {
         borderRadius: 0,
         margin: '0 auto',
       },
     },
     bodyContainer: {
       backgroundColor: theme.color.white[700],
+      boxShadow: theme.shadow.base(theme.color.white[500]),
       flex: 1,
+      margin: '0 auto',
+      maxWidth: theme.maxWidthContainer,
       overflow: 'auto',
       padding: theme.spacing.medium,
+      width: '100%',
     },
   })),
 );

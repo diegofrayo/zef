@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import UtilitiesService from 'utils/utilities';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet, theme as appTheme } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -24,13 +24,13 @@ const styles = StyleSheet.create(
     },
     placeContainer: {
       backgroundColor: theme.color.white[650],
-      boxShadow: theme.shadow.base('#DDD'),
+      boxShadow: theme.shadow.base(theme.color.white[500]),
       cursor: 'default',
       marginBottom: theme.spacing.medium,
       padding: theme.spacing.base,
     },
     placeContainerSelected: {
-      boxShadow: theme.shadow.base('#999'),
+      boxShadow: theme.shadow.base(theme.color.white[100]),
     },
     textContainer: {
       alignItems: 'center',
@@ -43,7 +43,7 @@ const styles = StyleSheet.create(
     },
     textContainerDescription: {
       color: theme.color.textPrimary,
-      margin: `${theme.spacing.base}px 0 ${theme.spacing.small}px`,
+      margin: `${theme.spacing.base}px 0 ${theme.spacing.base}px`,
       textAlign: 'justify',
     },
     textPlaceName: {
@@ -63,18 +63,13 @@ const styles = StyleSheet.create(
       color: theme.color.green[100],
     },
     textPlaceWebsite: {
-      color: theme.color.white[100],
+      color: theme.color.black[100],
       textDecoration: 'underline',
     },
     textPlaceFacebook: {
       color: theme.color.blue[500],
       marginLeft: theme.spacing.small,
       textDecoration: 'underline',
-    },
-    tagsContainer: {
-      boxShadow: theme.shadow.base('#DDD'),
-      margin: `${theme.spacing.base}px 0 ${theme.spacing.medium}px`,
-      padding: theme.spacing.base,
     },
     tag: {
       backgroundColor: theme.color.white[700],
@@ -94,13 +89,13 @@ const styles = StyleSheet.create(
       fontSize: theme.fontSize.small,
       fontWeight: theme.fontWeight.bold,
       padding: theme.spacing.small,
-      marginTop: theme.spacing.small,
       textAlign: 'left',
       textTransform: 'uppercase',
     },
     detailsContainer: {
-      borderTop: `1px solid ${theme.color.white[550]}`,
+      borderTop: `1px solid ${theme.color.white[500]}`,
       clear: 'both',
+      padding: theme.spacing.small,
       transition: 'all .3s linear',
     },
     detailsContainerHidden: {
@@ -108,7 +103,6 @@ const styles = StyleSheet.create(
     },
     detailsContainerVisible: {
       opacity: 1,
-      padding: theme.spacing.small,
     },
     icon: {
       fontSize: theme.fontSize.large,
@@ -117,8 +111,6 @@ const styles = StyleSheet.create(
     },
     iconDetails: {
       fontSize: theme.fontSize.small,
-      position: 'relative',
-      top: 1,
     },
     iconLocation: {
       color: theme.color.orange[200],
@@ -130,7 +122,7 @@ const styles = StyleSheet.create(
       color: theme.color.green[100],
     },
     iconWebsite: {
-      color: theme.color.white[100],
+      color: theme.color.black[100],
     },
     iconFacebook: {
       color: theme.color.blue[500],
@@ -164,9 +156,12 @@ class RecyclingAgents extends React.Component {
       }),
       () => {
         if (!placeSelected.show_more[attrName]) {
+          const to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
+            ? appTheme.headerHeight
+            : appTheme.headerHeight + 15;
           UtilitiesService.animateScroll(
             document.getElementById('app-content-container'),
-            document.getElementById(placeSelected.id).offsetTop - 70,
+            document.getElementById(placeSelected.id).offsetTop - to,
             500,
           );
         }
@@ -198,58 +193,51 @@ class RecyclingAgents extends React.Component {
         <h1 className={css(styles.textPlaceName)}>{place.name}</h1>
         {place.description && (
           <div className={classnames(css(styles.textContainerDescription))}>
-            <span>{place.description}</span>
+            <p>{place.description}</p>
           </div>
         )}
-        <button
-          type="button"
-          onClick={this.onClickExpandDetails(place, 'elements_to_recycle')}
-          className={css(styles.buttonDetails)}
-        >
-          {place.show_more.elements_to_recycle ? (
-            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-minus')}>
-              {''}
-            </i>
-          ) : (
-            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-plus')}>
-              {''}
-            </i>
-          )}
-          <span className={classnames(place.show_more.elements_to_recycle && 'u-font-italic')}>Ver elementos que reciclan</span>
-        </button>
-        <CSSTransitionGroup in={place.show_more.elements_to_recycle} timeout={500}>
-          {state => (
-            <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
-              {place.show_more.elements_to_recycle && this.renderPlaceElementsToRecycle(place)}
-            </section>
-          )}
-        </CSSTransitionGroup>
-        <button
-          type="button"
-          onClick={this.onClickExpandDetails(place, 'contact_info')}
-          className={css(styles.buttonDetails)}
-        >
-          {place.show_more.contact_info ? (
-            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-minus')}>
-              {''}
-            </i>
-          ) : (
-            <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-plus')}>
-              {''}
-            </i>
-          )}
-          <span className={classnames(place.show_more.contact_info && 'u-font-italic')}>Ver información de contácto</span>
-        </button>
-        <CSSTransitionGroup in={place.show_more.contact_info} timeout={500}>
-          {state => (
-            <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
-              {place.show_more.contact_info && this.renderPlaceContactInfo(place)}
-            </section>
-          )}
-        </CSSTransitionGroup>
+        {this.renderDetailsContainer({
+          body: place.show_more.elements_to_recycle ? this.renderPlaceElementsToRecycle(place) : null,
+          buttonLabel: 'Materiales que reciclan',
+          detailsSectionName: 'elements_to_recycle',
+          place,
+          transitionStyles,
+        })}
+        {this.renderDetailsContainer({
+          body: place.show_more.contact_info ? this.renderPlaceContactInfo(place) : null,
+          buttonLabel: 'Información de contácto',
+          detailsSectionName: 'contact_info',
+          place,
+          transitionStyles,
+        })}
       </article>
     );
   };
+
+  renderDetailsContainer = ({ place, buttonLabel, detailsSectionName, transitionStyles, body }) => [
+    <button
+      type="button"
+      onClick={this.onClickExpandDetails(place, detailsSectionName)}
+      className={css(styles.buttonDetails)}
+      key="details-button"
+    >
+      {place.show_more[detailsSectionName] ? (
+        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-up')}>{''}</i>
+      ) : (
+        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-right')}>{''}</i>
+      )}
+      <span className={classnames(place.show_more[detailsSectionName] && 'u-font-italic')}>
+        {buttonLabel}
+      </span>
+    </button>,
+    <CSSTransitionGroup in={place.show_more[detailsSectionName]} timeout={1000} key="details-content">
+      {state => (
+        <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
+          {body}
+        </section>
+      )}
+    </CSSTransitionGroup>,
+  ];
 
   renderPlaceElementsToRecycle = place => place.tags.map(this.renderTag(place.id));
 

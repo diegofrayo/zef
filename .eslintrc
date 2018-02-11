@@ -15,6 +15,7 @@
   },
   "globals": {
     "APP_SETTINGS": true,
+    "alert": true,
     "console": true,
     "document": true,
     "fetch": true,

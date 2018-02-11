@@ -1,5 +1,6 @@
 // npm libs
 import React from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import { history } from 'state';
@@ -8,12 +9,12 @@ import { history } from 'state';
 import { routes } from 'constants/index';
 
 // theme
-import createStylesheet from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     backdrop: {
-      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
       display: 'none',
       height: '100%',
       left: 0,
@@ -26,9 +27,11 @@ const styles = StyleSheet.create(
     },
     container: {
       backgroundColor: theme.color.white[700],
-      boxShadow: '0 0 5px 1px #555',
+      boxShadow: theme.shadow.base(theme.color.black[700]),
       height: '100%',
       left: 0,
+      maxWidth: 280,
+      overflow: 'auto',
       position: 'absolute',
       top: 0,
       transform: `translateX(-${theme.maxWidthContainer}px)`,
@@ -45,23 +48,23 @@ const styles = StyleSheet.create(
       padding: 0,
     },
     menuHeader: {
-      backgroundColor: theme.color.white[600],
+      borderBottom: `1px solid ${theme.color.white[600]}`,
       color: theme.color.black[700],
       cursor: 'default',
       fontSize: theme.fontSize.xlarge,
       fontWeight: theme.fontWeight.bold,
-      padding: '30px 10px',
+      marginBottom: theme.spacing.base,
+      padding: `${theme.spacing.large}px ${theme.spacing.base}px`,
       textAlign: 'center',
     },
+    menuHeaderIcon: {
+      marginRight: theme.spacing.base,
+    },
     menuItem: {
-      borderBottom: `1px solid ${theme.color.white[650]}`,
       color: theme.color.black[400],
       cursor: 'pointer',
-      padding: `${theme.spacing.base}px`,
-      paddingLeft: theme.spacing.medium,
-      ':hover': {
-        backgroundColor: theme.color.white[650],
-      },
+      fontSize: theme.fontSize.small,
+      padding: `${theme.spacing.medium}px ${theme.spacing.large}px`,
     },
   })),
 );
@@ -85,33 +88,32 @@ const MainMenu = props => [
   >
     <ul className={css(styles.menu)}>
       <li className={css(styles.menuHeader)}>
-        <i className="fa fa-trophy">{''}</i>
+        <i className={classnames('fa fa-trophy', css(styles.menuHeaderIcon))}>{''}</i>
         <span>{APP_SETTINGS.APP_TITLE}</span>
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}
       >
-        <i className="material-icons">keyboard_arrow_right</i> <span>Inicio</span>
+        <span>Inicio</span>
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}
       >
-        <i className="material-icons">keyboard_arrow_right</i> <span>¿Cómo reciclar?</span>
+        <span>¿Cómo reciclar?</span>
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}
       >
-        <i className="material-icons">keyboard_arrow_right</i>
         <span>¿En dónde puedo reciclar?</span>
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}
       >
-        <i className="material-icons">keyboard_arrow_right</i> <span>Contácto</span>
+        <span>Contácto</span>
       </li>
     </ul>
   </section>,

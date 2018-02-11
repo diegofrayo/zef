@@ -12,11 +12,18 @@ const LIGHT_GRAY = '#FBFBFF';
 
 export const theme = {
 
-  headerHeight: 50,
-  maxWidthContainer: 500,
+  headerHeight: 70,
+  maxWidthContainer: 991,
 
   shadow: {
     base: color => `0 0 5px 0 ${color}`,
+  },
+
+  mediaQueries: {
+    mobile: {
+      css: '@media screen and (max-width : 767px)',
+      js: '(max-width : 767px)',
+    },
   },
 
   spacing: {
@@ -112,4 +119,4 @@ export const theme = {
 
 };
 
-export default fn => fn(theme);
+export const createStylesheet = fn => fn(theme);
