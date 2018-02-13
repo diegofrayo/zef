@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import UtilitiesService from 'utils/utilities';
 
 // theme
-import { createStylesheet, theme as appTheme } from 'styles/createStylesheet';
+import { createStylesheet, theme as appTheme, platform } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -79,10 +79,14 @@ const styles = StyleSheet.create(
       display: 'inline-block',
       fontSize: theme.fontSize.xsmall,
       fontStyle: 'italic',
-      fontWeight: theme.fontWeight.bold,
       marginRight: theme.spacing.small,
       marginTop: theme.spacing.small,
       padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
+      ...platform({
+        ios: {
+          fontWeight: theme.fontWeight.bold,
+        },
+      }),
     },
     buttonDetails: {
       cursor: 'pointer',

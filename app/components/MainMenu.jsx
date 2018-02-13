@@ -64,6 +64,7 @@ const styles = StyleSheet.create(
       color: theme.color.black[400],
       cursor: 'pointer',
       fontSize: theme.fontSize.small,
+      fontWeight: theme.fontWeight.normal,
       padding: `${theme.spacing.medium}px ${theme.spacing.large}px`,
     },
   })),
@@ -95,25 +96,25 @@ const MainMenu = props => [
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}
       >
-        <span>Inicio</span>
+        Inicio
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}
       >
-        <span>¿Cómo reciclar?</span>
+        ¿Cómo reciclar?
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}
       >
-        <span>¿En dónde puedo reciclar?</span>
+        ¿En dónde puedo reciclar?
       </li>
       <li
         className={css(styles.menuItem)}
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}
       >
-        <span>Contácto</span>
+        Contácto
       </li>
     </ul>
   </section>,

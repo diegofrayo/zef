@@ -1,6 +1,9 @@
 // npm libs
 import chroma from 'chroma-js';
 
+// utils
+import UtilitiesService from 'utils/utilities';
+
 const TONES = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700];
 
 // palette: https://coolors.co/20bf55-0b4f6c-01baef-fbfbff-757575
@@ -117,6 +120,15 @@ export const theme = {
 
   },
 
+};
+
+export const platform = ({ ios = {}, android = {} }) => {
+  if (UtilitiesService.is_iOs()) {
+    return ios;
+  } else if (UtilitiesService.isAndroid()) {
+    return android;
+  }
+  return {};
 };
 
 export const createStylesheet = fn => fn(theme);

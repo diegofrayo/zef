@@ -9,6 +9,7 @@
     "phone": "",
     "email": "",
     "website": "",
+    "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "/FundacionPuntocero" },
     "tags": [
       "botellas de plastico",
       "carton",
@@ -17,8 +18,7 @@
       "pilas",
       "tetrapak",
       "vidrio"
-    ],
-    "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "/FundacionPuntocero" }
+    ]
   },
   {
     "id": "fundacion-la-oportunidad",
@@ -29,15 +29,15 @@
     "location": "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z",
     "phone": "(+57) 313 751 8677",
     "email": "",
-    "website": "",
+    "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
+    "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" },
     "tags": [
       "botellas de plastico",
       "carton",
       "papel",
       "pilas",
       "vidrio"
-    ],
-    "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" }
+    ]
   },
   {
     "id": "universidad-del-quindio",
@@ -49,10 +49,10 @@
     "phone": "",
     "email": "",
     "website": "",
+    "fb_page": "",
     "tags": [
       "pilas"
-    ],
-    "fb_page": ""
+    ]
   },
   {
     "id": "centro-de-reciclaje",
@@ -64,6 +64,7 @@
     "phone": "(+57) 315 473 9762 | (6) 747 1489 | (6) 747 6174",
     "email": "centrodereciclajearm@gmail.com",
     "website": "http://www.centrodereciclaje.net",
+    "fb_page": { "url": "https://www.facebook.com/centrodereciclaje.com.co/", "label": "/CentroDeReciclaje" },
     "tags": [
       "acero inoxidable",
       "aluminio",
@@ -85,7 +86,6 @@
       "pilas",
       "tapas (polipropeno)",
       "vidrio"
-    ],
-    "fb_page": { "url": "https://www.facebook.com/centrodereciclaje.com.co/", "label": "/CentroDeReciclaje" }
+    ]
   }
 ]

@@ -43,6 +43,7 @@
     "no-unused-vars": 1,
     "padded-blocks": 0,
     "quote-props": [1, "as-needed"],
+    "valid-typeof": 0,
     "quotes": [
       1,
       "single",
