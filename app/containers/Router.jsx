@@ -14,14 +14,18 @@ import { routes } from 'constants/index';
 import Contact from 'containers/Contact';
 import Home from 'containers/Home';
 import HowToRecycle from 'containers/HowToRecycle';
+import Projects from 'containers/Projects';
 import RecyclingAgents from 'containers/RecyclingAgents';
+import Statistics from 'containers/Statistics';
 
 const Router = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact path={routes.CONTACT} component={Contact} />
       <Route exact path={routes.HOW_TO_RECYCLE} component={HowToRecycle} />
+      <Route exact path={routes.PROJECTS} component={Projects} />
       <Route exact path={routes.RECYCLING_AGENTS} component={RecyclingAgents} />
+      <Route exact path={routes.STATISTICS} component={Statistics} />
       <Route exact path={routes.HOME} component={Home} />
     </Switch>
   </ConnectedRouter>

@@ -20,6 +20,8 @@ const styles = createStylesheet(theme => ({
 
 const target = document.createElement('main');
 
+target.setAttribute('id', 'main-container');
+
 target.setAttribute(
   'style',
   Object.keys(styles)

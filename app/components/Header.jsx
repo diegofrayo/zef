@@ -33,8 +33,9 @@ const styles = StyleSheet.create(
       position: 'absolute',
       top: 22,
       [theme.mediaQueries.mobile.css]: {
+        fontSize: 24,
         left: 10,
-        top: 12,
+        top: 14,
       },
     },
     appTitle: {
@@ -63,10 +64,10 @@ class Header extends React.Component {
     return (
       <header className={css(styles.container)}>
         <i
-          className={classnames(css(styles.menuIcon), 'material-icons')}
+          className={classnames('fa fa-bars', css(styles.menuIcon))}
           onClick={this.onClickOpenMenu}
         >
-          menu
+          {''}
         </i>
         <h1 className={css(styles.text)}>
           <i className={classnames(css(styles.appIcon), 'fa fa-trophy')}>{''}</i>

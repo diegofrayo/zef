@@ -1,32 +1,52 @@
 process.noDeprecation = true;
 
+const configureEsLint = ({ webpack, path, plugins, config }) => {
+  plugins.unshift(
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        eslint: {
+          configFile: path.join(__dirname, './.eslintrc'),
+        },
+      },
+    }),
+  );
+  config.module.rules.push({
+    // exclude: /(assets|build|config|node_modules|test)/,
+    include: /(app)/,
+    loader: 'eslint-loader',
+    test: /(\.js|.jsx)$/,
+  });
+};
+
 module.exports = (env = {}) => {
 
   const fs = require('fs');
   const path = require('path');
   const webpack = require('webpack');
 
-  const ENVIRONMENT = env.NODE_ENV || process.env.NODE_ENV;
+  const environment = env.NODE_ENV || process.env.NODE_ENV || 'development';
+
   let environmentConfig;
   let isDevelopment;
   let settings = {};
 
   try {
-    settings = JSON.parse(fs.readFileSync('./config.app.json', 'utf8'))[ENVIRONMENT];
+    settings = JSON.parse(fs.readFileSync('./config.app.json', 'utf8'))[environment];
   } catch (error) {
     console.log(error);
     process.exit();
   }
 
-  const babelConfig = {
+  const BABEL_CONFIG = {
+    // exclude: /(assets|build|config|node_modules|test)/,
     test: /(\.js|.jsx)$/,
-    exclude: /(node_modules|webpack_cache|config)/,
+    include: /(app)/,
     use: [
       {
         loader: 'babel-loader',
         options: {
-          plugins: ['syntax-jsx', 'transform-object-rest-spread', 'transform-class-properties'],
-          presets: ['es2015', 'react'],
+          plugins: ['transform-object-rest-spread', 'transform-class-properties'],
+          presets: ['env', 'react'],
           env: {
             production: {
               plugins: ['transform-remove-console'],
@@ -37,24 +57,27 @@ module.exports = (env = {}) => {
     ],
   };
 
-  const plugins = [
+  const CSS_CONFIG = {
+    test: /\.css$/,
+    use: ['style-loader', 'css-loader'],
+  };
+
+  const PLUGINS = [
     new webpack.DefinePlugin({
       APP_SETTINGS: JSON.stringify(settings),
     }),
   ];
 
-  const entry = ['babel-polyfill', 'whatwg-fetch', './app/index.jsx'];
+  const ENTRY_FILES = ['whatwg-fetch', 'babel-polyfill', './app/index.jsx'];
 
-  if (ENVIRONMENT === 'development') {
-    isDevelopment = true;
+  if (environment === 'development') {
     environmentConfig = require('./config/webpack.config.dev.js');
-    environmentConfig.configureBabel(babelConfig);
+    environmentConfig.configureHotReloading(BABEL_CONFIG);
   } else {
-    isDevelopment = false;
     environmentConfig = require('./config/webpack.config.prod.js');
   }
 
-  const config = Object.assign(
+  const WEBPACK_CONFIG = Object.assign(
     {},
     {
       context: __dirname,
@@ -63,37 +86,16 @@ module.exports = (env = {}) => {
         modules: [path.resolve(__dirname, 'app'), 'node_modules'],
       },
       module: {
-        rules: [
-          babelConfig,
-          {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-          },
-        ],
+        rules: [BABEL_CONFIG, CSS_CONFIG],
       },
     },
     environmentConfig.webpackConfig,
   );
 
-  if (env.ENABLE_LINT) {
-    plugins.unshift(
-      new webpack.LoaderOptionsPlugin({
-        options: {
-          eslint: {
-            configFile: path.join(__dirname, './.eslintrc'),
-          },
-        },
-      }),
-    );
-    config.module.rules.push({
-      exclude: /(node_modules|webpack_cache|config)/,
-      loader: 'eslint-loader',
-      test: /(\.js|.jsx)$/,
-    });
-  }
+  WEBPACK_CONFIG.plugins = PLUGINS.concat(WEBPACK_CONFIG.plugins);
+  WEBPACK_CONFIG.entry = WEBPACK_CONFIG.entry.concat(ENTRY_FILES);
 
-  config.plugins = plugins.concat(config.plugins);
-  config.entry = config.entry.concat(entry);
+  if (env.ENABLE_LINT) configureEsLint({ webpack, path, plugins: PLUGINS, config: WEBPACK_CONFIG });
 
-  return config;
+  return WEBPACK_CONFIG;
 };

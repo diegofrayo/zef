@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 
 // utils
-import UtilitiesService from 'utils/utilities';
+import UtilitiesService from 'services/Utilities';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';

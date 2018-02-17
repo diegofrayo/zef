@@ -12,10 +12,8 @@ module.exports = {
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
   },
-  configureBabel: babelConfig => {
+  configureHotReloading: babelConfig => {
     babelConfig.use[0].options.plugins.unshift('react-hot-loader/babel');
-    babelConfig.use.unshift({
-      loader: 'react-hot-loader/webpack',
-    });
+    babelConfig.use.unshift({ loader: 'react-hot-loader/webpack' });
   },
 };

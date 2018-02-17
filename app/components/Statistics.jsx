@@ -23,9 +23,9 @@ const styles = StyleSheet.create(
   })),
 );
 
-class Home extends React.Component {
+class Statistics extends React.Component {
 
-  pageTitle = 'Inicio';
+  pageTitle = 'Estadísticas';
 
   componentDidMount() {
     UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
@@ -43,4 +43,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Statistics;

@@ -38,7 +38,7 @@ const styles = StyleSheet.create(
       transition: 'all .3s linear',
       width: '90%',
       willChange: 'transform',
-      zIndex: 1000,
+      zIndex: 200,
     },
     containerVisible: {
       transform: 'translateX(0px)',
@@ -109,6 +109,18 @@ const MainMenu = props => [
         onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}
       >
         ¿En dónde puedo reciclar?
+      </li>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.PROJECTS)}
+      >
+        Proyectos
+      </li>
+      <li
+        className={css(styles.menuItem)}
+        onClick={onClickMenuItem(props.onClickOpenMenu, routes.STATISTICS)}
+      >
+        Estadísticas
       </li>
       <li
         className={css(styles.menuItem)}

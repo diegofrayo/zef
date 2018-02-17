@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const fs = require('fs');
 const g = require('gulp-load-plugins')({ lazy: false });
 
-const htmlminOpts = {
+const HTML_MIN_OPTS = {
   removeComments: true,
   collapseWhitespace: true,
   removeEmptyAttributes: false,
@@ -72,7 +72,7 @@ gulp.task('build-html', () => {
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))
       .pipe(g.rename('zef.html'))
-      .pipe(g.htmlmin(htmlminOpts))
+      .pipe(g.htmlmin(HTML_MIN_OPTS))
       .pipe(gulp.dest(`${destRootPath}/templates`));
 
   }

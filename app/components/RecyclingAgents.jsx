@@ -5,7 +5,11 @@ import { StyleSheet, css } from 'aphrodite';
 import classnames from 'classnames';
 
 // utils
-import UtilitiesService from 'utils/utilities';
+import UtilitiesService from 'services/Utilities';
+import DataLoaderService from 'services/DataLoader';
+
+// components
+import Modal from 'components/Modal';
 
 // theme
 import { createStylesheet, theme as appTheme, platform } from 'styles/createStylesheet';
@@ -19,7 +23,7 @@ const styles = StyleSheet.create(
     pageDescription: {
       color: theme.color.textPrimary,
       fontSize: theme.fontSize.base,
-      marginBottom: theme.spacing.base,
+      marginBottom: theme.spacing.base * 2,
       textAlign: 'justify',
     },
     placeContainer: {
@@ -74,12 +78,11 @@ const styles = StyleSheet.create(
     tag: {
       backgroundColor: theme.color.white[700],
       border: `1px solid ${theme.color.brandPrimary}`,
-      borderRadius: theme.spacing.small,
       color: theme.color.brandPrimary,
+      cursor: 'pointer',
       display: 'inline-block',
-      fontSize: theme.fontSize.xsmall,
-      fontStyle: 'italic',
-      marginRight: theme.spacing.small,
+      fontSize: theme.fontSize.small,
+      marginRight: theme.spacing.base,
       marginTop: theme.spacing.small,
       padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
       ...platform({
@@ -89,7 +92,6 @@ const styles = StyleSheet.create(
       }),
     },
     buttonDetails: {
-      cursor: 'pointer',
       fontSize: theme.fontSize.small,
       fontWeight: theme.fontWeight.bold,
       padding: theme.spacing.small,
@@ -139,13 +141,18 @@ class RecyclingAgents extends React.Component {
   pageTitle = '¿En dónde puedo reciclar?';
 
   state = {
-    places: require('./../../assets/data/recycling_places.json') // eslint-disable-line
-      .map(place => ({ show_more: { contact_info: false, elements_to_recycle: false }, ...place }))
-      .sort(UtilitiesService.sort('name', 'asc')),
+    places: [],
+    showModal: false,
   };
 
-  componentDidMount() {
+  async componentWillMount() {
     UtilitiesService.updateAppTitle(APP_SETTINGS.APP_TITLE, this.pageTitle);
+    try {
+      this.setState({ places: await DataLoaderService.getRecylingAgents() });
+    } catch (e) {
+      // TODO: Handle Errors
+      console.log('RecyclingAgents => componentWillMount => getRecylingAgents', e);
+    }
   }
 
   onClickExpandDetails = (placeSelected, attrName) => () => {
@@ -159,18 +166,25 @@ class RecyclingAgents extends React.Component {
         }),
       }),
       () => {
-        if (!placeSelected.show_more[attrName]) {
-          const to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
-            ? appTheme.headerHeight
-            : appTheme.headerHeight + 15;
-          UtilitiesService.animateScroll(
-            document.getElementById('app-content-container'),
-            document.getElementById(placeSelected.id).offsetTop - to,
-            500,
-          );
-        }
+        let to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
+          ? appTheme.headerHeight
+          : appTheme.headerHeight + 15;
+        to = (attrName === 'contact_info' && !placeSelected.show_more[attrName]) ? to - 50 : to;
+        UtilitiesService.animateScroll(
+          document.getElementById('app-content-container'),
+          document.getElementById(placeSelected.id).offsetTop - to,
+          500,
+        );
       },
     );
+  };
+
+  onClickShowElementDetails = () => {
+    this.setState({ showModal: true });
+  };
+
+  onClickHideElementDetails = () => {
+    this.setState({ showModal: false });
   };
 
   renderPlace = place => {
@@ -201,7 +215,9 @@ class RecyclingAgents extends React.Component {
           </div>
         )}
         {this.renderDetailsContainer({
-          body: place.show_more.elements_to_recycle ? this.renderPlaceElementsToRecycle(place) : null,
+          body: place.show_more.elements_to_recycle
+            ? this.renderPlaceElementsToRecycle(place)
+            : null,
           buttonLabel: 'Materiales que reciclan',
           detailsSectionName: 'elements_to_recycle',
           place,
@@ -226,15 +242,23 @@ class RecyclingAgents extends React.Component {
       key="details-button"
     >
       {place.show_more[detailsSectionName] ? (
-        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-up')}>{''}</i>
+        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-up')}>
+          {''}
+        </i>
       ) : (
-        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-right')}>{''}</i>
+        <i className={classnames(css(styles.icon), css(styles.iconDetails), 'fa fa-angle-right')}>
+          {''}
+        </i>
       )}
       <span className={classnames(place.show_more[detailsSectionName] && 'u-font-italic')}>
         {buttonLabel}
       </span>
     </button>,
-    <CSSTransitionGroup in={place.show_more[detailsSectionName]} timeout={1000} key="details-content">
+    <CSSTransitionGroup
+      in={place.show_more[detailsSectionName]}
+      timeout={1000}
+      key="details-content"
+    >
       {state => (
         <section className={classnames(css(styles.detailsContainer), transitionStyles[state])}>
           {body}
@@ -246,8 +270,12 @@ class RecyclingAgents extends React.Component {
   renderPlaceElementsToRecycle = place => place.tags.map(this.renderTag(place.id));
 
   renderTag = placeId => tag => (
-    <span className={css(styles.tag)} key={`${placeId}-${tag}`}>
-      <i className={classnames('fa fa-check')}>{''}</i> {tag}
+    <span
+      className={css(styles.tag)}
+      key={`${placeId}-${tag}`}
+      onClick={this.onClickShowElementDetails}
+    >
+      <i className="fa fa-info-circle">{''}</i> <span className="u-text-underline">{tag}</span>
     </span>
   );
 
@@ -316,8 +344,12 @@ class RecyclingAgents extends React.Component {
         Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes
         tipos de elementos que has reciclado.
       </p>,
-      <br key="separator" />,
       <section key="places-container">{this.state.places.map(this.renderPlace)}</section>,
+      <Modal
+        key="modal"
+        show={this.state.showModal}
+        onClickHideModal={this.onClickHideElementDetails}
+      />,
     ];
   }
 }

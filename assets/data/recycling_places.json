@@ -2,10 +2,10 @@
   {
     "id": "fundacion-punto-cero",
     "name": "Fundación Punto Cero",
-    "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
+    "description": "Fundación Punto Cero es una organización comprometida con el desarrollo sostenible. Promueven la gestión integral de los residuos sólidos reciclables fomentando procesos de educación y sensibilización ambiental.",
     "address": "Carrera 21 Calle 24-12",
     "city": "Armenia, Quindío",
-    "location": "https://www.google.com.co/maps/place/Cl.+24+%2321-2+a+21-50,+Armenia,+Quind%C3%ADo/@4.5351819,-75.6790838,19z",
+    "location": "https://www.google.com.co/maps/place/Armenia/@4.5302359,-75.6761266,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f5b1ebdfcafd:0x409fe2a23ec3a49d!8m2!3d4.5302359!4d-75.674355",
     "phone": "",
     "email": "",
     "website": "",
@@ -13,17 +13,15 @@
     "tags": [
       "botellas de plastico",
       "carton",
-      "desechos tecnologicos",
       "papel",
       "pilas",
-      "tetrapak",
       "vidrio"
     ]
   },
   {
     "id": "fundacion-la-oportunidad",
     "name": "Fundación La Oportunidad",
-    "description": "En este sitio puedes llevar elementos como ..., comunicate con... para que...",
+    "description": "Fundación La Oportunidad busca prevenir situaciones de vulnerabilidad con los niños y niñas del barrio La Mariela, brindándoles espacios para un adecuado uso de su tiempo libre. Síguelos, conócelos y apóyalos",
     "address": "Salón comunal del barrio La Mariela",
     "city": "Armenia, Quindío",
     "location": "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z",
@@ -32,17 +30,15 @@
     "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
     "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" },
     "tags": [
-      "botellas de plastico",
-      "carton",
+      "latas de aluminio",
       "papel",
-      "pilas",
-      "vidrio"
+      "tapas"
     ]
   },
   {
     "id": "universidad-del-quindio",
     "name": "Universidad del Quindío",
-    "description": "Puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda",
+    "description": "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda",
     "address": "Carrera 15 Calle 12 Norte",
     "city": "Armenia, Quindío",
     "location": "https://www.google.com.co/maps/place/Universidad+del+Quind%C3%ADo/@4.5540283,-75.6609203,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f4e451eef801:0xe8af9d5d9d962985!8m2!3d4.554023!4d-75.6587316?hl=es",
@@ -57,7 +53,7 @@
   {
     "id": "centro-de-reciclaje",
     "name": "Centro de Reciclaje",
-    "description": "Con más de 40 años de experiencia en recuperación de materiales reciclables, proporcionan un servicio eficiente y de calidad en sus procesos de recoleccion, pesaje, clasificación, embalaje y despacho. Son mas de 43 años dedicados a la labor de reciclar y generar empleo.",
+    "description": "El Centro de Reciclaje cuenta con más de 40 años de experiencia en recuperación de materiales reciclables, proporcionan un servicio eficiente y de calidad en sus procesos de recoleccion, pesaje, clasificación, embalaje y despacho.",
     "address": "Calle 38 # 19-23",
     "city": "Armenia, Quindío",
     "location": "https://www.google.it/maps/@4.5256304,-75.6834343,3a,75y,296.36h,78.97t/data=!3m7!1e1!3m5!1sgOkCWb0mXcDNGX9mE7FA4Q!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DgOkCWb0mXcDNGX9mE7FA4Q%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D42.833282%26pitch%3D0!7i13312!8i6656",
