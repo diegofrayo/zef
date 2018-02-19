@@ -1,4 +1,4 @@
-const getMobileOperatingSystem = () => {
+const getDeviceOS = () => {
 
   const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
 
@@ -18,6 +18,8 @@ const getMobileOperatingSystem = () => {
 
   return 'unknown';
 };
+
+const deviceOS = getDeviceOS();
 
 export default {
 
@@ -91,11 +93,11 @@ export default {
   },
 
   is_iOs() {
-    return getMobileOperatingSystem() === 'iOS';
+    return deviceOS === 'iOS';
   },
 
   isAndroid() {
-    return getMobileOperatingSystem() === 'Android';
+    return deviceOS === 'Android';
   },
 
 };

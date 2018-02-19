@@ -10,8 +10,8 @@
     "email": "",
     "website": "",
     "fb_page": { "url": "https://www.facebook.com/FundPuntocero", "label": "/FundacionPuntocero" },
-    "tags": [
-      "botellas de plastico",
+    "elements_for_recycling": [
+      "botellas-de-plastico",
       "carton",
       "papel",
       "pilas",
@@ -29,8 +29,8 @@
     "email": "",
     "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
     "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" },
-    "tags": [
-      "latas de aluminio",
+    "elements_for_recycling": [
+      "latas-de-aluminio",
       "papel",
       "tapas"
     ]
@@ -46,7 +46,7 @@
     "email": "",
     "website": "",
     "fb_page": "",
-    "tags": [
+    "elements_for_recycling": [
       "pilas"
     ]
   },
@@ -61,26 +61,26 @@
     "email": "centrodereciclajearm@gmail.com",
     "website": "http://www.centrodereciclaje.net",
     "fb_page": { "url": "https://www.facebook.com/centrodereciclaje.com.co/", "label": "/CentroDeReciclaje" },
-    "tags": [
-      "acero inoxidable",
+    "elements_for_recycling": [
+      "acero-inoxidable",
       "aluminio",
       "antimonio",
-      "baterias de vehiculos",
-      "bolsas plasticas",
+      "baterias-de-vehiculos",
+      "bolsas-plasticas",
       "bronce",
       "canastas",
       "carton",
-      "chatarra (hierro)",
+      "chatarra",
       "cobre",
-      "elementos de plasticos (sillas, baldes)",
-      "envases de reuso",
-      "envases plasticos (pet, pvc)",
-      "latas (clausen)",
-      "papel kraft",
-      "papel periodico",
+      "elementos-de-plastico",
+      "envases-de-reuso",
+      "envases-plasticos",
+      "latas-de-clausen",
+      "papel-kraft",
+      "papel-periodico",
       "papel",
       "pilas",
-      "tapas (polipropeno)",
+      "tapas-de-plastico",
       "vidrio"
     ]
   }

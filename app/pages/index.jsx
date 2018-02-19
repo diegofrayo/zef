@@ -1,7 +1,19 @@
 // npm libs
 import React from 'react';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
 import PropTypes from 'prop-types';
+import { AppContainer as HotLoaderContainer } from 'react-hot-loader';
+import { Provider } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
+
+// components
+import Header from 'components/layout/Header';
+
+// Routing
+import { Router } from 'routing';
+
+// redux
+import { store } from 'state';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
@@ -32,7 +44,7 @@ const styles = StyleSheet.create(
   })),
 );
 
-const App = ({ body, header }) => (
+const MainContainer = ({ body, header }) => (
   <section className={css(styles.container)}>
     {header()}
     <section className={css(styles.bodyContainer)} id="app-content-container">
@@ -41,9 +53,24 @@ const App = ({ body, header }) => (
   </section>
 );
 
-App.propTypes = {
+MainContainer.propTypes = {
   body: PropTypes.func.isRequired,
   header: PropTypes.func.isRequired,
 };
 
-export default App;
+const renderApp = () => (
+  <BrowserRouter>
+    <Provider store={store}>
+      <MainContainer header={() => <Header />} body={() => <Router />} />
+    </Provider>
+  </BrowserRouter>
+);
+
+export default () => {
+
+  if (APP_SETTINGS.environment === 'development') {
+    return <HotLoaderContainer>{renderApp()}</HotLoaderContainer>;
+  }
+
+  return renderApp();
+};

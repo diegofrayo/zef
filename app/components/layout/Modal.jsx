@@ -59,6 +59,9 @@ const Modal = props =>
         <button className={css(styles.closeButton)} onClick={props.onClickHideModal} type="button">
           <i className={'fa fa-times'}>{''}</i>
         </button>
+        <h2 className={css(styles.title)}>{props.elementInfo.label}</h2>
+        {props.elementInfo.images.map((url, index) => <img key={`modal-img-${props.elementInfo.id}-${index}`} src={url} alt={props.elementInfo.label} className={css(styles.image)} />)}
+        <p className={css(styles.description)}>{props.elementInfo.description}</p>
       </section>
     </div>,
     document.getElementById('main-container'),
@@ -67,6 +70,7 @@ const Modal = props =>
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   onClickHideModal: PropTypes.func.isRequired,
+  elementInfo: PropTypes.object.isRequired,
 };
 
 export default Modal;

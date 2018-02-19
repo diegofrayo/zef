@@ -11,7 +11,7 @@ const schema = {
   email: validator.string().email().required(),
   website: validator.string().url().required(),
   fb_page: validator.string().required(),
-  tags: validator.array().required(),
+  elementsForRecycling: validator.array().required(),
 };
 
 export default object => validator.validate(object, schema);

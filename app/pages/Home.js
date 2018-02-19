@@ -2,6 +2,6 @@
 import withRouter from 'react-router-dom/withRouter';
 
 // components
-import Projects from 'components/Projects';
+import Home from 'components/pages/Home';
 
-export default withRouter(Projects);
+export default withRouter(Home);

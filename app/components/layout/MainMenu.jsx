@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import { history } from 'state';
 
-// constants
-import { routes } from 'constants/index';
+// routing
+import { routes } from 'routing';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';

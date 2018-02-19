@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite';
 
 // components
-import MainMenu from 'components/MainMenu';
+import MainMenu from 'components/layout/MainMenu';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';

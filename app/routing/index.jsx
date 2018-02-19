@@ -7,16 +7,23 @@ import { ConnectedRouter } from 'react-router-redux';
 // redux
 import { history } from 'state';
 
-// constants
-import { routes } from 'constants/index';
-
 // containers
-import Contact from 'containers/Contact';
-import Home from 'containers/Home';
-import HowToRecycle from 'containers/HowToRecycle';
-import Projects from 'containers/Projects';
-import RecyclingAgents from 'containers/RecyclingAgents';
-import Statistics from 'containers/Statistics';
+import Contact from 'pages/Contact';
+import Home from 'pages/Home';
+import HowToRecycle from 'pages/HowToRecycle';
+import Projects from 'pages/Projects';
+import RecyclingAgents from 'pages/RecyclingAgents';
+import Statistics from 'pages/Statistics';
+
+const ROOT = APP_SETTINGS.environment === 'development' ? '' : '/zef';
+const routes = {
+  HOME: ROOT === '' ? '/' : ROOT,
+  CONTACT: `${ROOT}/contacto`,
+  HOW_TO_RECYCLE: `${ROOT}/como-reciclar`,
+  PROJECTS: `${ROOT}/proyectos`,
+  RECYCLING_AGENTS: `${ROOT}/donde-reciclar`,
+  STATISTICS: `${ROOT}/estadísticas`,
+};
 
 const Router = () => (
   <ConnectedRouter history={history}>
@@ -31,4 +38,4 @@ const Router = () => (
   </ConnectedRouter>
 );
 
-export default Router;
+export { Router, routes };
