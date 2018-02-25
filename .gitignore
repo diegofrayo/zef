@@ -3,3 +3,4 @@ build/
 config.app.json
 *.log
 .DS_Store
+package-lock.json

@@ -11,7 +11,7 @@ const styles = StyleSheet.create(
   createStylesheet(theme => ({
     backdrop: {
       alignItems: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
       display: 'none',
       height: '100%',
       justifyContent: 'center',
@@ -27,7 +27,7 @@ const styles = StyleSheet.create(
     },
     container: {
       backgroundColor: theme.color.white[700],
-      boxShadow: theme.shadow.base(theme.color.black[700]),
+      boxShadow: '0 0 50px 0 #555',
       height: '100%',
       maxHeight: 400,
       maxWidth: 400,

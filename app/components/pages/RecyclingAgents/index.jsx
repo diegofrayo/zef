@@ -1,249 +1,33 @@
 // npm libs
 import React from 'react';
-import { Transition as CSSTransitionGroup } from 'react-transition-group';
-import { css } from 'aphrodite';
-import classnames from 'classnames';
+import { css, StyleSheet } from 'aphrodite';
 
 // utils
 import UtilitiesService from 'services/Utilities';
 import DataLoaderService from 'services/DataLoader';
 
-// components
-import Modal from 'components/layout/Modal';
-import Heading from 'components/common/Heading';
-import Text from 'components/common/Text';
-
 // theme
-import { theme as appTheme } from 'styles/createStylesheet';
+import { theme as appTheme, createStylesheet } from 'styles/createStylesheet';
 
-import {
-  agentStyles,
-  collapsibleDetailsStyles,
-  elementsForRecyclingCollapsibleStyles,
-  contactInfoCollapsibleStyles,
-  modalStyles,
-} from './stylesheet';
+// components
+import Heading from 'components/common/Heading';
+import Modal from 'components/layout/Modal';
+import Text from 'components/common/Text';
+import Agent from './components/Agent';
 
-const CollapsibleDetails = ({
-  buttonLabel,
-  detailsSectionName,
-  agent,
-  body,
-  transitionStyles,
-  onClickCollapsibleDetailsHeading,
-}) => [
-  <button
-    key={`details-collapsible-heading-${agent.id}`}
-    type="button"
-    className={css(collapsibleDetailsStyles.buttonHeading)}
-    onClick={onClickCollapsibleDetailsHeading(agent, detailsSectionName)}
-  >
-    {agent.show_more[detailsSectionName] ? (
-      <i
-        className={classnames(
-          css(collapsibleDetailsStyles.icon),
-          css(collapsibleDetailsStyles.iconDetails),
-          'fa fa-angle-up',
-        )}
-      >
-        {''}
-      </i>
-    ) : (
-      <i
-        className={classnames(
-          css(collapsibleDetailsStyles.icon),
-          css(collapsibleDetailsStyles.iconDetails),
-          'fa fa-angle-right',
-        )}
-      >
-        {''}
-      </i>
-    )}
-    <span className={classnames(agent.show_more[detailsSectionName] && 'u-font-italic')}>
-      {buttonLabel}
-    </span>
-  </button>,
-  <CSSTransitionGroup
-    key={`details-content-${agent.id}`}
-    in={agent.show_more[detailsSectionName]}
-    timeout={1000}
-  >
-    {state => (
-      <section
-        className={classnames(css(collapsibleDetailsStyles.container), transitionStyles[state])}
-      >
-        {body(agent)}
-      </section>
-    )}
-  </CSSTransitionGroup>,
-];
-
-const Agent = ({
-  agent,
-  onClickCollapsibleDetailsHeading,
-  onClickShowElementForRecyclingDetails,
-}) => {
-  const transitionStyles = {
-    entering: css(collapsibleDetailsStyles.containerVisible),
-    entered: css(collapsibleDetailsStyles.containerVisible),
-    exiting: css(collapsibleDetailsStyles.containerHidden),
-    exited: css(collapsibleDetailsStyles.containerHidden),
-  };
-
-  return (
-    <article
-      id={agent.id}
-      className={classnames(
-        css(agentStyles.container),
-        css(
-          (agent.show_more.contact_info || agent.show_more.elements_to_recycle) &&
-            agentStyles.containerSelected,
-        ),
-      )}
-    >
-      <Heading tag="h1" className={css(agentStyles.titleName)}>
-        {() => agent.name}
-      </Heading>
-      <Text className={css(agentStyles.textDescription)}>{() => agent.description}</Text>
-      <CollapsibleDetails
-        buttonLabel="Materiales que reciclan"
-        detailsSectionName="elements_to_recycle"
-        agent={agent}
-        body={() => {
-          if (!agent.show_more.elements_to_recycle) return null;
-          return agent.elements_for_recycling.map((elementForRecycling, index, array) => (
-            <span
-              key={`${elementForRecycling.id}-${index}-${array.length}`}
-              className={css(elementsForRecyclingCollapsibleStyles.elementForRecycling)}
-              onClick={onClickShowElementForRecyclingDetails(elementForRecycling)}
-            >
-              <i className="fa fa-info-circle">{''}</i>{' '}
-              <span className="u-text-underline">{elementForRecycling.label}</span>
-            </span>
-          ));
-        }}
-        transitionStyles={transitionStyles}
-        onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
-      />
-      <CollapsibleDetails
-        buttonLabel="Información de contácto"
-        detailsSectionName="contact_info"
-        agent={agent}
-        body={() => {
-          if (!agent.show_more.contact_info) return null;
-          return [
-            <div
-              key="agent-location"
-              className={css(contactInfoCollapsibleStyles.textContainer)}
-            >
-              <i
-                className={classnames(
-                  css(collapsibleDetailsStyles.icon),
-                  css(contactInfoCollapsibleStyles.iconLocation),
-                  'fa fa-map-marker',
-                )}
-              >
-                {''}
-              </i>
-              <a
-                className={css(contactInfoCollapsibleStyles.textLocation)}
-                href={agent.location}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {agent.address} - {agent.city}
-              </a>
-            </div>,
-            agent.phone && (
-              <div
-                key="agent-phone"
-                className={css(contactInfoCollapsibleStyles.textContainer)}
-              >
-                <i
-                  className={classnames(
-                    css(collapsibleDetailsStyles.icon),
-                    css(contactInfoCollapsibleStyles.iconPhone),
-                    'fa fa-phone',
-                  )}
-                >
-                  {''}
-                </i>
-                <p className={css(contactInfoCollapsibleStyles.textPhone)}>{agent.phone}</p>
-              </div>
-            ),
-            agent.email && (
-              <div
-                key="agent-email"
-                className={css(contactInfoCollapsibleStyles.textContainer)}
-              >
-                <i
-                  className={classnames(
-                    css(collapsibleDetailsStyles.icon),
-                    css(contactInfoCollapsibleStyles.iconEmail),
-                    'fa fa-at',
-                  )}
-                >
-                  {''}
-                </i>
-                <p className={css(contactInfoCollapsibleStyles.textEmail)}>{agent.email}</p>
-              </div>
-            ),
-            agent.website && (
-              <div
-                key="agent-website"
-                className={css(contactInfoCollapsibleStyles.textContainer)}
-              >
-                <i
-                  className={classnames(
-                    css(collapsibleDetailsStyles.icon),
-                    css(contactInfoCollapsibleStyles.iconWebsite),
-                    'fa fa-link',
-                  )}
-                >
-                  {''}
-                </i>
-                <a
-                  className={css(contactInfoCollapsibleStyles.textWebsite)}
-                  href={agent.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {agent.website}
-                </a>
-              </div>
-            ),
-            agent.fb_page && (
-              <div
-                key="agent-fb-page"
-                className={css(contactInfoCollapsibleStyles.textContainer)}
-              >
-                <i
-                  className={classnames(
-                    css(collapsibleDetailsStyles.icon),
-                    css(contactInfoCollapsibleStyles.iconFacebook),
-                    'fa fa-facebook',
-                  )}
-                >
-                  {''}
-                </i>
-                <a
-                  className={css(contactInfoCollapsibleStyles.textFacebook)}
-                  href={agent.fb_page.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {agent.fb_page.label}
-                </a>
-              </div>
-            ),
-          ];
-        }}
-        transitionStyles={transitionStyles}
-        onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
-      />
-    </article>
-  );
-};
+const modalStyles = StyleSheet.create(
+  createStylesheet(theme => ({
+    image: {
+      display: 'block',
+      height: 200,
+      margin: `${theme.spacing.large}px auto`,
+      maxWidth: '100%',
+      padding: theme.spacing.base,
+      width: 200,
+    },
+    description: {},
+  })),
+);
 
 class RecyclingAgents extends React.Component {
   pageTitle = '¿En dónde puedo reciclar?';
@@ -299,7 +83,7 @@ class RecyclingAgents extends React.Component {
     );
   };
 
-  onClickShowElementForRecyclingDetails = elementForRecyclingSelected => () => {
+  onClickElementForRecycling = elementForRecyclingSelected => () => {
     this.setState({ showModal: true, elementForRecyclingSelected });
   };
 
@@ -325,7 +109,7 @@ class RecyclingAgents extends React.Component {
             key={agent.id}
             agent={agent}
             onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
-            onClickShowElementForRecyclingDetails={this.onClickShowElementForRecyclingDetails}
+            onClickElementForRecycling={this.onClickElementForRecycling}
           />
         ))}
       </section>,
@@ -335,12 +119,18 @@ class RecyclingAgents extends React.Component {
           key="modal"
           header={data => <Heading tag="h1">{() => data.label}</Heading>}
           body={data => [
-            data.images.map((url, index) => (
+            data.images.map(url => (
               <img
-                key={`modal-element-for-recycling-img-${data.id}-${index}`}
+                id="modal-element-for-recycling-img"
+                key={`modal-element-for-recycling-img-${data.id}`}
                 src={url}
                 alt={data.label}
                 className={css(modalStyles.image)}
+                onError={() => {
+                  document.getElementById(
+                    'modal-element-for-recycling-img',
+                  ).style.border = `1px solid ${appTheme.color.white[600]}`;
+                }}
               />
             )),
             <Text

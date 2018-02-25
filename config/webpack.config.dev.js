@@ -7,8 +7,8 @@ module.exports = {
     entry: ['react-hot-loader/patch', 'webpack-hot-middleware/client'],
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, '../build/assets/'),
-      publicPath: '/assets/',
+      path: path.resolve(__dirname, '../build/assets/zef/js'),
+      publicPath: '/assets/zef/js/',
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
   },

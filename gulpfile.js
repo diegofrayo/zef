@@ -40,7 +40,7 @@ const createJSTags = (jsSources) => {
 //------------------- JS Tasks -----------------------
 gulp.task('build-js', () => {
   return gulp
-    .src(`./build/assets/bundle.js`)
+    .src(`./build/assets/zef/js/bundle.js`)
     .pipe(gulp.dest(`${destRootPath}/${assetsPath}/js`));
 });
 
@@ -59,7 +59,7 @@ gulp.task('build-html', () => {
 
   if (environment === 'development') {
 
-    jsSources = [`/${assetsPath}/bundle.js`];
+    jsSources = [`/${assetsPath}/js/bundle.js`];
 
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))

@@ -7,8 +7,7 @@ module.exports = {
     entry: [],
     output: {
       filename: 'bundle.js',
-      path: path.join(__dirname, '../build/assets/'),
-      publicPath: '/assets/',
+      path: path.join(__dirname, '../build/assets/zef/js'),
     },
     plugins: [
       new webpack.optimize.OccurrenceOrderPlugin(),

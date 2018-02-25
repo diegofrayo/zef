@@ -70,7 +70,7 @@ class Header extends React.Component {
           {''}
         </i>
         <h1 className={css(styles.text)}>
-          <i className={classnames(css(styles.appIcon), 'fa fa-trophy')}>{''}</i>
+          <i className={classnames(css(styles.appIcon), 'fa fa-leaf')}>{''}</i>
           <span>{APP_SETTINGS.APP_TITLE}</span>
         </h1>
         <MainMenu isMenuOpen={this.state.isMenuOpen} onClickOpenMenu={this.onClickOpenMenu} />

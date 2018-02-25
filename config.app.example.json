@@ -1,6 +1,6 @@
 {
   "development": {
-    "assets_path": "assets",
+    "assets_path": "assets/zef",
     "dest_root_path": "./build",
     "environment": "development",
     "APP_TITLE": "ZEF"

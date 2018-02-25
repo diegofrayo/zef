@@ -89,7 +89,7 @@ const MainMenu = props => [
   >
     <ul className={css(styles.menu)}>
       <li className={css(styles.menuHeader)}>
-        <i className={classnames('fa fa-trophy', css(styles.menuHeaderIcon))}>{''}</i>
+        <i className={classnames('fa fa-leaf', css(styles.menuHeaderIcon))}>{''}</i>
         <span>{APP_SETTINGS.APP_TITLE}</span>
       </li>
       <li
