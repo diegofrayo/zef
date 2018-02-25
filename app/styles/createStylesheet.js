@@ -19,7 +19,7 @@ export const theme = {
   maxWidthContainer: 991,
 
   shadow: {
-    base: color => `0 0 5px 0 ${color}`,
+    base: (color = '#CACACA') => `0 0 5px 0 ${color}`,
   },
 
   mediaQueries: {

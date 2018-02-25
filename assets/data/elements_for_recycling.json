@@ -2,133 +2,133 @@
   "acero-inoxidable": {
     "id": "acero-inoxidable",
     "label": "Acero inoxidable",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/acero-inoxidable.png"]
   },
   "aluminio": {
     "id": "aluminio",
     "label": "Aluminio",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/aluminio.png"]
   },
   "antimonio": {
     "id": "antimonio",
     "label": "Antimonio",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/antimonio.png"]
   },
   "baterias-de-vehiculos": {
     "id": "baterias-de-vehiculos",
-    "label": "Baterias de vehiculos",
-    "description": "Descripcion...",
+    "label": "Baterías de vehículos",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/baterias-de-vehiculos.png"]
   },
   "bolsas-plasticas": {
-    "id": "bolsas-plasticas",
-    "label": "Bolsas plasticas",
-    "description": "Descripcion...",
+    "id": "bolsas-plásticas",
+    "label": "Bolsas plásticas",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/bolsas-plasticas.png"]
   },
   "botellas-de-plastico": {
-    "id": "botellas-de-plastico",
-    "label": "Botellas de plastico",
-    "description": "Descripcion...",
+    "id": "botellas-de-plástico",
+    "label": "Botellas de plástico",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/botellas-de-plastico.png"]
   },
   "bronce": {
     "id": "bronce",
     "label": "Bronce",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/bronce.png"]
   },
   "canastas": {
     "id": "canastas",
     "label": "Canastas",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/canastas.png"]
   },
   "carton": {
     "id": "carton",
-    "label": "Carton",
-    "description": "Descripcion...",
+    "label": "Cartón",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/carton.png"]
   },
   "chatarra": {
     "id": "chatarra",
     "label": "Chatarra (hierro)",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/chatarra.png"]
   },
   "cobre": {
     "id": "cobre",
     "label": "Cobre",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/cobre.png"]
   },
   "elementos-de-plastico": {
-    "id": "elementos-de-plastico",
-    "label": "Elementos de plastico (sillas, baldes)",
-    "description": "Descripcion...",
+    "id": "elementos-de-plástico",
+    "label": "Elementos de plástico (sillas, baldes)",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/elementos-de-plastico.png"]
   },
   "envases-de-reuso": {
     "id": "envases-de-reuso",
     "label": "Envases de reuso",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/envases-de-reuso.png"]
   },
   "envases-plasticos": {
-    "id": "envases-plasticos",
-    "label": "Envases plastios (pvc, pet)",
-    "description": "Descripcion...",
+    "id": "envases-plásticos",
+    "label": "Envases plásticos (pvc, pet)",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/envases-plasticos.png"]
   },
   "latas-de-clausen": {
     "id": "latas-de-clausen",
     "label": "Latas de Clausen",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/latas-de-clausen.png"]
   },
   "latas-de-aluminio": {
     "id": "latas-de-aluminio",
     "label": "Latas de aluminio",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/latas-de-aluminio.png"]
   },
   "papel-kraft": {
     "id": "papel-kraft",
     "label": "Papel Kraft",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/papel-kraft.png"]
   },
   "papel-periodico": {
     "id": "papel-periodico",
-    "label": "Papel periodico",
-    "description": "Descripcion...",
+    "label": "Papel periódico",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/papel-periodico.png"]
   },
   "papel": {
     "id": "papel",
     "label": "Papel",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/papel.png"]
   },
   "pilas": {
     "id": "pilas",
     "label": "Pilas",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/pilas.png"]
   },
   "tapas-de-plastico": {
-    "id": "tapas-de-plastico",
-    "label": "Tapas de plastico (polipropeno)",
-    "description": "Descripcion...",
+    "id": "tapas-de-plástico",
+    "label": "Tapas de plástico (polipropeno)",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/tapas-de-plastico.png"]
   },
   "vidrio": {
     "id": "vidrio",
     "label": "Vidrio",
-    "description": "Descripcion...",
+    "description": "Descripción...",
     "images": ["/assets/images/elements/vidrio.png"]
   }
 }

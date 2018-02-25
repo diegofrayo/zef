@@ -32,8 +32,10 @@ const styles = StyleSheet.create(
       maxHeight: 400,
       maxWidth: 400,
       overflow: 'auto',
+      padding: theme.spacing.base,
       position: 'relative',
       width: '100%',
+      zIndex: 400,
     },
     closeButton: {
       color: theme.color.white[400],
@@ -42,35 +44,48 @@ const styles = StyleSheet.create(
       right: theme.spacing.base,
       top: 0,
     },
+    header: {
+      borderBottom: `1px solid ${theme.color.white[600]}`,
+      padding: `${theme.spacing.large + 10}px ${theme.spacing.base}px ${theme.spacing.small}px`,
+    },
+    body: {},
   })),
 );
 
-const Modal = props =>
-  ReactDOM.createPortal(
+const Modal = props => {
+  const { header, body, data, show, onClickHideModal } = props;
+  return ReactDOM.createPortal(
     <div
-      className={css(styles.backdrop, props.show ? styles.backdropVisible : false)}
-      onClick={props.onClickHideModal}
-      key="backdrop"
+      key="modal-backdrop"
+      className={css(styles.backdrop, show ? styles.backdropVisible : false)}
+      onClick={onClickHideModal}
     >
-      <section
-        className={css(styles.container)}
+      <article
         key="modal-container"
+        className={css(styles.container)}
+        onClick={event => event.stopPropagation()}
       >
-        <button className={css(styles.closeButton)} onClick={props.onClickHideModal} type="button">
+        <header className={css(styles.header)}>{header(data)}</header>
+        <section className={css(styles.body)}>{body(data)}</section>
+        <button className={css(styles.closeButton)} onClick={onClickHideModal} type="button">
           <i className={'fa fa-times'}>{''}</i>
         </button>
-        <h2 className={css(styles.title)}>{props.elementInfo.label}</h2>
-        {props.elementInfo.images.map((url, index) => <img key={`modal-img-${props.elementInfo.id}-${index}`} src={url} alt={props.elementInfo.label} className={css(styles.image)} />)}
-        <p className={css(styles.description)}>{props.elementInfo.description}</p>
-      </section>
+      </article>
     </div>,
     document.getElementById('main-container'),
   );
+};
 
 Modal.propTypes = {
+  header: PropTypes.func,
+  body: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
   show: PropTypes.bool.isRequired,
   onClickHideModal: PropTypes.func.isRequired,
-  elementInfo: PropTypes.object.isRequired,
+};
+
+Modal.defaultProps = {
+  header: () => {},
 };
 
 export default Modal;
