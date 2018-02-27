@@ -17,6 +17,9 @@ import Agent from './components/Agent';
 
 const modalStyles = StyleSheet.create(
   createStylesheet(theme => ({
+    heading: {
+      marginBottom: 0,
+    },
     image: {
       display: 'block',
       height: 200,
@@ -117,7 +120,7 @@ class RecyclingAgents extends React.Component {
       this.state.showModal ? (
         <Modal
           key="modal"
-          header={data => <Heading tag="h1">{() => data.label}</Heading>}
+          header={data => <Heading tag="h1" className={css(modalStyles.heading)}>{() => data.label}</Heading>}
           body={data => [
             data.images.map(url => (
               <img

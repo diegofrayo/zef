@@ -26,11 +26,11 @@
     "email": "",
     "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
     "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" },
-    "elements_for_recycling": ["latas-de-aluminio", "papel", "tapas"]
+    "elements_for_recycling": ["latas-de-aluminio", "papel", "tapas-de-plastico"]
   },
   {
     "id": "universidad-del-quindio",
-    "name": "Universidad del Quindío",
+    "name": "Universidad del Quindío y Ara",
     "description":
       "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda",
     "address": "Carrera 15 Calle 12 Norte",

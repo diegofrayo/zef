@@ -55,8 +55,8 @@
   },
   "chatarra": {
     "id": "chatarra",
-    "label": "Chatarra (hierro)",
-    "description": "Descripción...",
+    "label": "Chatarra",
+    "description": "Descripción... (hierro)",
     "images": ["/assets/zef/images/elements/chatarra.png"]
   },
   "cobre": {

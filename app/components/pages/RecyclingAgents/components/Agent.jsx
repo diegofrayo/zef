@@ -74,12 +74,11 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
     },
     textLocation: {
       color: theme.color.orange[200],
-      paddingBottom: 1,
+      marginLeft: theme.spacing.small,
       textDecoration: 'underline',
     },
     textPhone: {
       color: theme.color.red[100],
-      paddingBottom: 1,
     },
     textEmail: {
       color: theme.color.green[100],
@@ -94,9 +93,6 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
       textDecoration: 'underline',
     },
 
-    iconDetails: {
-      fontSize: theme.fontSize.small,
-    },
     iconLocation: {
       color: theme.color.orange[200],
     },

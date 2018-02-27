@@ -13,7 +13,7 @@ const styles = StyleSheet.create(
       alignItems: 'center',
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       display: 'none',
-      height: '100%',
+      height: '100vh',
       justifyContent: 'center',
       left: 0,
       padding: 10,
@@ -29,10 +29,10 @@ const styles = StyleSheet.create(
       backgroundColor: theme.color.white[700],
       boxShadow: '0 0 50px 0 #555',
       height: '100%',
-      maxHeight: 400,
-      maxWidth: 400,
+      maxHeight: 500,
+      maxWidth: 500,
       overflow: 'auto',
-      padding: theme.spacing.base,
+      padding: theme.spacing.large,
       position: 'relative',
       width: '100%',
       zIndex: 400,
@@ -46,9 +46,11 @@ const styles = StyleSheet.create(
     },
     header: {
       borderBottom: `1px solid ${theme.color.white[600]}`,
-      padding: `${theme.spacing.large + 10}px ${theme.spacing.base}px ${theme.spacing.small}px`,
+      padding: `${theme.spacing.large}px ${theme.spacing.base}px ${theme.spacing.base}px`,
     },
-    body: {},
+    body: {
+      padding: `${theme.spacing.large}px`,
+    },
   })),
 );
 

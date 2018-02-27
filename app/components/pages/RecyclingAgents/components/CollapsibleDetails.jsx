@@ -21,15 +21,15 @@ const collapsibleDetailsStyles = StyleSheet.create(
     containerVisible: {
       opacity: 1,
     },
-    buttonHeading: {
+    heading: {
       fontSize: theme.fontSize.small,
       fontWeight: theme.fontWeight.bold,
       padding: theme.spacing.small,
       textAlign: 'left',
       textTransform: 'uppercase',
     },
-    icon: {
-      fontSize: theme.fontSize.large,
+    iconDetails: {
+      fontSize: theme.fontSize.small,
       fontWeight: theme.fontWeight.bold,
       marginRight: theme.spacing.small,
     },
@@ -54,13 +54,12 @@ export default ({
     <button
       key={`details-collapsible-heading-${agent.id}`}
       type="button"
-      className={css(collapsibleDetailsStyles.buttonHeading)}
+      className={css(collapsibleDetailsStyles.heading)}
       onClick={onClickCollapsibleDetailsHeading(agent, detailsSectionName)}
     >
       {agent.show_more[detailsSectionName] ? (
         <i
           className={classnames(
-            css(collapsibleDetailsStyles.icon),
             css(collapsibleDetailsStyles.iconDetails),
             'fa fa-angle-up',
           )}
@@ -70,7 +69,6 @@ export default ({
       ) : (
         <i
           className={classnames(
-            css(collapsibleDetailsStyles.icon),
             css(collapsibleDetailsStyles.iconDetails),
             'fa fa-angle-right',
           )}
