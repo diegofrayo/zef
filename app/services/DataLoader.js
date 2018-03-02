@@ -1,4 +1,4 @@
-// utils
+// services
 import UtilitiesService from 'services/Utilities';
 
 let elementsForRecycling;

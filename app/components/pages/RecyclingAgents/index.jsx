@@ -1,10 +1,10 @@
 // npm libs
 import React from 'react';
-import { css, StyleSheet } from 'aphrodite';
+import { css, StyleSheet } from 'aphrodite/no-important';
 
-// utils
-import UtilitiesService from 'services/Utilities';
+// services
 import DataLoaderService from 'services/DataLoader';
+import UtilitiesService from 'services/Utilities';
 
 // theme
 import { theme as appTheme, createStylesheet } from 'styles/createStylesheet';
@@ -96,14 +96,12 @@ class RecyclingAgents extends React.Component {
 
   render() {
     return [
-      <Heading key="page-title" tag="h2">
-        {() => this.pageTitle}
+      <Heading key="page-title" size="large" tag="h2">
+        {this.pageTitle}
       </Heading>,
 
       <Text key="page-description">
-        {() =>
-          'Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes tipos de elementos que has reciclado.'
-        }
+        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes tipos de elementos que has reciclado.
       </Text>,
 
       <section key="agents-container">
@@ -120,7 +118,11 @@ class RecyclingAgents extends React.Component {
       this.state.showModal ? (
         <Modal
           key="modal"
-          header={data => <Heading tag="h1" className={css(modalStyles.heading)}>{() => data.label}</Heading>}
+          header={data => (
+            <Heading size="large" className={css(modalStyles.heading)}>
+              {data.label}
+            </Heading>
+          )}
           body={data => [
             data.images.map(url => (
               <img
@@ -140,7 +142,7 @@ class RecyclingAgents extends React.Component {
               key="modal-element-for-recycling-description"
               className={css(modalStyles.description)}
             >
-              {() => data.description}
+              {data.description}
             </Text>,
           ]}
           data={this.state.elementForRecyclingSelected}

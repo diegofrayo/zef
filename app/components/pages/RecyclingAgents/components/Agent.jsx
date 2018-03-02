@@ -1,8 +1,8 @@
 // npm libs
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
 import classnames from 'classnames';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
 import { createStylesheet, platform } from 'styles/createStylesheet';
@@ -18,20 +18,15 @@ const agentStyles = StyleSheet.create(
       backgroundColor: theme.color.white[650],
       boxShadow: theme.shadow.base(theme.color.white[500]),
       cursor: 'default',
+      marginTop: theme.spacing.medium,
       marginBottom: theme.spacing.medium,
-      padding: theme.spacing.base,
+      padding: theme.spacing.medium,
     },
     containerSelected: {
       boxShadow: theme.shadow.base(theme.color.white[100]),
     },
-    titleName: {
-      fontSize: theme.fontSize.medium,
-    },
-    textDescription: {
-      color: theme.color.textPrimary,
-      margin: `${theme.spacing.base}px 0 ${theme.spacing.base}px`,
-      textAlign: 'justify',
-    },
+    titleName: {},
+    textDescription: {},
     icon: {
       fontSize: theme.fontSize.large,
       fontWeight: theme.fontWeight.bold,
@@ -115,17 +110,19 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
   <article
     id={agent.id}
     className={classnames(
-      css(agentStyles.container),
       css(
+        agentStyles.container,
         (agent.show_more.contact_info || agent.show_more.elements_to_recycle) &&
           agentStyles.containerSelected,
       ),
     )}
   >
-    <Heading tag="h1" className={css(agentStyles.titleName)}>
-      {() => agent.name}
+    <Heading size="small" className={css(agentStyles.titleName)}>
+      {agent.name}
     </Heading>
-    <Text className={css(agentStyles.textDescription)}>{() => agent.description}</Text>
+
+    <Text className={css(agentStyles.textDescription)}>{agent.description}</Text>
+
     <CollapsibleDetails
       buttonLabel="Materiales que reciclan"
       detailsSectionName="elements_to_recycle"
@@ -145,6 +142,7 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
       }}
       onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
     />
+
     <CollapsibleDetails
       buttonLabel="Información de contácto"
       detailsSectionName="contact_info"

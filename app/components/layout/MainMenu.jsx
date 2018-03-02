@@ -2,7 +2,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 import { history } from 'state';
 
 // routing
@@ -43,6 +43,7 @@ const styles = StyleSheet.create(
     containerVisible: {
       transform: 'translateX(0px)',
     },
+
     menu: {
       margin: 0,
       padding: 0,
@@ -75,59 +76,59 @@ const onClickMenuItem = (onClickOpenMenu, route) => () => {
   onClickOpenMenu();
 };
 
+const menuItems = [
+  {
+    name: 'Inicio',
+    route: routes.HOME,
+  },
+  {
+    name: '¿Cómo reciclar?',
+    route: routes.HOW_TO_RECYCLE,
+  },
+  {
+    name: '¿En dónde puedo reciclar?',
+    route: routes.RECYCLING_AGENTS,
+  },
+  {
+    name: 'Proyectos',
+    route: routes.PROJECTS,
+  },
+  {
+    name: 'Estadísticas',
+    route: routes.STATISTICS,
+  },
+  {
+    name: 'Contácto',
+    route: routes.CONTACT,
+  },
+];
+
 const MainMenu = props => [
   <div
-    className={css(styles.backdrop, props.isMenuOpen ? styles.backdropVisible : false)}
-    onClick={props.onClickOpenMenu}
     key="backdrop"
+    className={css(styles.backdrop, props.isMenuOpen && styles.backdropVisible)}
+    onClick={props.onClickOpenMenu}
   >
     {''}
   </div>,
   <section
-    className={css(styles.container, props.isMenuOpen ? styles.containerVisible : false)}
     key="menu-container"
+    className={css(styles.container, props.isMenuOpen ? styles.containerVisible : false)}
   >
     <ul className={css(styles.menu)}>
       <li className={css(styles.menuHeader)}>
         <i className={classnames('fa fa-leaf', css(styles.menuHeaderIcon))}>{''}</i>
         <span>{APP_SETTINGS.APP_TITLE}</span>
       </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOME)}
-      >
-        Inicio
-      </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.HOW_TO_RECYCLE)}
-      >
-        ¿Cómo reciclar?
-      </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.RECYCLING_AGENTS)}
-      >
-        ¿En dónde puedo reciclar?
-      </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.PROJECTS)}
-      >
-        Proyectos
-      </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.STATISTICS)}
-      >
-        Estadísticas
-      </li>
-      <li
-        className={css(styles.menuItem)}
-        onClick={onClickMenuItem(props.onClickOpenMenu, routes.CONTACT)}
-      >
-        Contácto
-      </li>
+      {menuItems.map(item => (
+        <li
+          key={`menu-item-${item.route}`}
+          className={css(styles.menuItem)}
+          onClick={onClickMenuItem(props.onClickOpenMenu, item.route)}
+        >
+          {item.name}
+        </li>
+      ))}
     </ul>
   </section>,
 ];

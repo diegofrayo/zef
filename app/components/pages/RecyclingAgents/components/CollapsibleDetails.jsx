@@ -1,7 +1,7 @@
 // npm libs
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
 import classnames from 'classnames';
+import { StyleSheet, css } from 'aphrodite/no-important';
 import { Transition as CSSTransitionGroup } from 'react-transition-group';
 
 // theme
@@ -12,7 +12,6 @@ const collapsibleDetailsStyles = StyleSheet.create(
     container: {
       borderTop: `1px solid ${theme.color.white[500]}`,
       clear: 'both',
-      padding: theme.spacing.small,
       transition: 'all .3s linear',
     },
     containerHidden: {
@@ -20,11 +19,12 @@ const collapsibleDetailsStyles = StyleSheet.create(
     },
     containerVisible: {
       opacity: 1,
+      padding: theme.spacing.small,
     },
     heading: {
       fontSize: theme.fontSize.small,
       fontWeight: theme.fontWeight.bold,
-      padding: theme.spacing.small,
+      paddingBottom: theme.spacing.small,
       textAlign: 'left',
       textTransform: 'uppercase',
     },
@@ -58,21 +58,11 @@ export default ({
       onClick={onClickCollapsibleDetailsHeading(agent, detailsSectionName)}
     >
       {agent.show_more[detailsSectionName] ? (
-        <i
-          className={classnames(
-            css(collapsibleDetailsStyles.iconDetails),
-            'fa fa-angle-up',
-          )}
-        >
+        <i className={classnames(css(collapsibleDetailsStyles.iconDetails), 'fa fa-angle-up')}>
           {''}
         </i>
       ) : (
-        <i
-          className={classnames(
-            css(collapsibleDetailsStyles.iconDetails),
-            'fa fa-angle-right',
-          )}
-        >
+        <i className={classnames(css(collapsibleDetailsStyles.iconDetails), 'fa fa-angle-right')}>
           {''}
         </i>
       )}

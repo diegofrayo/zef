@@ -1,13 +1,15 @@
 // npm libs
 import React from 'react';
 import classnames from 'classnames';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
+import Heading from 'components/common/Heading';
 import MainMenu from 'components/layout/MainMenu';
+import ReactComponent from 'lib/Component';
 
 // theme
-import { createStylesheet } from 'styles/createStylesheet';
+import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -15,10 +17,8 @@ const styles = StyleSheet.create(
       alignItems: 'center',
       backgroundColor: theme.color.brandPrimary,
       boxShadow: theme.shadow.base(theme.color.white[200]),
-      color: theme.color.white[700],
       display: 'flex',
       flex: 0,
-      fontWeight: theme.fontWeight.bold,
       justifyContent: 'center',
       minHeight: theme.headerHeight,
       zIndex: 100,
@@ -27,6 +27,7 @@ const styles = StyleSheet.create(
       },
     },
     menuIcon: {
+      color: theme.color.white[700],
       cursor: 'pointer',
       fontSize: 28,
       left: 20,
@@ -39,15 +40,55 @@ const styles = StyleSheet.create(
       },
     },
     appTitle: {
-      fontSize: theme.fontSize.large,
+      color: theme.color.white[700],
+      fontWeight: theme.fontWeight.bold,
+      marginBottom: 0,
     },
     appIcon: {
-      fontSize: theme.fontSize.large,
       marginRight: theme.spacing.small,
     },
   })),
 );
 
+const Header = () => (
+  <ReactComponent
+    state={{ isMenuOpen: false }}
+    properties={{ styles }}
+    events={{
+      onClickOpenMenu: setState => () => {
+        setState(state => ({
+          isMenuOpen: !state.isMenuOpen,
+        }));
+      },
+    }}
+  >
+    {(state, events, properties, setState) => (
+      <header className={css(properties.styles.container)}>
+        <i
+          className={classnames('fa fa-bars', css(properties.styles.menuIcon))}
+          onClick={events.onClickOpenMenu(setState)}
+        >
+          {''}
+        </i>
+
+        <Heading
+          size="large"
+          style={convertToStyleValue(properties.styles.appTitle)}
+        >
+          <i className={classnames(css(properties.styles.appIcon), 'fa fa-leaf')}>{''}</i>
+          <span>{APP_SETTINGS.APP_TITLE}</span>
+        </Heading>
+
+        <MainMenu
+          isMenuOpen={state.isMenuOpen}
+          onClickOpenMenu={events.onClickOpenMenu(setState)}
+        />
+      </header>
+    )}
+  </ReactComponent>
+);
+
+/*
 class Header extends React.Component {
 
   state = {
@@ -78,5 +119,6 @@ class Header extends React.Component {
     );
   }
 }
+*/
 
 export default Header;

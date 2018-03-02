@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
@@ -59,7 +59,7 @@ const Modal = props => {
   return ReactDOM.createPortal(
     <div
       key="modal-backdrop"
-      className={css(styles.backdrop, show ? styles.backdropVisible : false)}
+      className={css(styles.backdrop, show && styles.backdropVisible)}
       onClick={onClickHideModal}
     >
       <article

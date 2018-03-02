@@ -4,7 +4,7 @@ import BrowserRouter from 'react-router-dom/BrowserRouter';
 import PropTypes from 'prop-types';
 import { AppContainer as HotLoaderContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
 import Header from 'components/layout/Header';

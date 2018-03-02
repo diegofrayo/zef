@@ -1,7 +1,7 @@
 // npm libs
 import chroma from 'chroma-js';
 
-// utils
+// services
 import UtilitiesService from 'services/Utilities';
 
 const TONES = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700];
@@ -14,7 +14,6 @@ const LIGHT_BLUE = '#01BAEF';
 const LIGHT_GRAY = '#FBFBFF';
 
 export const theme = {
-
   headerHeight: 70,
   maxWidthContainer: 991,
 
@@ -53,7 +52,6 @@ export const theme = {
   },
 
   color: {
-
     black: [...TONES].reverse().reduce((acum, current, index) => {
       // eslint-disable-next-line
       acum[current] = chroma('black')
@@ -117,9 +115,7 @@ export const theme = {
     brandSecondary: DARK_BLUE,
     LIGHT_BLUE,
     DARK_GRAY,
-
   },
-
 };
 
 export const platform = ({ ios = {}, android = {} }) => {
@@ -129,6 +125,10 @@ export const platform = ({ ios = {}, android = {} }) => {
     return android;
   }
   return {};
+};
+
+export const convertToStyleValue = styleObject => {
+  return styleObject._definition;
 };
 
 export const createStylesheet = fn => fn(theme);

@@ -1,30 +1,20 @@
 // npm libs
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
-// utils
+// components
+import Heading from 'components/common/Heading';
+import Text from 'components/common/Text';
+
+// services
 import UtilitiesService from 'services/Utilities';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
 
-const styles = StyleSheet.create(
-  createStylesheet(theme => ({
-    pageTitle: {
-      color: theme.color.titles,
-      marginBottom: theme.spacing.base,
-    },
-    pageDescription: {
-      color: theme.color.textPrimary,
-      fontSize: theme.fontSize.base,
-      marginBottom: theme.spacing.base,
-      textAlign: 'justify',
-    },
-  })),
-);
+const styles = StyleSheet.create(createStylesheet(theme => ({})));
 
 class Contact extends React.Component {
-
   pageTitle = 'Contácto';
 
   componentDidMount() {
@@ -33,12 +23,13 @@ class Contact extends React.Component {
 
   render() {
     return [
-      <h2 key="page-title" className={css(styles.pageTitle)}>
+      <Heading key="page-title" size="large" tag="h2">
         {this.pageTitle}
-      </h2>,
-      <p className={css(styles.pageDescription)} key="page-description">
+      </Heading>,
+
+      <Text key="page-description">
         Descripción
-      </p>,
+      </Text>,
     ];
   }
 }
