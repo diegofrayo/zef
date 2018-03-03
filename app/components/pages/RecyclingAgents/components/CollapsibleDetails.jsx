@@ -4,6 +4,10 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { Transition as CSSTransitionGroup } from 'react-transition-group';
 
+// components
+import Button from 'components/common/Button';
+import Icon from 'components/common/Icon';
+
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
 
@@ -16,6 +20,7 @@ const collapsibleDetailsStyles = StyleSheet.create(
     },
     containerHidden: {
       opacity: 0,
+      marginTop: theme.spacing.small,
     },
     containerVisible: {
       opacity: 1,
@@ -27,11 +32,7 @@ const collapsibleDetailsStyles = StyleSheet.create(
       paddingBottom: theme.spacing.small,
       textAlign: 'left',
       textTransform: 'uppercase',
-    },
-    iconDetails: {
-      fontSize: theme.fontSize.small,
-      fontWeight: theme.fontWeight.bold,
-      marginRight: theme.spacing.small,
+      width: '100%',
     },
   })),
 );
@@ -40,6 +41,7 @@ export default ({
   buttonLabel,
   detailsSectionName,
   agent,
+  parent,
   body,
   onClickCollapsibleDetailsHeading,
 }) => {
@@ -51,25 +53,20 @@ export default ({
   };
 
   return [
-    <button
+    <Button
       key={`details-collapsible-heading-${agent.id}`}
-      type="button"
-      className={css(collapsibleDetailsStyles.heading)}
-      onClick={onClickCollapsibleDetailsHeading(agent, detailsSectionName)}
+      style={collapsibleDetailsStyles.heading}
+      onClick={onClickCollapsibleDetailsHeading(parent, agent, detailsSectionName)}
     >
       {agent.show_more[detailsSectionName] ? (
-        <i className={classnames(css(collapsibleDetailsStyles.iconDetails), 'fa fa-angle-up')}>
-          {''}
-        </i>
+        <Icon iconName="rowUp" size="small" />
       ) : (
-        <i className={classnames(css(collapsibleDetailsStyles.iconDetails), 'fa fa-angle-right')}>
-          {''}
-        </i>
+        <Icon iconName="rowRight" size="small" />
       )}
       <span className={classnames(agent.show_more[detailsSectionName] && 'u-font-italic')}>
         {buttonLabel}
       </span>
-    </button>,
+    </Button>,
     <CSSTransitionGroup
       key={`details-content-${agent.id}`}
       in={agent.show_more[detailsSectionName]}

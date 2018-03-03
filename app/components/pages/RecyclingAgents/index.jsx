@@ -12,6 +12,7 @@ import { theme as appTheme, createStylesheet } from 'styles/createStylesheet';
 // components
 import Heading from 'components/common/Heading';
 import Modal from 'components/layout/Modal';
+import Separator from 'components/common/Separator';
 import Text from 'components/common/Text';
 import Agent from './components/Agent';
 
@@ -28,7 +29,6 @@ const modalStyles = StyleSheet.create(
       padding: theme.spacing.base,
       width: 200,
     },
-    description: {},
   })),
 );
 
@@ -36,7 +36,7 @@ class RecyclingAgents extends React.Component {
   pageTitle = '¿En dónde puedo reciclar?';
 
   state = {
-    agents: [],
+    agents: null,
     showModal: false,
     elementForRecyclingSelected: undefined,
   };
@@ -55,22 +55,25 @@ class RecyclingAgents extends React.Component {
     console.log('componentDidCatch');
   }
 
-  onClickCollapsibleDetailsHeading = (agentSelected, attrName) => () => {
+  onClickCollapsibleDetailsHeading = (parent, agentSelected, attrName) => () => {
     this.setState(
       state => ({
-        agents: state.agents.map(agent => {
-          if (agent.id === agentSelected.id) {
-            return {
-              ...agent,
-              show_more: Object.keys(agent.show_more).reduce((acum, curr) => {
-                acum[curr] = false; // eslint-disable-line
-                if (curr === attrName) acum[curr] = !agentSelected.show_more[attrName]; // eslint-disable-line
-                return acum;
-              }, {}),
-            };
-          }
-          return { ...agent, show_more: { contact_info: false, elements_to_recycle: false } };
-        }),
+        agents: {
+          ...state.agents,
+          [parent]: state.agents[parent].map(agent => {
+            if (agent.id === agentSelected.id) {
+              return {
+                ...agent,
+                show_more: Object.keys(agent.show_more).reduce((acum, curr) => {
+                  acum[curr] = false; // eslint-disable-line
+                  if (curr === attrName) acum[curr] = !agentSelected.show_more[attrName]; // eslint-disable-line
+                  return acum;
+                }, {}),
+              };
+            }
+            return { ...agent, show_more: { contact_info: false, elements_to_recycle: false } };
+          }),
+        },
       }),
       () => {
         let to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
@@ -101,19 +104,38 @@ class RecyclingAgents extends React.Component {
       </Heading>,
 
       <Text key="page-description">
-        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes tipos de elementos que has reciclado.
+        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes
+        tipos de elementos que has reciclado.
       </Text>,
 
-      <section key="agents-container">
-        {this.state.agents.map(agent => (
-          <Agent
-            key={agent.id}
-            agent={agent}
-            onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
-            onClickElementForRecycling={this.onClickElementForRecycling}
-          />
-        ))}
-      </section>,
+      this.state.agents !== null && (
+        <section key="agents-container">
+          {this.state.agents.agents.map(agent => (
+            <Agent
+              key={agent.id}
+              agent={agent}
+              parent="agents"
+              onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+              onClickElementForRecycling={this.onClickElementForRecycling}
+            />
+          ))}
+
+          <Separator />
+
+          <section key="batteries-agents">
+            <Heading>Pilas</Heading>
+            <Text>En estos lugares puedes depositar pilas.</Text>
+            {this.state.agents.batteries_agents.map(agent => (
+              <Agent
+                key={agent.id}
+                agent={agent}
+                parent="batteries_agents"
+                onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+              />
+            ))}
+          </section>
+        </section>
+      ),
 
       this.state.showModal ? (
         <Modal
@@ -138,12 +160,7 @@ class RecyclingAgents extends React.Component {
                 }}
               />
             )),
-            <Text
-              key="modal-element-for-recycling-description"
-              className={css(modalStyles.description)}
-            >
-              {data.description}
-            </Text>,
+            <Text key="modal-element-for-recycling-description">{data.description}</Text>,
           ]}
           data={this.state.elementForRecyclingSelected}
           show={this.state.showModal}

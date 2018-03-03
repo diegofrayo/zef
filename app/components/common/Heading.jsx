@@ -5,13 +5,16 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
-import { createStylesheet } from 'styles/createStylesheet';
+import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     tag: {
       color: theme.color.titles,
       marginBottom: theme.spacing.base,
+    },
+    xlarge: {
+      fontSize: theme.fontSize.xlarge,
     },
     large: {
       fontSize: theme.fontSize.large,
@@ -26,6 +29,7 @@ const styles = StyleSheet.create(
 );
 
 const tagMapping = {
+  xlarge: 'h1',
   large: 'h1',
   medium: 'h2',
   small: 'h3',
@@ -35,7 +39,7 @@ const Heading = props => {
   const { tag, className, style, children, size } = props;
   const Tag = tagMapping[size] !== undefined ? tagMapping[size] : tag;
   return (
-    <Tag className={classnames(css(styles.tag), css(styles[size]), className)} style={style}>
+    <Tag className={classnames(css(styles.tag), css(styles[size]), className)} style={convertToStyleValue(style)}>
       {children.length ? React.Children.map(children, child => child) : children}
     </Tag>
   );

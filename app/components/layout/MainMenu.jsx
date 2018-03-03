@@ -1,9 +1,11 @@
 // npm libs
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { history } from 'state';
+
+// components
+import Icon from 'components/common/Icon';
 
 // routing
 import { routes } from 'routing';
@@ -117,7 +119,7 @@ const MainMenu = props => [
   >
     <ul className={css(styles.menu)}>
       <li className={css(styles.menuHeader)}>
-        <i className={classnames('fa fa-leaf', css(styles.menuHeaderIcon))}>{''}</i>
+        <Icon iconName="app" style={styles.menuHeaderIcon} />
         <span>{APP_SETTINGS.APP_TITLE}</span>
       </li>
       {menuItems.map(item => (

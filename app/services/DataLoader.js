@@ -5,17 +5,15 @@ let elementsForRecycling;
 let recyclingAgents;
 
 export default {
-
   async getRecylingAgents() {
-
     // eslint-disable-next-line
     if (!recyclingAgents) recyclingAgents = require('./../../assets/data/recycling_agents.json');
 
     // eslint-disable-next-line
     const elementsForRecycling = await this.getElementsForRecycling();
 
-    return Promise.resolve(
-      recyclingAgents
+    return Promise.resolve({
+      agents: recyclingAgents.agents
         .map(place => ({
           ...place,
           show_more: {
@@ -27,13 +25,21 @@ export default {
             return acum;
           }, []),
         }))
-        .filter(place => place.id !== 'universidad-del-quindio')
         .sort(UtilitiesService.sort('name', 'asc')),
-    );
+
+      batteries_agents: recyclingAgents.batteries_agents
+        .map(place => ({
+          ...place,
+          show_more: {
+            contact_info: false,
+            elements_to_recycle: false,
+          },
+        }))
+        .sort(UtilitiesService.sort('name', 'asc')),
+    });
   },
 
   async getElementsForRecycling() {
-
     if (!elementsForRecycling) {
       // eslint-disable-next-line
       elementsForRecycling = require('./../../assets/data/elements_for_recycling.json');
@@ -41,5 +47,4 @@ export default {
 
     return Promise.resolve(elementsForRecycling);
   },
-
 };

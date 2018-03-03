@@ -9,38 +9,46 @@ import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(() => ({
-    button: {},
+    link: {},
+    underline: {
+      textDecoration: 'underline',
+    },
   })),
 );
 
-const Button = props => {
-  const { className, children, style, onClick } = props;
+const Link = props => {
+  const { className, href, children, style, target, underline } = props;
   return (
-    <button
-      type="button"
-      className={classnames(css(styles.button), className)}
+    <a
+      href={href}
+      className={classnames(css(styles.link), underline && css(styles.underline), className)}
+      rel="noopener noreferrer"
       style={convertToStyleValue(style)}
-      onClick={onClick}
+      target={target}
     >
       {children.length ? React.Children.map(children, child => child) : children}
-    </button>
+    </a>
   );
 };
 
-Button.propTypes = {
+Link.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
   className: PropTypes.string,
+  href: PropTypes.string.isRequired,
   style: PropTypes.object,
-  onClick: PropTypes.func.isRequired,
+  target: PropTypes.string,
+  underline: PropTypes.bool,
 };
 
-Button.defaultProps = {
+Link.defaultProps = {
   className: '',
   style: {},
+  target: '',
+  underline: false,
 };
 
-export default Button;
+export default Link;

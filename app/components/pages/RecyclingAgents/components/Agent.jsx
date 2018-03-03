@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
+// components
+import Icon from 'components/common/Icon';
+
 // theme
-import { createStylesheet, platform } from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 // components
 import Heading from 'components/common/Heading';
+import Link from 'components/common/Link';
 import Text from 'components/common/Text';
 import CollapsibleDetails from './CollapsibleDetails';
 
@@ -25,13 +29,6 @@ const agentStyles = StyleSheet.create(
     containerSelected: {
       boxShadow: theme.shadow.base(theme.color.white[100]),
     },
-    titleName: {},
-    textDescription: {},
-    icon: {
-      fontSize: theme.fontSize.large,
-      fontWeight: theme.fontWeight.bold,
-      marginRight: theme.spacing.small,
-    },
   })),
 );
 
@@ -47,11 +44,6 @@ const elementsForRecyclingCollapsibleStyles = StyleSheet.create(
       marginRight: theme.spacing.base,
       marginTop: theme.spacing.small,
       padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
-      ...platform({
-        ios: {
-          fontWeight: theme.fontWeight.bold,
-        },
-      }),
     },
   })),
 );
@@ -74,18 +66,17 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
     },
     textPhone: {
       color: theme.color.red[100],
+      marginBottom: 0,
     },
     textEmail: {
       color: theme.color.green[100],
     },
     textWebsite: {
       color: theme.color.black[100],
-      textDecoration: 'underline',
     },
     textFacebook: {
       color: theme.color.blue[500],
       marginLeft: theme.spacing.small,
-      textDecoration: 'underline',
     },
 
     iconLocation: {
@@ -106,7 +97,27 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
   })),
 );
 
-const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecycling }) => (
+const Location = ({ address, city, location }) => (
+  <section>
+    <Icon iconName="map" size="large" className={css(contactInfoCollapsibleStyles.iconLocation)} />
+    <Link
+      style={contactInfoCollapsibleStyles.textLocation}
+      href={location}
+      target="_blank"
+      underline
+    >
+      {address} - {city}
+    </Link>
+  </section>
+);
+
+Location.propTypes = {
+  address: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+};
+
+const Agent = ({ agent, parent, onClickCollapsibleDetailsHeading, onClickElementForRecycling }) => (
   <article
     id={agent.id}
     className={classnames(
@@ -117,127 +128,121 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
       ),
     )}
   >
-    <Heading size="small" className={css(agentStyles.titleName)}>
-      {agent.name}
-    </Heading>
+    <Heading size="small">{agent.name}</Heading>
 
-    <Text className={css(agentStyles.textDescription)}>{agent.description}</Text>
+    <Text>{agent.description}</Text>
 
-    <CollapsibleDetails
-      buttonLabel="Materiales que reciclan"
-      detailsSectionName="elements_to_recycle"
-      agent={agent}
-      body={() => {
-        if (!agent.show_more.elements_to_recycle) return null;
-        return agent.elements_for_recycling.map(elementForRecycling => (
-          <span
-            key={`${elementForRecycling.id}-${agent.id}`}
-            className={css(elementsForRecyclingCollapsibleStyles.elementForRecycling)}
-            onClick={onClickElementForRecycling(elementForRecycling)}
-          >
-            <i className="fa fa-info-circle">{''}</i>{' '}
-            <span className="u-text-underline">{elementForRecycling.label}</span>
-          </span>
-        ));
-      }}
-      onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
-    />
+    {agent.elements_for_recycling && (
+      <CollapsibleDetails
+        buttonLabel="Materiales que reciclan"
+        detailsSectionName="elements_to_recycle"
+        agent={agent}
+        parent={parent}
+        body={() => {
+          if (!agent.show_more.elements_to_recycle) return null;
+          return agent.elements_for_recycling.map(elementForRecycling => (
+            <span
+              key={`${elementForRecycling.id}-${agent.id}`}
+              className={css(elementsForRecyclingCollapsibleStyles.elementForRecycling)}
+              onClick={onClickElementForRecycling(elementForRecycling)}
+            >
+              <Icon iconName="info" />{' '}
+              <span className="u-text-underline">{elementForRecycling.label}</span>
+            </span>
+          ));
+        }}
+        onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
+      />
+    )}
 
     <CollapsibleDetails
       buttonLabel="Información de contácto"
       detailsSectionName="contact_info"
       agent={agent}
+      parent={parent}
       body={() => {
         if (!agent.show_more.contact_info) return null;
         return [
-          <div key="agent-location" className={css(contactInfoCollapsibleStyles.textContainer)}>
-            <i
-              className={classnames(
-                css(agentStyles.icon),
-                css(contactInfoCollapsibleStyles.iconLocation),
-                'fa fa-map-marker',
-              )}
-            >
-              {''}
-            </i>
-            <a
-              className={css(contactInfoCollapsibleStyles.textLocation)}
-              href={agent.location}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {agent.address} - {agent.city}
-            </a>
-          </div>,
+          <article key="agent-location" className={css(contactInfoCollapsibleStyles.textContainer)}>
+            {Array.isArray(agent.location) ? (
+              agent.location.map(location => (
+                <Location key={`agent-location-${agent.id}`} city={agent.city} {...location} />
+              ))
+            ) : (
+              <Location city={agent.city} address={agent.address} location={agent.location} />
+            )}
+          </article>,
+
           agent.phone && (
-            <div key="agent-phone" className={css(contactInfoCollapsibleStyles.textContainer)}>
-              <i
-                className={classnames(
-                  css(agentStyles.icon),
-                  css(contactInfoCollapsibleStyles.iconPhone),
-                  'fa fa-phone',
-                )}
-              >
-                {''}
-              </i>
-              <p className={css(contactInfoCollapsibleStyles.textPhone)}>{agent.phone}</p>
-            </div>
+            <article key="agent-phone" className={css(contactInfoCollapsibleStyles.textContainer)}>
+              <Icon
+                iconName="phone"
+                size="large"
+                className={css(contactInfoCollapsibleStyles.iconPhone)}
+              />
+              <Text size="small" style={contactInfoCollapsibleStyles.textPhone}>
+                {agent.phone}
+              </Text>
+            </article>
           ),
+
           agent.email && (
-            <div key="agent-email" className={css(contactInfoCollapsibleStyles.textContainer)}>
-              <i
-                className={classnames(
-                  css(agentStyles.icon),
-                  css(contactInfoCollapsibleStyles.iconEmail),
-                  'fa fa-at',
-                )}
+            <article key="agent-email" className={css(contactInfoCollapsibleStyles.textContainer)}>
+              <Icon
+                iconName="email"
+                size="large"
+                className={css(contactInfoCollapsibleStyles.iconEmail)}
+              />
+              <Link
+                style={contactInfoCollapsibleStyles.textEmail}
+                href={`mailto:${agent.website}`}
+                underline
               >
-                {''}
-              </i>
-              <p className={css(contactInfoCollapsibleStyles.textEmail)}>{agent.email}</p>
-            </div>
+                {agent.email}
+              </Link>
+            </article>
           ),
+
           agent.website && (
-            <div key="agent-website" className={css(contactInfoCollapsibleStyles.textContainer)}>
-              <i
-                className={classnames(
-                  css(agentStyles.icon),
-                  css(contactInfoCollapsibleStyles.iconWebsite),
-                  'fa fa-link',
-                )}
-              >
-                {''}
-              </i>
-              <a
-                className={css(contactInfoCollapsibleStyles.textWebsite)}
+            <article
+              key="agent-website"
+              className={css(contactInfoCollapsibleStyles.textContainer)}
+            >
+              <Icon
+                iconName="url"
+                size="large"
+                className={css(contactInfoCollapsibleStyles.iconWebsite)}
+              />
+              <Link
+                style={contactInfoCollapsibleStyles.textWebsite}
                 href={agent.website}
                 target="_blank"
-                rel="noopener noreferrer"
+                underline
               >
                 {agent.website}
-              </a>
-            </div>
+              </Link>
+            </article>
           ),
+
           agent.fb_page && (
-            <div key="agent-fb-page" className={css(contactInfoCollapsibleStyles.textContainer)}>
-              <i
-                className={classnames(
-                  css(agentStyles.icon),
-                  css(contactInfoCollapsibleStyles.iconFacebook),
-                  'fa fa-facebook',
-                )}
-              >
-                {''}
-              </i>
-              <a
-                className={css(contactInfoCollapsibleStyles.textFacebook)}
+            <article
+              key="agent-fb-page"
+              className={css(contactInfoCollapsibleStyles.textContainer)}
+            >
+              <Icon
+                iconName="facebook"
+                size="large"
+                className={css(contactInfoCollapsibleStyles.iconFacebook)}
+              />
+              <Link
+                style={contactInfoCollapsibleStyles.textFacebook}
                 href={agent.fb_page.url}
                 target="_blank"
-                rel="noopener noreferrer"
+                underline
               >
                 {agent.fb_page.label}
-              </a>
-            </div>
+              </Link>
+            </article>
           ),
         ];
       }}
@@ -248,8 +253,13 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
 
 Agent.propTypes = {
   agent: PropTypes.object.isRequired,
+  parent: PropTypes.string.isRequired,
   onClickCollapsibleDetailsHeading: PropTypes.func.isRequired,
-  onClickElementForRecycling: PropTypes.func.isRequired,
+  onClickElementForRecycling: PropTypes.func,
+};
+
+Agent.defaultProps = {
+  onClickElementForRecycling: () => {},
 };
 
 export default Agent;

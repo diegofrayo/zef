@@ -38,7 +38,7 @@ const styles = StyleSheet.create(
       margin: '0 auto',
       maxWidth: theme.maxWidthContainer,
       overflow: 'auto',
-      padding: theme.spacing.medium,
+      padding: `${theme.spacing.large}px ${theme.spacing.xlarge}px`,
       width: '100%',
     },
   })),

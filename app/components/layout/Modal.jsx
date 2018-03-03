@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
+// components
+import Icon from 'components/common/Icon';
+
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
 
@@ -70,7 +73,7 @@ const Modal = props => {
         <header className={css(styles.header)}>{header(data)}</header>
         <section className={css(styles.body)}>{body(data)}</section>
         <button className={css(styles.closeButton)} onClick={onClickHideModal} type="button">
-          <i className={'fa fa-times'}>{''}</i>
+          <Icon iconName="close" />
         </button>
       </article>
     </div>,

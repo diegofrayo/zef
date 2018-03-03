@@ -1,15 +1,15 @@
 // npm libs
 import React from 'react';
-import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
 import Heading from 'components/common/Heading';
+import Icon from 'components/common/Icon';
 import MainMenu from 'components/layout/MainMenu';
 import ReactComponent from 'lib/Component';
 
 // theme
-import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
+import { createStylesheet } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -44,9 +44,6 @@ const styles = StyleSheet.create(
       fontWeight: theme.fontWeight.bold,
       marginBottom: 0,
     },
-    appIcon: {
-      marginRight: theme.spacing.small,
-    },
   })),
 );
 
@@ -64,18 +61,14 @@ const Header = () => (
   >
     {(state, events, properties, setState) => (
       <header className={css(properties.styles.container)}>
-        <i
-          className={classnames('fa fa-bars', css(properties.styles.menuIcon))}
+        <Icon
+          iconName="menu"
+          className={css(properties.styles.menuIcon)}
           onClick={events.onClickOpenMenu(setState)}
-        >
-          {''}
-        </i>
+        />
 
-        <Heading
-          size="large"
-          style={convertToStyleValue(properties.styles.appTitle)}
-        >
-          <i className={classnames(css(properties.styles.appIcon), 'fa fa-leaf')}>{''}</i>
+        <Heading size="xlarge" style={properties.styles.appTitle}>
+          <Icon iconName="app" />
           <span>{APP_SETTINGS.APP_TITLE}</span>
         </Heading>
 
@@ -87,38 +80,5 @@ const Header = () => (
     )}
   </ReactComponent>
 );
-
-/*
-class Header extends React.Component {
-
-  state = {
-    isMenuOpen: false,
-  };
-
-  onClickOpenMenu = () => {
-    this.setState(state => ({
-      isMenuOpen: !state.isMenuOpen,
-    }));
-  };
-
-  render() {
-    return (
-      <header className={css(styles.container)}>
-        <i
-          className={classnames('fa fa-bars', css(styles.menuIcon))}
-          onClick={this.onClickOpenMenu}
-        >
-          {''}
-        </i>
-        <h1 className={css(styles.text)}>
-          <i className={classnames(css(styles.appIcon), 'fa fa-leaf')}>{''}</i>
-          <span>{APP_SETTINGS.APP_TITLE}</span>
-        </h1>
-        <MainMenu isMenuOpen={this.state.isMenuOpen} onClickOpenMenu={this.onClickOpenMenu} />
-      </header>
-    );
-  }
-}
-*/
 
 export default Header;

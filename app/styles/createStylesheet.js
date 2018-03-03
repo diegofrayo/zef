@@ -33,6 +33,7 @@ export const theme = {
     small: 5,
     medium: 15,
     large: 20,
+    xlarge: 25,
   },
 
   fontSize: {
@@ -128,7 +129,7 @@ export const platform = ({ ios = {}, android = {} }) => {
 };
 
 export const convertToStyleValue = styleObject => {
-  return styleObject._definition;
+  return styleObject._definition; // eslint-disable-line
 };
 
 export const createStylesheet = fn => fn(theme);
