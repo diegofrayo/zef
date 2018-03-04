@@ -10,6 +10,7 @@ import UtilitiesService from 'services/Utilities';
 import { theme as appTheme, createStylesheet } from 'styles/createStylesheet';
 
 // components
+import Box from 'components/common/Box';
 import Heading from 'components/common/Heading';
 import Modal from 'components/layout/Modal';
 import Separator from 'components/common/Separator';
@@ -36,7 +37,7 @@ class RecyclingAgents extends React.Component {
   pageTitle = '¿En dónde puedo reciclar?';
 
   state = {
-    agents: null,
+    agents: [],
     showModal: false,
     elementForRecyclingSelected: undefined,
   };
@@ -55,33 +56,30 @@ class RecyclingAgents extends React.Component {
     console.log('componentDidCatch');
   }
 
-  onClickCollapsibleDetailsHeading = (parent, agentSelected, attrName) => () => {
+  onClickCollapsibleDetailsHeading = (agentSelected, attrName) => () => {
     this.setState(
       state => ({
-        agents: {
-          ...state.agents,
-          [parent]: state.agents[parent].map(agent => {
-            if (agent.id === agentSelected.id) {
-              return {
-                ...agent,
-                show_more: Object.keys(agent.show_more).reduce((acum, curr) => {
-                  acum[curr] = false; // eslint-disable-line
-                  if (curr === attrName) acum[curr] = !agentSelected.show_more[attrName]; // eslint-disable-line
-                  return acum;
-                }, {}),
-              };
-            }
-            return { ...agent, show_more: { contact_info: false, elements_to_recycle: false } };
-          }),
-        },
+        agents: state.agents.map(agent => {
+          if (agent.id === agentSelected.id) {
+            return {
+              ...agent,
+              show_more: Object.keys(agent.show_more).reduce((acum, curr) => {
+                acum[curr] = false; // eslint-disable-line
+                if (curr === attrName) acum[curr] = !agentSelected.show_more[attrName]; // eslint-disable-line
+                return acum;
+              }, {}),
+            };
+          }
+          return { ...agent, show_more: { contact_info: false, elements_to_recycle: false } };
+        }),
       }),
       () => {
         let to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
-          ? appTheme.headerHeight
+          ? appTheme.headerHeight - 5
           : appTheme.headerHeight + 15;
         to = attrName === 'contact_info' && !agentSelected.show_more[attrName] ? to - 50 : to;
         UtilitiesService.animateScroll(
-          document.getElementById('app-content-container'),
+          document.getElementById('recycling-agents-container'),
           document.getElementById(agentSelected.id).offsetTop - to,
           500,
         );
@@ -98,76 +96,82 @@ class RecyclingAgents extends React.Component {
   };
 
   render() {
-    return [
-      <Heading key="page-title" size="large" tag="h2">
-        {this.pageTitle}
-      </Heading>,
+    return (
+      <Box pageContainer grow column id="recycling-agents-container">
+        <Heading key="page-title" size="large" tag="h2">
+          {this.pageTitle}
+        </Heading>
 
-      <Text key="page-description">
-        Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los diferentes
-        tipos de elementos que has reciclado.
-      </Text>,
+        <Text key="page-description">
+          Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los
+          diferentes tipos de elementos que has reciclado.
+        </Text>
 
-      this.state.agents !== null && (
         <section key="agents-container">
-          {this.state.agents.agents.map(agent => (
-            <Agent
-              key={agent.id}
-              agent={agent}
-              parent="agents"
-              onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
-              onClickElementForRecycling={this.onClickElementForRecycling}
-            />
-          ))}
+          {this.state.agents.map(agent => {
+            if (agent.category !== 'normal') return null;
+            return (
+              <Agent
+                key={agent.id}
+                agent={agent}
+                listName="agents"
+                onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+                onClickElementForRecycling={this.onClickElementForRecycling}
+              />
+            );
+          })}
 
           <Separator />
 
           <section key="batteries-agents">
             <Heading>Pilas</Heading>
             <Text>En estos lugares puedes depositar pilas.</Text>
-            {this.state.agents.batteries_agents.map(agent => (
-              <Agent
-                key={agent.id}
-                agent={agent}
-                parent="batteries_agents"
-                onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
-              />
-            ))}
+            {this.state.agents.map(agent => {
+              if (agent.category !== 'batteries') return null;
+              return (
+                <Agent
+                  key={agent.id}
+                  agent={agent}
+                  listName="batteries_agents"
+                  onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+                />
+              );
+            })}
           </section>
         </section>
-      ),
 
-      this.state.showModal ? (
-        <Modal
-          key="modal"
-          header={data => (
-            <Heading size="large" className={css(modalStyles.heading)}>
-              {data.label}
-            </Heading>
-          )}
-          body={data => [
-            data.images.map(url => (
-              <img
-                id="modal-element-for-recycling-img"
-                key={`modal-element-for-recycling-img-${data.id}`}
-                src={url}
-                alt={data.label}
-                className={css(modalStyles.image)}
-                onError={() => {
-                  document.getElementById(
-                    'modal-element-for-recycling-img',
-                  ).style.border = `1px solid ${appTheme.color.white[600]}`;
-                }}
-              />
-            )),
-            <Text key="modal-element-for-recycling-description">{data.description}</Text>,
-          ]}
-          data={this.state.elementForRecyclingSelected}
-          show={this.state.showModal}
-          onClickHideModal={this.onClickHideElementForRecyclingDetails}
-        />
-      ) : null,
-    ];
+        {this.state.showModal ? (
+          <Modal
+            key="modal"
+            header={data => (
+              <Heading size="large" className={css(modalStyles.heading)}>
+                {data.label}
+              </Heading>
+            )}
+            body={data => [
+              data.images.map(url => (
+                <img
+                  id="modal-element-for-recycling-img"
+                  key={`modal-element-for-recycling-img-${data.id}`}
+                  src={url}
+                  alt={data.label}
+                  className={css(modalStyles.image)}
+                  onError={() => {
+                    document.getElementById(
+                      'modal-element-for-recycling-img',
+                    ).style.border = `1px solid ${appTheme.color.white[600]}`;
+                  }}
+                />
+              )),
+              <Text key="modal-element-for-recycling-description">{data.description}</Text>,
+            ]}
+            data={this.state.elementForRecyclingSelected}
+            show={this.state.showModal}
+            onClickHideModal={this.onClickHideElementForRecyclingDetails}
+          />
+        ) : null}
+      </Box>
+    );
   }
 }
 

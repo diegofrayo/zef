@@ -2,10 +2,9 @@
 
 // npm libs
 import createHistory from 'history/createBrowserHistory';
-// import logger from 'redux-logger';
-// import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
+// import logger from 'redux-logger'; import thunk from 'redux-thunk';
 
 // redux
 import reducers from 'state/reducers';
@@ -18,9 +17,7 @@ const reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__
   : undefined;
 const middlewares = [reduxRouterMiddleware];
 
-if (APP_SETTINGS.environment === 'development') {
-  // middlewares.push(logger);
-}
+// if (APP_SETTINGS.environment === 'development') middlewares.push(logger);
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 const store = createStoreWithMiddleware(reducers, {}, reduxDevTool);

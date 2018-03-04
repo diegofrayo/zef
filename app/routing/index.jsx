@@ -38,4 +38,8 @@ const Router = () => (
   </ConnectedRouter>
 );
 
-export { Router, routes };
+const goTo = (route) => {
+  history.push(route);
+};
+
+export { Router, routes, goTo };

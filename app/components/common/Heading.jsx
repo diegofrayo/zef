@@ -36,10 +36,10 @@ const tagMapping = {
 };
 
 const Heading = props => {
-  const { tag, className, style, children, size } = props;
+  const { tag, className, style, children, size, onClick } = props;
   const Tag = tagMapping[size] !== undefined ? tagMapping[size] : tag;
   return (
-    <Tag className={classnames(css(styles.tag), css(styles[size]), className)} style={convertToStyleValue(style)}>
+    <Tag className={classnames(css(styles.tag), css(styles[size]), className)} style={convertToStyleValue(style)} onClick={onClick}>
       {children.length ? React.Children.map(children, child => child) : children}
     </Tag>
   );
@@ -55,6 +55,7 @@ Heading.propTypes = {
   size: PropTypes.oneOf(Object.keys(tagMapping)),
   style: PropTypes.object,
   tag: PropTypes.oneOf(Array.from(Array(6).keys()).map(index => `h${index + 1}`)),
+  onClick: PropTypes.func.isRequired,
 };
 
 Heading.defaultProps = {
@@ -62,6 +63,7 @@ Heading.defaultProps = {
   size: 'large',
   style: {},
   tag: 'h1',
+  onClick: () => {},
 };
 
 export default Heading;

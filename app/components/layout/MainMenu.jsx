@@ -2,13 +2,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite/no-important';
-import { history } from 'state';
 
 // components
 import Icon from 'components/common/Icon';
 
 // routing
-import { routes } from 'routing';
+import { goTo, routes } from 'routing';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
@@ -74,7 +73,7 @@ const styles = StyleSheet.create(
 );
 
 const onClickMenuItem = (onClickOpenMenu, route) => () => {
-  history.push(route);
+  goTo(route);
   onClickOpenMenu();
 };
 

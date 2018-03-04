@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
+import Box from 'components/common/Box';
 import Icon from 'components/common/Icon';
 
 // theme
@@ -13,11 +14,9 @@ import { createStylesheet } from 'styles/createStylesheet';
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     backdrop: {
-      alignItems: 'center',
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       display: 'none',
       height: '100vh',
-      justifyContent: 'center',
       left: 0,
       padding: 10,
       position: 'absolute',
@@ -60,23 +59,27 @@ const styles = StyleSheet.create(
 const Modal = props => {
   const { header, body, data, show, onClickHideModal } = props;
   return ReactDOM.createPortal(
-    <div
+    <Box
       key="modal-backdrop"
       className={css(styles.backdrop, show && styles.backdropVisible)}
       onClick={onClickHideModal}
+      valign
+      halign
     >
-      <article
+      <Box
         key="modal-container"
         className={css(styles.container)}
+        tag="article"
         onClick={event => event.stopPropagation()}
+        column
       >
         <header className={css(styles.header)}>{header(data)}</header>
         <section className={css(styles.body)}>{body(data)}</section>
         <button className={css(styles.closeButton)} onClick={onClickHideModal} type="button">
           <Icon iconName="close" />
         </button>
-      </article>
-    </div>,
+      </Box>
+    </Box>,
     document.getElementById('main-container'),
   );
 };

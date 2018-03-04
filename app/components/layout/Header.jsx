@@ -3,10 +3,14 @@ import React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
+import Box from 'components/common/Box';
 import Heading from 'components/common/Heading';
 import Icon from 'components/common/Icon';
 import MainMenu from 'components/layout/MainMenu';
 import ReactComponent from 'lib/Component';
+
+// routing
+import { goTo, routes } from 'routing';
 
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
@@ -14,12 +18,9 @@ import { createStylesheet } from 'styles/createStylesheet';
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
     container: {
-      alignItems: 'center',
       backgroundColor: theme.color.brandPrimary,
       boxShadow: theme.shadow.base(theme.color.white[200]),
-      display: 'flex',
       flex: 0,
-      justifyContent: 'center',
       minHeight: theme.headerHeight,
       zIndex: 100,
       [theme.mediaQueries.mobile.css]: {
@@ -41,6 +42,7 @@ const styles = StyleSheet.create(
     },
     appTitle: {
       color: theme.color.white[700],
+      cursor: 'pointer',
       fontWeight: theme.fontWeight.bold,
       marginBottom: 0,
     },
@@ -60,14 +62,14 @@ const Header = () => (
     }}
   >
     {(state, events, properties, setState) => (
-      <header className={css(properties.styles.container)}>
+      <Box tag="header" className={css(properties.styles.container)} valign halign>
         <Icon
           iconName="menu"
           className={css(properties.styles.menuIcon)}
           onClick={events.onClickOpenMenu(setState)}
         />
 
-        <Heading size="xlarge" style={properties.styles.appTitle}>
+        <Heading size="xlarge" style={properties.styles.appTitle} onClick={() => goTo(routes.HOME)}>
           <Icon iconName="app" />
           <span>{APP_SETTINGS.APP_TITLE}</span>
         </Heading>
@@ -76,7 +78,7 @@ const Header = () => (
           isMenuOpen={state.isMenuOpen}
           onClickOpenMenu={events.onClickOpenMenu(setState)}
         />
-      </header>
+      </Box>
     )}
   </ReactComponent>
 );

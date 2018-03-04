@@ -41,7 +41,6 @@ export default ({
   buttonLabel,
   detailsSectionName,
   agent,
-  parent,
   body,
   onClickCollapsibleDetailsHeading,
 }) => {
@@ -56,7 +55,7 @@ export default ({
     <Button
       key={`details-collapsible-heading-${agent.id}`}
       style={collapsibleDetailsStyles.heading}
-      onClick={onClickCollapsibleDetailsHeading(parent, agent, detailsSectionName)}
+      onClick={onClickCollapsibleDetailsHeading(agent, detailsSectionName)}
     >
       {agent.show_more[detailsSectionName] ? (
         <Icon iconName="rowUp" size="small" />

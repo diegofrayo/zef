@@ -2,6 +2,7 @@
   "agents": [
     {
       "id": "fundacion-punto-cero",
+      "category": "normal",
       "name": "Fundación Punto Cero",
       "description":
         "Fundación Punto Cero es una organización comprometida con el desarrollo sostenible. Promueven la gestión integral de los residuos sólidos reciclables fomentando procesos de educación y sensibilización ambiental.",
@@ -20,6 +21,7 @@
     },
     {
       "id": "fundacion-la-oportunidad",
+      "category": "normal",
       "name": "Fundación La Oportunidad",
       "description":
         "Fundación La Oportunidad busca prevenir situaciones de vulnerabilidad con los niños y niñas del barrio La Mariela, brindándoles espacios para un adecuado uso de su tiempo libre. Síguelos, conócelos y apóyalos.",
@@ -34,6 +36,7 @@
     },
     {
       "id": "centro-de-reciclaje",
+      "category": "normal",
       "name": "Centro de Reciclaje",
       "description":
         "El Centro de Reciclaje cuenta con más de 40 años de experiencia en recuperación de materiales reciclables, proporcionan un servicio eficiente y de calidad en sus procesos de recoleccion, pesaje, clasificación, embalaje y despacho.",
@@ -73,6 +76,7 @@
     },
     {
       "id": "tesla-raee",
+      "category": "normal",
       "name": "Fundación Tesla",
       "description":
         "La fundación Tesla tiene como finalidad ofrecer una solución integral a la Industria TICs o a quienes hagan uso de la misma, exponiendo frente al mercado, una nueva alternativa e innovación para el destino final seguro para los Residuos de Aparatos Eléctricos y Electrónicos RAEE.",
@@ -85,11 +89,10 @@
       "website": "http://teslaraee.com",
       "fb_page": "",
       "elements_for_recycling": ["desechos-electronicos"]
-    }
-  ],
-  "batteries_agents": [
+    },
     {
       "id": "universidad-del-quindio",
+      "category": "batteries",
       "name": "Universidad del Quindío",
       "description":
         "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda",
@@ -104,6 +107,7 @@
     },
     {
       "id": "ara",
+      "category": "batteries",
       "name": "Supermercados ARA",
       "description":
         "En los supermercados ARA encuentras recipientes en donde puedes depositar tus pilas.",
