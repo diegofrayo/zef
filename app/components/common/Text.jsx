@@ -11,7 +11,6 @@ const styles = StyleSheet.create(
   createStylesheet(theme => ({
     text: {
       color: theme.color.textPrimary,
-      fontSize: theme.fontSize.base,
       marginBottom: theme.spacing.base,
       textAlign: 'justify',
     },
@@ -27,6 +26,9 @@ const styles = StyleSheet.create(
     small: {
       fontSize: theme.fontSize.small,
     },
+    xsmall: {
+      fontSize: theme.fontSize.xsmall,
+    },
   })),
 );
 
@@ -35,6 +37,8 @@ const sizeMapping = {
   medium: 'medium',
   normal: 'base',
   small: 'small',
+  xsmall: 'xsmall',
+  '': '',
 };
 
 const Text = props => {
@@ -62,7 +66,7 @@ Text.propTypes = {
 
 Text.defaultProps = {
   className: '',
-  size: 'normal',
+  size: '',
   style: {},
 };
 

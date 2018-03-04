@@ -13,6 +13,7 @@ const styles = StyleSheet.create(
       border: 0,
       borderBottom: `1px solid ${theme.color.white[600]}`,
       margin: `${theme.spacing.large}px auto ${theme.spacing.base}px`,
+      width: '100%',
     },
   })),
 );

@@ -13,6 +13,8 @@ const GREEN = '#20BF55';
 const LIGHT_BLUE = '#01BAEF';
 const LIGHT_GRAY = '#FBFBFF';
 
+const FONT_SIZE_BASE = 18;
+
 export const theme = {
   headerHeight: 70,
   maxWidthContainer: 991,
@@ -37,12 +39,12 @@ export const theme = {
   },
 
   fontSize: {
-    base: 16,
-    xsmall: 12,
-    small: 14,
-    medium: 18,
-    large: 20,
-    xlarge: 22,
+    base: FONT_SIZE_BASE,
+    xsmall: FONT_SIZE_BASE - 4,
+    small: FONT_SIZE_BASE - 2,
+    medium: FONT_SIZE_BASE + 2,
+    large: FONT_SIZE_BASE + 4,
+    xlarge: FONT_SIZE_BASE + 6,
   },
 
   fontWeight: {

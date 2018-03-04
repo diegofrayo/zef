@@ -21,18 +21,22 @@ const styles = StyleSheet.create(
     indicatorContainer: {
       boxShadow: theme.shadow.base(),
       margin: theme.spacing.base,
-      maxHeight: 200,
-      maxWidth: 200,
+      height: 200,
+      width: 200,
       padding: theme.spacing.large,
     },
     indicatorNumber: {
       color: theme.color.black[700],
-      fontSize: theme.fontSize.xlarge * 3,
+      fontSize: theme.fontSize.xlarge * 2,
       fontWeight: theme.fontWeight.bold,
+      textAlign: 'center',
+      width: '100%',
     },
     indicatorDescription: {
       fontSize: theme.fontSize.base,
       fontWeight: theme.fontWeight.bold,
+      textAlign: 'center',
+      width: '100%',
     },
   })),
 );

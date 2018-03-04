@@ -46,7 +46,7 @@ const elementsForRecyclingCollapsibleStyles = StyleSheet.create(
       color: theme.color.brandPrimary,
       cursor: 'pointer',
       display: 'inline-block',
-      fontSize: theme.fontSize.small,
+      fontSize: theme.fontSize.xsmall,
       marginRight: theme.spacing.base,
       marginTop: theme.spacing.small,
       padding: `${theme.spacing.small}px ${theme.spacing.base}px`,
@@ -58,7 +58,7 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
   createStylesheet(theme => ({
     textContainer: {
       color: theme.color.textPrimary,
-      fontSize: theme.fontSize.small,
+      fontSize: theme.fontSize.xsmall,
       fontWeight: theme.fontWeight.bold,
       marginTop: theme.spacing.small + 2,
       wordBreak: 'break-word',
@@ -178,8 +178,8 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
 
           agent.phone && (
             <Box
-              tag="article"
               key="agent-phone"
+              tag="article"
               className={css(contactInfoCollapsibleStyles.textContainer)}
               valign
             >
@@ -188,7 +188,7 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
                 size="large"
                 className={css(contactInfoCollapsibleStyles.iconPhone)}
               />
-              <Text size="small" style={contactInfoCollapsibleStyles.textPhone}>
+              <Text size="xsmall" style={contactInfoCollapsibleStyles.textPhone}>
                 {agent.phone}
               </Text>
             </Box>
@@ -196,8 +196,8 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
 
           agent.email && (
             <Box
-              tag="article"
               key="agent-email"
+              tag="article"
               className={css(contactInfoCollapsibleStyles.textContainer)}
               valign
             >
@@ -218,8 +218,8 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
 
           agent.website && (
             <Box
-              tag="article"
               key="agent-website"
+              tag="article"
               className={css(contactInfoCollapsibleStyles.textContainer)}
               valign
             >
@@ -241,8 +241,8 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
 
           agent.fb_page && (
             <Box
-              tag="article"
               key="agent-fb-page"
+              tag="article"
               className={css(contactInfoCollapsibleStyles.textContainer)}
               valign
             >
