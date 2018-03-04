@@ -25,11 +25,11 @@ class Projects extends React.Component {
   render() {
     return (
       <Box pageContainer grow column>
-        <Heading key="page-title" size="large" tag="h2">
+        <Heading tag="h2">
           {this.pageTitle}
         </Heading>
 
-        <Text key="page-description">
+        <Text size="normal">
           Descripción
         </Text>
       </Box>

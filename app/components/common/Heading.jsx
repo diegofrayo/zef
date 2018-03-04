@@ -13,6 +13,7 @@ const styles = StyleSheet.create(
       color: theme.color.titles,
       marginBottom: theme.spacing.base,
     },
+
     xlarge: {
       fontSize: theme.fontSize.xlarge,
     },
@@ -23,7 +24,7 @@ const styles = StyleSheet.create(
       fontSize: theme.fontSize.medium,
     },
     small: {
-      fontSize: theme.fontSize.medium - 1,
+      fontSize: theme.fontSize.small,
     },
   })),
 );
@@ -51,10 +52,12 @@ Heading.propTypes = {
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
+
   className: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(tagMapping)),
   style: PropTypes.object,
   tag: PropTypes.oneOf(Array.from(Array(6).keys()).map(index => `h${index + 1}`)),
+
   onClick: PropTypes.func.isRequired,
 };
 
@@ -63,6 +66,7 @@ Heading.defaultProps = {
   size: 'large',
   style: {},
   tag: 'h1',
+
   onClick: () => {},
 };
 

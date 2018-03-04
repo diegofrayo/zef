@@ -37,6 +37,7 @@ Link.propTypes = {
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
+
   className: PropTypes.string,
   href: PropTypes.string.isRequired,
   style: PropTypes.object,

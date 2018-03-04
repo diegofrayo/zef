@@ -33,8 +33,10 @@ Button.propTypes = {
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
+
   className: PropTypes.string,
   style: PropTypes.object,
+
   onClick: PropTypes.func.isRequired,
 };
 

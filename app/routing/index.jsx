@@ -22,7 +22,7 @@ const routes = {
   HOW_TO_RECYCLE: `${ROOT}/como-reciclar`,
   PROJECTS: `${ROOT}/proyectos`,
   RECYCLING_AGENTS: `${ROOT}/donde-reciclar`,
-  STATISTICS: `${ROOT}/estadísticas`,
+  STATISTICS: `${ROOT}/estadisticas`,
 };
 
 const Router = () => (

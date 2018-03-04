@@ -33,8 +33,6 @@ const styles = StyleSheet.create(
       width: '100%',
     },
     indicatorDescription: {
-      fontSize: theme.fontSize.base,
-      fontWeight: theme.fontWeight.bold,
       textAlign: 'center',
       width: '100%',
     },
@@ -44,7 +42,7 @@ const styles = StyleSheet.create(
 const Indicator = ({ number, description }) => (
   <Box className={css(styles.indicatorContainer)} valign halign column>
     <Text style={styles.indicatorNumber}>+{number}</Text>
-    <Text className={css(styles.indicatorDescription)}>{description}</Text>
+    <Text style={styles.indicatorDescription} size="normal">{description}</Text>
   </Box>
 );
 

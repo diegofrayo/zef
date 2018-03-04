@@ -113,9 +113,9 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
     )}
     column
   >
-    <Heading size="small">{agent.name}</Heading>
+    <Heading size="medium">{agent.name}</Heading>
 
-    <Text>{agent.description}</Text>
+    <Text align="justify" size="normal">{agent.description}</Text>
 
     {agent.elements_for_recycling && (
       <CollapsibleDetails
@@ -202,13 +202,13 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
               valign
             >
               <Icon
-                iconName="email"
+                iconName="email-1"
                 size="large"
                 className={css(contactInfoCollapsibleStyles.iconEmail)}
               />
               <Link
                 style={contactInfoCollapsibleStyles.textEmail}
-                href={`mailto:${agent.website}`}
+                href={`mailto:${agent.email}`}
                 underline
               >
                 {agent.email}

@@ -13,6 +13,15 @@ const styles = StyleSheet.create(
       fontWeight: theme.fontWeight.bold,
       marginRight: theme.spacing.small,
     },
+    notFound: {
+      border: '1px solid black',
+      borderRadius: '100%',
+      color: 'black',
+      fontSize: 10,
+      fontStyle: 'normal',
+      padding: '3px 6px',
+    },
+
     large: {
       fontSize: theme.fontSize.large,
     },
@@ -25,29 +34,22 @@ const styles = StyleSheet.create(
     small: {
       fontSize: theme.fontSize.small,
     },
-    notFound: {
-      border: '1px solid black',
-      borderRadius: '100%',
-      color: 'black',
-      fontSize: 10,
-      fontStyle: 'normal',
-      padding: '3px 6px',
-    },
   })),
 );
 
 const sizeMapping = {
-  '': '',
   large: 'large',
   medium: 'medium',
   normal: 'base',
   small: 'small',
+  '': '',
 };
 
 const iconMapping = {
   app: 'fa-leaf',
   close: 'fa-times',
-  email: 'fa-at',
+  'email-1': 'fa-at',
+  'email-2': 'fa-envelope',
   facebook: 'fa-facebook',
   info: 'fa-info-circle',
   map: 'fa-map-marker',
@@ -82,6 +84,7 @@ Icon.propTypes = {
   iconName: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(sizeMapping)),
   style: PropTypes.object,
+
   onClick: PropTypes.func,
 };
 
@@ -90,6 +93,7 @@ Icon.defaultProps = {
   iconName: '',
   size: '',
   style: {},
+
   onClick: () => {},
 };
 

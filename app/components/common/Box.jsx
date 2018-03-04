@@ -13,6 +13,7 @@ const styles = StyleSheet.create(
       display: 'flex',
       flexShrink: 0,
     },
+
     valign: {
       alignItems: 'center',
     },
@@ -36,6 +37,7 @@ const styles = StyleSheet.create(
     growV: {
       height: '100%',
     },
+
     pageContainer: {
       overflow: 'auto',
       padding: `${theme.spacing.large}px ${theme.spacing.xlarge}px`,
@@ -62,10 +64,13 @@ const Box = props => {
     tag,
     onClick,
   } = props;
+
   const Tag = !tag ? 'section' : tag;
   const optionalProps = {};
+
   if (id) optionalProps.id = id;
   if (onClick) optionalProps.onClick = onClick;
+
   return (
     <Tag
       style={convertToStyleValue(style)}
@@ -128,6 +133,7 @@ Box.defaultProps = {
   className: '',
   style: {},
   tag: '',
+
   onClick: () => {},
 };
 

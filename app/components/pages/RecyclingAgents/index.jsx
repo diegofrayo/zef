@@ -98,16 +98,16 @@ class RecyclingAgents extends React.Component {
   render() {
     return (
       <Box pageContainer grow column id="recycling-agents-container">
-        <Heading key="page-title" size="large" tag="h2">
+        <Heading tag="h2">
           {this.pageTitle}
         </Heading>
 
-        <Text key="page-description">
+        <Text align="justify" size="normal">
           Aquí puedes encontrar un listado de sitios en Armenia, en donde puedes llevar los
           diferentes tipos de elementos que has reciclado.
         </Text>
 
-        <Box key="agents-container" column>
+        <Box column>
           {this.state.agents.map(agent => {
             if (agent.category !== 'normal') return null;
             return (
@@ -123,9 +123,9 @@ class RecyclingAgents extends React.Component {
 
           <Separator />
 
-          <Box key="batteries-agents" column>
-            <Heading>Pilas</Heading>
-            <Text>En estos lugares puedes depositar pilas.</Text>
+          <Box column>
+            <Heading tag="h2">Pilas</Heading>
+            <Text size="normal">En estos lugares puedes depositar pilas.</Text>
             {this.state.agents.map(agent => {
               if (agent.category !== 'batteries') return null;
               return (
@@ -144,7 +144,7 @@ class RecyclingAgents extends React.Component {
           <Modal
             key="modal"
             header={data => (
-              <Heading size="large" className={css(modalStyles.heading)}>
+              <Heading className={css(modalStyles.heading)}>
                 {data.label}
               </Heading>
             )}

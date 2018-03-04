@@ -1,19 +1,15 @@
 // npm libs
 import React from 'react';
-// import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
 import Box from 'components/common/Box';
 import Heading from 'components/common/Heading';
+import Icon from 'components/common/Icon';
+import Link from 'components/common/Link';
 import Text from 'components/common/Text';
-
-// theme
-// import { createStylesheet } from 'styles/createStylesheet';
 
 // services
 import UtilitiesService from 'services/Utilities';
-
-// const styles = StyleSheet.create(createStylesheet(theme => ({})));
 
 class Contact extends React.Component {
   pageTitle = 'Contácto';
@@ -25,13 +21,24 @@ class Contact extends React.Component {
   render() {
     return (
       <Box pageContainer grow column>
-        <Heading key="page-title" size="large" tag="h2">
+        <Heading tag="h2">
           {this.pageTitle}
         </Heading>
 
-        <Text key="page-description">
-          Descripción
+        <Text size="normal">
+          Correo electrónico de contácto
         </Text>
+
+        <Link
+          href={`mailto:diegofrayo@gmail.com`}
+          underline
+        >
+          <Icon
+            iconName="email-2"
+            size="large"
+          />
+          <span>diegofrayo@gmail.com</span>
+        </Link>
       </Box>
     );
   }
