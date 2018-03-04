@@ -83,7 +83,7 @@ const Box = props => {
       )}
       {...optionalProps}
     >
-      {children.length ? React.Children.map(children, child => child) : children}
+      {children && children.length ? React.Children.map(children, child => child) : children}
     </Tag>
   );
 };
@@ -93,7 +93,7 @@ Box.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
     PropTypes.string,
-  ]).isRequired,
+  ]),
 
   column: PropTypes.bool,
   grow: PropTypes.bool,
@@ -113,6 +113,8 @@ Box.propTypes = {
 };
 
 Box.defaultProps = {
+  children: null,
+
   column: false,
   grow: false,
   growH: false,

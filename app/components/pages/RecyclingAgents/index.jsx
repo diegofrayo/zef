@@ -107,7 +107,7 @@ class RecyclingAgents extends React.Component {
           diferentes tipos de elementos que has reciclado.
         </Text>
 
-        <section key="agents-container">
+        <Box key="agents-container" column>
           {this.state.agents.map(agent => {
             if (agent.category !== 'normal') return null;
             return (
@@ -123,7 +123,7 @@ class RecyclingAgents extends React.Component {
 
           <Separator />
 
-          <section key="batteries-agents">
+          <Box key="batteries-agents" column>
             <Heading>Pilas</Heading>
             <Text>En estos lugares puedes depositar pilas.</Text>
             {this.state.agents.map(agent => {
@@ -137,8 +137,8 @@ class RecyclingAgents extends React.Component {
                 />
               );
             })}
-          </section>
-        </section>
+          </Box>
+        </Box>
 
         {this.state.showModal ? (
           <Modal

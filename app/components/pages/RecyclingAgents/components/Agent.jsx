@@ -101,28 +101,8 @@ const contactInfoCollapsibleStyles = StyleSheet.create(
   })),
 );
 
-const Location = ({ address, city, location }) => (
-  <section>
-    <Icon iconName="map" size="large" className={css(contactInfoCollapsibleStyles.iconLocation)} />
-    <Link
-      style={contactInfoCollapsibleStyles.textLocation}
-      href={location}
-      target="_blank"
-      underline
-    >
-      {address} - {city}
-    </Link>
-  </section>
-);
-
-Location.propTypes = {
-  address: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-};
-
 const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecycling }) => (
-  <article
+  <Box
     id={agent.id}
     className={classnames(
       css(
@@ -131,6 +111,7 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
           agentStyles.containerSelected,
       ),
     )}
+    column
   >
     <Heading size="small">{agent.name}</Heading>
 
@@ -172,27 +153,35 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
       body={() => {
         if (!agent.show_more.contact_info) return null;
         return [
-          <Box
-            tag="article"
-            valign
-            key="agent-location"
-            className={css(contactInfoCollapsibleStyles.textContainer)}
-          >
-            {Array.isArray(agent.location) ? (
-              agent.location.map(location => (
-                <Location key={`agent-location-${agent.id}`} city={agent.city} {...location} />
-              ))
-            ) : (
-              <Location city={agent.city} address={agent.address} location={agent.location} />
-            )}
-          </Box>,
+          agent.location.map(location => (
+            <Box
+              key={`agent-location-${agent.id}`}
+              tag="article"
+              className={css(contactInfoCollapsibleStyles.textContainer)}
+              valign
+            >
+              <Icon
+                iconName="map"
+                size="large"
+                className={css(contactInfoCollapsibleStyles.iconLocation)}
+              />
+              <Link
+                style={contactInfoCollapsibleStyles.textLocation}
+                href={location.map}
+                target="_blank"
+                underline
+              >
+                {location.address} - {agent.city}
+              </Link>
+            </Box>
+          )),
 
           agent.phone && (
             <Box
               tag="article"
-              valign
               key="agent-phone"
               className={css(contactInfoCollapsibleStyles.textContainer)}
+              valign
             >
               <Icon
                 iconName="phone"
@@ -208,9 +197,9 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
           agent.email && (
             <Box
               tag="article"
-              valign
               key="agent-email"
               className={css(contactInfoCollapsibleStyles.textContainer)}
+              valign
             >
               <Icon
                 iconName="email"
@@ -276,7 +265,7 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
       }}
       onClickCollapsibleDetailsHeading={onClickCollapsibleDetailsHeading}
     />
-  </article>
+  </Box>
 );
 
 Agent.propTypes = {

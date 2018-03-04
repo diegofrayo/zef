@@ -5,6 +5,7 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 import { Transition as CSSTransitionGroup } from 'react-transition-group';
 
 // components
+import Box from 'components/common/Box';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 
@@ -72,11 +73,12 @@ export default ({
       timeout={1000}
     >
       {state => (
-        <section
+        <Box
           className={classnames(css(collapsibleDetailsStyles.container), transitionStyles[state])}
+          column
         >
           {body(agent)}
-        </section>
+        </Box>
       )}
     </CSSTransitionGroup>,
   ];

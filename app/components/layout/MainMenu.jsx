@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
+import Box from 'components/common/Box';
 import Icon from 'components/common/Icon';
 
 // routing
@@ -48,6 +49,7 @@ const styles = StyleSheet.create(
     menu: {
       margin: 0,
       padding: 0,
+      width: '100%',
     },
     menuHeader: {
       borderBottom: `1px solid ${theme.color.white[600]}`,
@@ -105,14 +107,15 @@ const menuItems = [
 ];
 
 const MainMenu = props => [
-  <div
+  <Box
     key="backdrop"
+    tag="div"
     className={css(styles.backdrop, props.isMenuOpen && styles.backdropVisible)}
     onClick={props.onClickOpenMenu}
   >
     {''}
-  </div>,
-  <section
+  </Box>,
+  <Box
     key="menu-container"
     className={css(styles.container, props.isMenuOpen ? styles.containerVisible : false)}
   >
@@ -131,7 +134,7 @@ const MainMenu = props => [
         </li>
       ))}
     </ul>
-  </section>,
+  </Box>,
 ];
 
 MainMenu.propTypes = {

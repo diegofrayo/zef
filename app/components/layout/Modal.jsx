@@ -6,6 +6,7 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 
 // components
 import Box from 'components/common/Box';
+import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 
 // theme
@@ -73,11 +74,11 @@ const Modal = props => {
         onClick={event => event.stopPropagation()}
         column
       >
-        <header className={css(styles.header)}>{header(data)}</header>
-        <section className={css(styles.body)}>{body(data)}</section>
-        <button className={css(styles.closeButton)} onClick={onClickHideModal} type="button">
+        <Box tag="header" className={css(styles.header)}>{header(data)}</Box>
+        <Box className={css(styles.body)} column>{body(data)}</Box>
+        <Button className={css(styles.closeButton)} onClick={onClickHideModal}>
           <Icon iconName="close" />
-        </button>
+        </Button>
       </Box>
     </Box>,
     document.getElementById('main-container'),

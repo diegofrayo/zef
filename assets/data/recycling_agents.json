@@ -6,10 +6,14 @@
       "name": "Fundación Punto Cero",
       "description":
         "Fundación Punto Cero es una organización comprometida con el desarrollo sostenible. Promueven la gestión integral de los residuos sólidos reciclables fomentando procesos de educación y sensibilización ambiental.",
-      "address": "Carrera 21 #24-12",
       "city": "Armenia, Quindío",
-      "location":
-        "https://www.google.com.co/maps/place/Armenia/@4.5302359,-75.6761266,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f5b1ebdfcafd:0x409fe2a23ec3a49d!8m2!3d4.5302359!4d-75.674355",
+      "location": [
+        {
+          "address": "Carrera 21 #24-12",
+          "map":
+            "https://www.google.com.co/maps/place/Armenia/@4.5302359,-75.6761266,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f5b1ebdfcafd:0x409fe2a23ec3a49d!8m2!3d4.5302359!4d-75.674355"
+        }
+      ],
       "phone": "",
       "email": "",
       "website": "",
@@ -17,7 +21,13 @@
         "url": "https://www.facebook.com/FundPuntocero",
         "label": "/FundacionPuntocero"
       },
-      "elements_for_recycling": ["botellas-de-plastico", "carton", "papel", "pilas", "vidrio"]
+      "elements_for_recycling": [
+        "botellas-de-plastico",
+        "carton",
+        "papel",
+        "pilas",
+        "vidrio"
+      ]
     },
     {
       "id": "fundacion-la-oportunidad",
@@ -25,14 +35,26 @@
       "name": "Fundación La Oportunidad",
       "description":
         "Fundación La Oportunidad busca prevenir situaciones de vulnerabilidad con los niños y niñas del barrio La Mariela, brindándoles espacios para un adecuado uso de su tiempo libre. Síguelos, conócelos y apóyalos.",
-      "address": "Salón comunal del barrio La Mariela",
       "city": "Armenia, Quindío",
-      "location": "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z",
+      "location": [
+        {
+          "address": "Salón comunal del barrio La Mariela",
+          "map":
+            "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z"
+        }
+      ],
       "phone": "(+57) 313 751 8677",
       "email": "",
       "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
-      "fb_page": { "url": "https://www.facebook.com/claucri", "label": "/FundacionLaOportunidad" },
-      "elements_for_recycling": ["latas-de-aluminio", "papel", "tapas-de-plastico"]
+      "fb_page": {
+        "url": "https://www.facebook.com/claucri",
+        "label": "/FundacionLaOportunidad"
+      },
+      "elements_for_recycling": [
+        "latas-de-aluminio",
+        "papel",
+        "tapas-de-plastico"
+      ]
     },
     {
       "id": "centro-de-reciclaje",
@@ -40,10 +62,14 @@
       "name": "Centro de Reciclaje",
       "description":
         "El Centro de Reciclaje cuenta con más de 40 años de experiencia en recuperación de materiales reciclables, proporcionan un servicio eficiente y de calidad en sus procesos de recoleccion, pesaje, clasificación, embalaje y despacho.",
-      "address": "Calle 38 #19-23",
       "city": "Armenia, Quindío",
-      "location":
-        "https://www.google.it/maps/@4.5256304,-75.6834343,3a,75y,296.36h,78.97t/data=!3m7!1e1!3m5!1sgOkCWb0mXcDNGX9mE7FA4Q!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DgOkCWb0mXcDNGX9mE7FA4Q%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D42.833282%26pitch%3D0!7i13312!8i6656",
+      "location": [
+        {
+          "address": "Calle 38 #19-23",
+          "map":
+            "https://www.google.it/maps/@4.5256304,-75.6834343,3a,75y,296.36h,78.97t/data=!3m7!1e1!3m5!1sgOkCWb0mXcDNGX9mE7FA4Q!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DgOkCWb0mXcDNGX9mE7FA4Q%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D42.833282%26pitch%3D0!7i13312!8i6656"
+        }
+      ],
       "phone": "(+57) 315 473 9762 | (6) 747 1489 | (6) 747 6174",
       "email": "centrodereciclajearm@gmail.com",
       "website": "http://www.centrodereciclaje.net",
@@ -80,10 +106,14 @@
       "name": "Fundación Tesla",
       "description":
         "La fundación Tesla tiene como finalidad ofrecer una solución integral a la Industria TICs o a quienes hagan uso de la misma, exponiendo frente al mercado, una nueva alternativa e innovación para el destino final seguro para los Residuos de Aparatos Eléctricos y Electrónicos RAEE.",
-      "address": "Carrera 17 #10-59",
       "city": "Armenia, Quindío",
-      "location":
-        "https://www.google.com.co/maps/place/Cra.+18+%2349-15,+Armenia,+Quind%C3%ADo/@4.5197379,-75.6886379,21z/data=!4m5!3m4!1s0x8e38f5c04f78fcc9:0xf649e6cf339851f7!8m2!3d4.5197011!4d-75.6885953?hl=es",
+      "location": [
+        {
+          "address": "Carrera 17 #10-59",
+          "map":
+            "https://www.google.com.co/maps/place/Cra.+18+%2349-15,+Armenia,+Quind%C3%ADo/@4.5197379,-75.6886379,21z/data=!4m5!3m4!1s0x8e38f5c04f78fcc9:0xf649e6cf339851f7!8m2!3d4.5197011!4d-75.6885953?hl=es"
+        }
+      ],
       "phone": "(+57) 321 397 699",
       "email": "teslaraee2015@gmail.com",
       "website": "http://teslaraee.com",
@@ -100,7 +130,7 @@
       "location": [
         {
           "address": "Carrera 15 Calle 12 Norte",
-          "location":
+          "map":
             "https://www.google.com.co/maps/place/Universidad+del+Quind%C3%ADo/@4.5540283,-75.6609203,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f4e451eef801:0xe8af9d5d9d962985!8m2!3d4.554023!4d-75.6587316?hl=es"
         }
       ]
@@ -115,7 +145,7 @@
       "location": [
         {
           "address": "Carrera 15 Calle 12 Norte",
-          "location":
+          "map":
             "https://www.google.com.co/maps/place/Universidad+del+Quind%C3%ADo/@4.5540283,-75.6609203,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f4e451eef801:0xe8af9d5d9d962985!8m2!3d4.554023!4d-75.6587316?hl=es"
         }
       ]
