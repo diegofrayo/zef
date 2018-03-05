@@ -115,7 +115,9 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
   >
     <Heading size="medium">{agent.name}</Heading>
 
-    <Text align="justify" size="normal">{agent.description}</Text>
+    <Text align="justify" size="normal">
+      {agent.description}
+    </Text>
 
     {agent.elements_for_recycling && (
       <CollapsibleDetails
@@ -176,9 +178,9 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
             </Box>
           )),
 
-          agent.phone && (
+          agent.phone.map(phone => (
             <Box
-              key="agent-phone"
+              key={`agent-phone-${phone.value}`}
               tag="article"
               className={css(contactInfoCollapsibleStyles.textContainer)}
               valign
@@ -188,11 +190,11 @@ const Agent = ({ agent, onClickCollapsibleDetailsHeading, onClickElementForRecyc
                 size="large"
                 className={css(contactInfoCollapsibleStyles.iconPhone)}
               />
-              <Text size="xsmall" style={contactInfoCollapsibleStyles.textPhone}>
-                {agent.phone}
-              </Text>
+              <Link style={contactInfoCollapsibleStyles.textPhone} href={phone.value} underline>
+                {phone.label}
+              </Link>
             </Box>
-          ),
+          )),
 
           agent.email && (
             <Box

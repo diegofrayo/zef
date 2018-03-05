@@ -20,7 +20,7 @@ const styles = StyleSheet.create(
     },
     indicatorContainer: {
       boxShadow: theme.shadow.base(),
-      margin: theme.spacing.base,
+      margin: `0px ${theme.spacing.base}px ${theme.spacing.base}px`,
       height: 200,
       width: 200,
       padding: theme.spacing.large,

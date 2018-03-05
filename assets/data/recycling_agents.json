@@ -14,20 +14,14 @@
             "https://www.google.com.co/maps/place/Armenia/@4.5302359,-75.6761266,17z/data=!3m1!4b1!4m5!3m4!1s0x8e38f5b1ebdfcafd:0x409fe2a23ec3a49d!8m2!3d4.5302359!4d-75.674355"
         }
       ],
-      "phone": "",
+      "phone": [],
       "email": "",
       "website": "",
       "fb_page": {
         "url": "https://www.facebook.com/FundPuntocero",
         "label": "/FundacionPuntocero"
       },
-      "elements_for_recycling": [
-        "botellas-de-plastico",
-        "carton",
-        "papel",
-        "pilas",
-        "vidrio"
-      ]
+      "elements_for_recycling": ["botellas-de-plastico", "carton", "papel", "pilas", "vidrio"]
     },
     {
       "id": "fundacion-la-oportunidad",
@@ -39,22 +33,17 @@
       "location": [
         {
           "address": "Salón comunal del barrio La Mariela",
-          "map":
-            "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z"
+          "map": "https://www.google.com.co/maps/place/Caseta+Comunal/@4.5734768,-75.6437904,17z"
         }
       ],
-      "phone": "(+57) 313 751 8677",
+      "phone": [{ "label": "(+57) 313 751 8677", "value": "tel:3137518677" }],
       "email": "",
       "website": "https://fundacionlaoportun.wixsite.com/laoportunidad",
       "fb_page": {
         "url": "https://www.facebook.com/claucri",
         "label": "/FundacionLaOportunidad"
       },
-      "elements_for_recycling": [
-        "latas-de-aluminio",
-        "papel",
-        "tapas-de-plastico"
-      ]
+      "elements_for_recycling": ["latas-de-aluminio", "papel", "tapas-de-plastico"]
     },
     {
       "id": "centro-de-reciclaje",
@@ -70,7 +59,11 @@
             "https://www.google.it/maps/@4.5256304,-75.6834343,3a,75y,296.36h,78.97t/data=!3m7!1e1!3m5!1sgOkCWb0mXcDNGX9mE7FA4Q!2e0!6s%2F%2Fgeo3.ggpht.com%2Fcbk%3Fpanoid%3DgOkCWb0mXcDNGX9mE7FA4Q%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D42.833282%26pitch%3D0!7i13312!8i6656"
         }
       ],
-      "phone": "(+57) 315 473 9762 | (6) 747 1489 | (6) 747 6174",
+      "phone": [
+        { "label": "(+57) 315 473 9762", "value": "tel:3154739762" },
+        { "label": "(6) 747 1489", "value": "tel:0367471489" },
+        { "label": "(6) 747 6174", "value": "tel:0367476174" }
+      ],
       "email": "centrodereciclajearm@gmail.com",
       "website": "http://www.centrodereciclaje.net",
       "fb_page": {
@@ -114,7 +107,7 @@
             "https://www.google.com.co/maps/place/Cra.+18+%2349-15,+Armenia,+Quind%C3%ADo/@4.5197379,-75.6886379,21z/data=!4m5!3m4!1s0x8e38f5c04f78fcc9:0xf649e6cf339851f7!8m2!3d4.5197011!4d-75.6885953?hl=es"
         }
       ],
-      "phone": "(+57) 321 397 699",
+      "phone": [{ "label": "(+57) 321 397 699", "value": "tel:321397699" }],
       "email": "teslaraee2015@gmail.com",
       "website": "http://teslaraee.com",
       "fb_page": "",
@@ -125,8 +118,9 @@
       "category": "batteries",
       "name": "Universidad del Quindío",
       "description":
-        "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda",
+        "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda.",
       "city": "Armenia, Quindío",
+      "phone": [],
       "location": [
         {
           "address": "Carrera 15 Calle 12 Norte",
@@ -142,6 +136,7 @@
       "description":
         "En los supermercados ARA encuentras recipientes en donde puedes depositar tus pilas.",
       "city": "Armenia, Quindío",
+      "phone": [],
       "location": [
         {
           "address": "Carrera 15 Calle 12 Norte",

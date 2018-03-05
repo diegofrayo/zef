@@ -25,6 +25,7 @@ const collapsibleDetailsStyles = StyleSheet.create(
     },
     containerVisible: {
       opacity: 1,
+      marginBottom: theme.spacing.base,
       padding: theme.spacing.small,
     },
     heading: {
