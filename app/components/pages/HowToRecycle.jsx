@@ -29,9 +29,7 @@ class HowToRecycle extends React.Component {
           {this.pageTitle}
         </Heading>
 
-        <Text size="normal">
-          Descripción
-        </Text>
+        <Text size="normal">Descripción</Text>
       </Box>
     );
   }

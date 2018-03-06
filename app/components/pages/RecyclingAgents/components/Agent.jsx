@@ -23,9 +23,10 @@ const agentStyles = StyleSheet.create(
       backgroundColor: theme.color.white[650],
       boxShadow: theme.shadow.base(theme.color.white[500]),
       cursor: 'default',
-      marginTop: theme.spacing.small,
-      marginBottom: theme.spacing.medium,
+      margin: `${theme.spacing.small}px ${theme.spacing.medium}px ${theme.spacing.medium}px`,
+      maxWidth: '100%',
       padding: theme.spacing.medium,
+      width: 300,
     },
     containerSelected: {
       boxShadow: theme.shadow.base(theme.color.white[100]),

@@ -42,7 +42,9 @@ const styles = StyleSheet.create(
 const Indicator = ({ number, description }) => (
   <Box className={css(styles.indicatorContainer)} valign halign column>
     <Text style={styles.indicatorNumber}>+{number}</Text>
-    <Text style={styles.indicatorDescription} size="normal">{description}</Text>
+    <Text style={styles.indicatorDescription} size="normal">
+      {description}
+    </Text>
   </Box>
 );
 

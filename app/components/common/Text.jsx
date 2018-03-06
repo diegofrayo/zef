@@ -5,7 +5,13 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
-import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
+import {
+  createStylesheet,
+  convertToStyleValue,
+  createFontSizeMapping1,
+  createFontSizeMapping2,
+  theme as appTheme,
+} from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -14,21 +20,7 @@ const styles = StyleSheet.create(
       marginBottom: theme.spacing.base,
     },
 
-    large: {
-      fontSize: theme.fontSize.large,
-    },
-    medium: {
-      fontSize: theme.fontSize.medium,
-    },
-    normal: {
-      fontSize: theme.fontSize.base,
-    },
-    small: {
-      fontSize: theme.fontSize.small,
-    },
-    xsmall: {
-      fontSize: theme.fontSize.xsmall,
-    },
+    ...createFontSizeMapping1(theme),
 
     left: {
       textAlign: 'left',
@@ -41,16 +33,12 @@ const styles = StyleSheet.create(
     },
     justify: {
       textAlign: 'justify',
-    }
+    },
   })),
 );
 
 const sizeMapping = {
-  large: 'large',
-  medium: 'medium',
-  normal: 'base',
-  small: 'small',
-  xsmall: 'xsmall',
+  ...createFontSizeMapping2(appTheme),
   '': '',
 };
 

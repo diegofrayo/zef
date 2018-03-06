@@ -21,22 +21,14 @@ class Contact extends React.Component {
   render() {
     return (
       <Box pageContainer grow column>
-        <Heading tag="h2">
+        <Heading size="large" tag="h2">
           {this.pageTitle}
         </Heading>
 
-        <Text size="normal">
-          Correo electrónico de contácto
-        </Text>
+        <Text size="normal">Correo electrónico de contácto</Text>
 
-        <Link
-          href={`mailto:diegofrayo@gmail.com`}
-          underline
-        >
-          <Icon
-            iconName="email-2"
-            size="large"
-          />
+        <Link href={`mailto:diegofrayo@gmail.com`} underline>
+          <Icon iconName="email-2" size="large" />
           <span>diegofrayo@gmail.com</span>
         </Link>
       </Box>

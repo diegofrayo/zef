@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
-import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
+import { createStylesheet, convertToStyleValue, createFontSizeMapping1 } from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -14,18 +14,7 @@ const styles = StyleSheet.create(
       marginBottom: theme.spacing.base,
     },
 
-    xlarge: {
-      fontSize: theme.fontSize.xlarge,
-    },
-    large: {
-      fontSize: theme.fontSize.large,
-    },
-    medium: {
-      fontSize: theme.fontSize.medium,
-    },
-    small: {
-      fontSize: theme.fontSize.small,
-    },
+    ...createFontSizeMapping1(theme),
   })),
 );
 
@@ -34,13 +23,18 @@ const tagMapping = {
   large: 'h1',
   medium: 'h2',
   small: 'h3',
+  '': '',
 };
 
 const Heading = props => {
   const { tag, className, style, children, size, onClick } = props;
   const Tag = tagMapping[size] !== undefined ? tagMapping[size] : tag;
   return (
-    <Tag className={classnames(css(styles.tag), css(styles[size]), className)} style={convertToStyleValue(style)} onClick={onClick}>
+    <Tag
+      className={classnames(css(styles.tag), css(styles[size]), className)}
+      style={convertToStyleValue(style)}
+      onClick={onClick}
+    >
       {children.length ? React.Children.map(children, child => child) : children}
     </Tag>
   );
@@ -63,7 +57,7 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   className: '',
-  size: 'large',
+  size: '',
   style: {},
   tag: 'h1',
 

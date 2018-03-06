@@ -39,7 +39,7 @@ export const theme = {
   },
 
   fontSize: {
-    base: FONT_SIZE_BASE,
+    normal: FONT_SIZE_BASE,
     xsmall: FONT_SIZE_BASE - 4,
     small: FONT_SIZE_BASE - 2,
     medium: FONT_SIZE_BASE + 2,
@@ -132,6 +132,20 @@ export const platform = ({ ios = {}, android = {} }) => {
 
 export const convertToStyleValue = styleObject => {
   return styleObject._definition; // eslint-disable-line
+};
+
+export const createFontSizeMapping1 = appTheme => {
+  return Object.keys(appTheme.fontSize).reduce((acum, curr) => {
+    acum[curr] = { fontSize: appTheme.fontSize[curr] }; // eslint-disable-line
+    return acum;
+  }, {});
+};
+
+export const createFontSizeMapping2 = appTheme => {
+  return Object.keys(appTheme.fontSize).reduce((acum, curr) => {
+    acum[curr] = curr; // eslint-disable-line
+    return acum;
+  }, {});
 };
 
 export const createStylesheet = fn => fn(theme);

@@ -5,7 +5,13 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
-import { createStylesheet, convertToStyleValue } from 'styles/createStylesheet';
+import {
+  createStylesheet,
+  convertToStyleValue,
+  createFontSizeMapping1,
+  createFontSizeMapping2,
+  theme as appTheme,
+} from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -22,26 +28,12 @@ const styles = StyleSheet.create(
       padding: '3px 6px',
     },
 
-    large: {
-      fontSize: theme.fontSize.large,
-    },
-    medium: {
-      fontSize: theme.fontSize.medium,
-    },
-    normal: {
-      fontSize: theme.fontSize.base,
-    },
-    small: {
-      fontSize: theme.fontSize.small,
-    },
+    ...createFontSizeMapping1(theme),
   })),
 );
 
 const sizeMapping = {
-  large: 'large',
-  medium: 'medium',
-  normal: 'base',
-  small: 'small',
+  ...createFontSizeMapping2(appTheme),
   '': '',
 };
 

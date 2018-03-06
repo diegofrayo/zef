@@ -52,7 +52,7 @@ const styles = StyleSheet.create(
       padding: `${theme.spacing.large}px ${theme.spacing.base}px ${theme.spacing.base}px`,
     },
     body: {
-      padding: `${theme.spacing.large}px`,
+      padding: `${theme.spacing.large}px 0`,
     },
   })),
 );
@@ -74,8 +74,12 @@ const Modal = props => {
         onClick={event => event.stopPropagation()}
         column
       >
-        <Box tag="header" className={css(styles.header)}>{header(data)}</Box>
-        <Box className={css(styles.body)} column>{body(data)}</Box>
+        <Box tag="header" className={css(styles.header)}>
+          {header(data)}
+        </Box>
+        <Box className={css(styles.body)} column>
+          {body(data)}
+        </Box>
         <Button className={css(styles.closeButton)} onClick={onClickHideModal}>
           <Icon iconName="close" />
         </Button>

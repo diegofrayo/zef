@@ -7,7 +7,7 @@ import DataLoaderService from 'services/DataLoader';
 import UtilitiesService from 'services/Utilities';
 
 // theme
-import { theme as appTheme, createStylesheet } from 'styles/createStylesheet';
+import { createStylesheet, theme as appTheme } from 'styles/createStylesheet';
 
 // components
 import Box from 'components/common/Box';
@@ -74,6 +74,7 @@ class RecyclingAgents extends React.Component {
         }),
       }),
       () => {
+        /*
         let to = window.matchMedia(appTheme.mediaQueries.mobile.js).matches
           ? appTheme.headerHeight - 5
           : appTheme.headerHeight + 15;
@@ -81,6 +82,13 @@ class RecyclingAgents extends React.Component {
         UtilitiesService.animateScroll(
           document.getElementById('recycling-agents-container'),
           document.getElementById(agentSelected.id).offsetTop - to,
+          500,
+        );
+        */
+        const to = !agentSelected.show_more[attrName] ? 20 : -20;
+        UtilitiesService.animateScroll(
+          document.getElementById('recycling-agents-container'),
+          document.getElementById('recycling-agents-container').scrollTop + to,
           500,
         );
       },
@@ -98,7 +106,7 @@ class RecyclingAgents extends React.Component {
   render() {
     return (
       <Box pageContainer grow column id="recycling-agents-container">
-        <Heading tag="h2">
+        <Heading tag="h2" size="large">
           {this.pageTitle}
         </Heading>
 
@@ -108,35 +116,41 @@ class RecyclingAgents extends React.Component {
         </Text>
 
         <Box column>
-          {this.state.agents.map(agent => {
-            if (agent.category !== 'normal') return null;
-            return (
-              <Agent
-                key={agent.id}
-                agent={agent}
-                listName="agents"
-                onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
-                onClickElementForRecycling={this.onClickElementForRecycling}
-              />
-            );
-          })}
-
-          <Separator />
-
-          <Box column>
-            <Heading tag="h2">Pilas</Heading>
-            <Text size="normal">En estos lugares puedes depositar pilas.</Text>
+          <Box row align="space-around">
             {this.state.agents.map(agent => {
-              if (agent.category !== 'batteries') return null;
+              if (agent.category !== 'normal') return null;
               return (
                 <Agent
                   key={agent.id}
                   agent={agent}
-                  listName="batteries_agents"
+                  listName="agents"
                   onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+                  onClickElementForRecycling={this.onClickElementForRecycling}
                 />
               );
             })}
+          </Box>
+
+          <Separator marginTop={10} marginBottom={15} />
+
+          <Box column>
+            <Heading tag="h2" size="large">
+              Pilas
+            </Heading>
+            <Text size="normal">En estos lugares puedes depositar pilas.</Text>
+            <Box row align="space-around">
+              {this.state.agents.map(agent => {
+                if (agent.category !== 'batteries') return null;
+                return (
+                  <Agent
+                    key={agent.id}
+                    agent={agent}
+                    listName="batteries_agents"
+                    onClickCollapsibleDetailsHeading={this.onClickCollapsibleDetailsHeading}
+                  />
+                );
+              })}
+            </Box>
           </Box>
         </Box>
 
@@ -144,7 +158,7 @@ class RecyclingAgents extends React.Component {
           <Modal
             key="modal"
             header={data => (
-              <Heading className={css(modalStyles.heading)}>
+              <Heading size="large" className={css(modalStyles.heading)}>
                 {data.label}
               </Heading>
             )}
@@ -163,7 +177,9 @@ class RecyclingAgents extends React.Component {
                   }}
                 />
               )),
-              <Text key="modal-element-for-recycling-description">{data.description}</Text>,
+              <Text size="normal" key="modal-element-for-recycling-description">
+                {data.description}
+              </Text>,
             ]}
             data={this.state.elementForRecyclingSelected}
             show={this.state.showModal}

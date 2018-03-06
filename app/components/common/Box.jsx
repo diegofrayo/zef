@@ -58,6 +58,7 @@ const Box = props => {
     row,
     valign,
 
+    align,
     className,
     id,
     style,
@@ -67,13 +68,15 @@ const Box = props => {
 
   const Tag = !tag ? 'section' : tag;
   const optionalProps = {};
+  const alignStyle = {};
 
   if (id) optionalProps.id = id;
   if (onClick) optionalProps.onClick = onClick;
+  if (align) alignStyle.justifyContent = align;
 
   return (
     <Tag
-      style={convertToStyleValue(style)}
+      style={Object.assign({}, convertToStyleValue(style), alignStyle)}
       className={classnames(
         css(styles.box),
         column && css(styles.column),
@@ -109,6 +112,7 @@ Box.propTypes = {
   row: PropTypes.bool,
   valign: PropTypes.bool,
 
+  align: PropTypes.string,
   className: PropTypes.string,
   id: PropTypes.string,
   style: PropTypes.object,
@@ -129,6 +133,7 @@ Box.defaultProps = {
   row: false,
   valign: false,
 
+  align: '',
   id: '',
   className: '',
   style: {},
