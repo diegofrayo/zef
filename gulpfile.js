@@ -40,7 +40,7 @@ const createJSTags = (jsSources) => {
 //------------------- JS Tasks -----------------------
 gulp.task('build-js', () => {
   return gulp
-    .src(`./build/assets/zef/js/bundle.js`)
+    .src(`./build/bundle.js`)
     .pipe(gulp.dest(`${destRootPath}/${assetsPath}/js`));
 });
 
@@ -59,11 +59,11 @@ gulp.task('build-html', () => {
 
   if (environment === 'development') {
 
-    jsSources = [`/${assetsPath}/js/bundle.js`];
+    jsSources = ['js/bundle.js'];
 
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))
-      .pipe(gulp.dest(destRootPath));
+      .pipe(gulp.dest('./build'));
 
   } else {
 
@@ -71,9 +71,8 @@ gulp.task('build-html', () => {
 
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))
-      .pipe(g.rename('zef.html'))
       .pipe(g.htmlmin(HTML_MIN_OPTS))
-      .pipe(gulp.dest(`${destRootPath}/templates`));
+      .pipe(gulp.dest(`${destRootPath}/${assetsPath}`));
 
   }
 });
@@ -82,8 +81,11 @@ gulp.task('build-html', () => {
 //----------------------------------------------------
 //------------------- Copy Assets Tasks --------------
 gulp.task('copy-assets', () => {
-  gulp.src('./assets/images/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/images`));
-  gulp.src('./assets/js/vendor/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/js/vendor`));
+  if (environment === 'development') {
+    gulp.src('./assets/images/**/*').pipe(gulp.dest('./build/zef/images'));
+  } else {
+    gulp.src('./assets/images/**/*').pipe(gulp.dest(`${destRootPath}/${assetsPath}/images`));
+  }
 });
 
 

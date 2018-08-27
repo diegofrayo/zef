@@ -5,7 +5,11 @@ import classnames from 'classnames';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 // theme
-import { createStylesheet, convertToStyleValue, createFontSizeMapping1 } from 'styles/createStylesheet';
+import {
+  createStylesheet,
+  convertToStyleValue,
+  createFontSizeMapping1,
+} from 'styles/createStylesheet';
 
 const styles = StyleSheet.create(
   createStylesheet(theme => ({
@@ -52,7 +56,7 @@ Heading.propTypes = {
   style: PropTypes.object,
   tag: PropTypes.oneOf(Array.from(Array(6).keys()).map(index => `h${index + 1}`)),
 
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 Heading.defaultProps = {

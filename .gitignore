@@ -4,3 +4,4 @@ config.app.json
 *.log
 .DS_Store
 package-lock.json
+app/services/Tracking.js

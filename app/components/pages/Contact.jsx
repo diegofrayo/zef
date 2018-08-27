@@ -27,7 +27,7 @@ class Contact extends React.Component {
 
         <Text size="normal">Correo electrónico de contácto</Text>
 
-        <Link href={`mailto:diegofrayo@gmail.com`} underline>
+        <Link href="mailto:diegofrayo@gmail.com" underline>
           <Icon iconName="email-2" size="large" />
           <span>diegofrayo@gmail.com</span>
         </Link>

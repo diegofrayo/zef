@@ -6,8 +6,8 @@
     "APP_TITLE": "ZEF"
   },
   "production": {
-    "assets_path": "assets/zef",
-    "dest_root_path": "./../website-router",
+    "assets_path": "zef",
+    "dest_root_path": "./../website-router/public",
     "environment": "production",
     "APP_TITLE": "ZEF"
   }

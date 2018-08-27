@@ -135,8 +135,8 @@ export const convertToStyleValue = styleObject => {
 };
 
 export const createFontSizeMapping1 = appTheme => {
-  return Object.keys(appTheme.fontSize).reduce((acum, curr) => {
-    acum[curr] = { fontSize: appTheme.fontSize[curr] }; // eslint-disable-line
+  return Object.entries(appTheme.fontSize).reduce((acum, [key, value]) => {
+    acum[key] = { fontSize: value }; // eslint-disable-line
     return acum;
   }, {});
 };

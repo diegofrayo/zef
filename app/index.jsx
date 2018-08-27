@@ -8,6 +8,9 @@ import Root from 'pages';
 // theme
 import { createStylesheet } from 'styles/createStylesheet';
 
+// services
+import 'services/Tracking';
+
 // styles
 import 'styles/reset.css';
 
@@ -22,8 +25,8 @@ const target = document.createElement('main');
 target.setAttribute('id', 'main-container');
 target.setAttribute(
   'style',
-  Object.keys(styles)
-    .map(key => `${key}:${styles[key]}`)
+  Object.entries(styles)
+    .map(([key, value]) => `${key}:${value}`)
     .join(';'),
 );
 

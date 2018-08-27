@@ -24,7 +24,8 @@ module.exports = task('webpack.config.dev.server', () => new Promise((resolve) =
   });
 	const compiler = webpack(webpackConfig);
 	const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
-		publicPath: webpackConfig.output.publicPath
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
 	});
 
 	compiler.plugin('done', (stats) => {

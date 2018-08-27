@@ -3,138 +3,140 @@
     "id": "acero-inoxidable",
     "label": "Acero inoxidable",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/acero-inoxidable.png"]
+    "images": ["/zef/images/elements-for-recycling/acero-inoxidable.png"],
+    "recycling_agents": ["centro-de-reciclaje"]
   },
   "aluminio": {
     "id": "aluminio",
     "label": "Aluminio",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/aluminio.png"]
+    "images": ["/zef/images/elements-for-recycling/aluminio.png"]
   },
   "antimonio": {
     "id": "antimonio",
     "label": "Antimonio",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/antimonio.png"]
+    "images": ["/zef/images/elements-for-recycling/antimonio.png"]
   },
   "baterias-de-vehiculos": {
     "id": "baterias-de-vehiculos",
     "label": "Baterías de vehículos",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/baterias-de-vehiculos.png"]
+    "images": ["/zef/images/elements-for-recycling/baterias-de-vehiculos.png"]
   },
   "bolsas-plasticas": {
     "id": "bolsas-plásticas",
     "label": "Bolsas plásticas",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/bolsas-plasticas.png"]
+    "images": ["/zef/images/elements-for-recycling/bolsas-plasticas.png"]
   },
   "botellas-de-plastico": {
     "id": "botellas-de-plástico",
     "label": "Botellas de plástico",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/botellas-de-plastico.png"]
+    "images": ["/zef/images/elements-for-recycling/botellas-de-plastico.png"]
   },
   "bronce": {
     "id": "bronce",
     "label": "Bronce",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/bronce.png"]
+    "images": ["/zef/images/elements-for-recycling/bronce.png"]
   },
   "canastas": {
     "id": "canastas",
     "label": "Canastas",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/canastas.png"]
+    "images": ["/zef/images/elements-for-recycling/canastas.png"]
   },
   "carton": {
     "id": "carton",
     "label": "Cartón",
-    "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/carton.png"]
+    "description": "Asegurate de vaciar y aplanar las cajas para hacer más fácil su transporte. Es importante asegurarse que el carton no esté contaminado con grasa, aceite o agua. Los cartones con recubrimientos de acero u otros materiales por lo general no son reciclables.",
+    "images": ["/zef/images/elements-for-recycling/carton.png"],
+    "recycling_agents": ["centro-de-reciclaje"]
   },
   "chatarra": {
     "id": "chatarra",
     "label": "Chatarra",
     "description": "Descripción... (hierro)",
-    "images": ["/assets/zef/images/elements/chatarra.png"]
+    "images": ["/zef/images/elements-for-recycling/chatarra.png"]
   },
   "cobre": {
     "id": "cobre",
     "label": "Cobre",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/cobre.png"]
+    "images": ["/zef/images/elements-for-recycling/cobre.png"]
   },
   "desechos-electronicos": {
     "id": "desechos-electronicos",
     "label": "Desechos electrónicos",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/desechos-electronicos.png"]
+    "images": ["/zef/images/elements-for-recycling/desechos-electronicos.png"]
   },
   "elementos-de-plastico": {
     "id": "elementos-de-plástico",
     "label": "Elementos de plástico",
     "description": "Descripción... (sillas, baldes)",
-    "images": ["/assets/zef/images/elements/elementos-de-plastico.png"]
+    "images": ["/zef/images/elements-for-recycling/elementos-de-plastico.png"]
   },
   "envases-de-reuso": {
     "id": "envases-de-reuso",
     "label": "Envases de reuso",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/envases-de-reuso.png"]
+    "images": ["/zef/images/elements-for-recycling/envases-de-reuso.png"]
   },
   "envases-plasticos": {
     "id": "envases-plásticos",
     "label": "Envases plásticos",
     "description": "Descripción... (pvc, pet)",
-    "images": ["/assets/zef/images/elements/envases-plasticos.png"]
+    "images": ["/zef/images/elements-for-recycling/envases-plasticos.png"]
   },
   "latas-de-clausen": {
     "id": "latas-de-clausen",
     "label": "Latas de Clausen",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/latas-de-clausen.png"]
+    "images": ["/zef/images/elements-for-recycling/latas-de-clausen.png"]
   },
   "latas-de-aluminio": {
     "id": "latas-de-aluminio",
     "label": "Latas de aluminio",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/latas-de-aluminio.png"]
+    "images": ["/zef/images/elements-for-recycling/latas-de-aluminio.png"]
   },
   "papel-kraft": {
     "id": "papel-kraft",
     "label": "Papel Kraft",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/papel-kraft.png"]
+    "images": ["/zef/images/elements-for-recycling/papel-kraft.png"]
   },
   "papel-periodico": {
     "id": "papel-periodico",
     "label": "Papel periódico",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/papel-periodico.png"]
+    "images": ["/zef/images/elements-for-recycling/papel-periodico.png"]
   },
   "papel": {
     "id": "papel",
     "label": "Papel",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/papel.png"]
+    "images": ["/zef/images/elements-for-recycling/papel.png"]
   },
   "pilas": {
     "id": "pilas",
     "label": "Pilas",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/pilas.png"]
+    "images": ["/zef/images/elements-for-recycling/pilas.png"]
   },
   "tapas-de-plastico": {
     "id": "tapas-de-plástico",
     "label": "Tapas de plástico",
     "description": "Descripción... (polipropeno)",
-    "images": ["/assets/zef/images/elements/tapas-de-plastico.png"]
+    "images": ["/zef/images/elements-for-recycling/tapas-de-plastico.png"]
   },
   "vidrio": {
     "id": "vidrio",
     "label": "Vidrio",
     "description": "Descripción...",
-    "images": ["/assets/zef/images/elements/vidrio.png"]
+    "images": ["/zef/images/elements-for-recycling/vidrio.png"]
   }
 }

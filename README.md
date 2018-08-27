@@ -1,5 +1,5 @@
 # zef
 
 - **Description**: React application
-- **Tech Stack:** react 16, react-router-4, aphrodite
-- **URL:** http://diegofrayo.com/zef
+- **Tech Stack:** react, react-router-4, aphrodite
+- **URL:** https://diegofrayo.com/zef
