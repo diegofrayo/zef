@@ -67,7 +67,7 @@ gulp.task('build-html', () => {
 
   } else {
 
-    jsSources = [`/${assetsPath}/js/bundle.js?${timestamp}`];
+    jsSources = [`/${assetsPath}/js/bundle.js?tm=${timestamp}`];
 
     return stream
       .pipe(g.replace('<!-- INJECT:js -->', createJSTags(jsSources)))
