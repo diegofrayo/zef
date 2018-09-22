@@ -117,8 +117,7 @@
       "id": "universidad-del-quindio",
       "category": "batteries",
       "name": "Universidad del Quindío",
-      "description":
-        "En la Universidad del Quindío puedes depositar pilas viejas en los recipientes ubicados afuera de los bloques administrativos, diagonal a la sucursal de Davivienda.",
+      "description": "",
       "city": "Armenia, Quindío",
       "phone": [],
       "location": [
@@ -133,8 +132,7 @@
       "id": "ara",
       "category": "batteries",
       "name": "Supermercados ARA",
-      "description":
-        "En los supermercados ARA encuentras recipientes en donde puedes depositar tus pilas.",
+      "description": "",
       "city": "Armenia, Quindío",
       "phone": [],
       "location": [

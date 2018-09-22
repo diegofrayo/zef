@@ -171,9 +171,12 @@ class RecyclingAgents extends React.Component {
                   alt={data.label}
                   className={css(modalStyles.image)}
                   onError={() => {
-                    document.getElementById(
-                      'modal-element-for-recycling-img',
-                    ).style.border = `1px solid ${appTheme.color.white[600]}`;
+                    const image = document.getElementById('modal-element-for-recycling-img');
+                    image.style.border = `1px solid ${appTheme.color.white[600]}`;
+
+                    if (image.getAttribute('src').indexOf('default.png') === -1) {
+                      image.setAttribute('src', '/zef/images/elements-for-recycling/default.png');
+                    }
                   }}
                 />
               )),

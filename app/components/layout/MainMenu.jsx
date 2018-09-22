@@ -85,24 +85,8 @@ const menuItems = [
     route: routes.HOME,
   },
   {
-    name: '¿Cómo reciclar?',
-    route: routes.HOW_TO_RECYCLE,
-  },
-  {
     name: '¿En dónde puedo reciclar?',
     route: routes.RECYCLING_AGENTS,
-  },
-  {
-    name: 'Proyectos',
-    route: routes.PROJECTS,
-  },
-  {
-    name: 'Estadísticas',
-    route: routes.STATISTICS,
-  },
-  {
-    name: 'Contácto',
-    route: routes.CONTACT,
   },
 ];
 

@@ -51,14 +51,14 @@
   "carton": {
     "id": "carton",
     "label": "Cartón",
-    "description": "Asegurate de vaciar y aplanar las cajas para hacer más fácil su transporte. Es importante asegurarse que el carton no esté contaminado con grasa, aceite o agua. Los cartones con recubrimientos de acero u otros materiales por lo general no son reciclables.",
+    "description": "Descripción...",
     "images": ["/zef/images/elements-for-recycling/carton.png"],
     "recycling_agents": ["centro-de-reciclaje"]
   },
   "chatarra": {
     "id": "chatarra",
     "label": "Chatarra",
-    "description": "Descripción... (hierro)",
+    "description": "Descripción...",
     "images": ["/zef/images/elements-for-recycling/chatarra.png"]
   },
   "cobre": {
@@ -76,7 +76,7 @@
   "elementos-de-plastico": {
     "id": "elementos-de-plástico",
     "label": "Elementos de plástico",
-    "description": "Descripción... (sillas, baldes)",
+    "description": "Descripción...",
     "images": ["/zef/images/elements-for-recycling/elementos-de-plastico.png"]
   },
   "envases-de-reuso": {
@@ -88,7 +88,7 @@
   "envases-plasticos": {
     "id": "envases-plásticos",
     "label": "Envases plásticos",
-    "description": "Descripción... (pvc, pet)",
+    "description": "Descripción...",
     "images": ["/zef/images/elements-for-recycling/envases-plasticos.png"]
   },
   "latas-de-clausen": {
@@ -130,7 +130,7 @@
   "tapas-de-plastico": {
     "id": "tapas-de-plástico",
     "label": "Tapas de plástico",
-    "description": "Descripción... (polipropeno)",
+    "description": "Descripción...",
     "images": ["/zef/images/elements-for-recycling/tapas-de-plastico.png"]
   },
   "vidrio": {

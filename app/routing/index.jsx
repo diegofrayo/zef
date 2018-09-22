@@ -8,12 +8,8 @@ import { ConnectedRouter } from 'react-router-redux';
 import { history } from 'state';
 
 // containers
-import Contact from 'pages/Contact';
 import Home from 'pages/Home';
-import HowToRecycle from 'pages/HowToRecycle';
-import Projects from 'pages/Projects';
 import RecyclingAgents from 'pages/RecyclingAgents';
-import Statistics from 'pages/Statistics';
 
 const ROOT = APP_SETTINGS.environment === 'development' ? '' : '/zef';
 const routes = {
@@ -28,17 +24,13 @@ const routes = {
 const Router = () => (
   <ConnectedRouter history={history}>
     <Switch>
-      <Route exact path={routes.CONTACT} component={Contact} />
-      <Route exact path={routes.HOW_TO_RECYCLE} component={HowToRecycle} />
-      <Route exact path={routes.PROJECTS} component={Projects} />
       <Route exact path={routes.RECYCLING_AGENTS} component={RecyclingAgents} />
-      <Route exact path={routes.STATISTICS} component={Statistics} />
       <Route exact path={routes.HOME} component={Home} />
     </Switch>
   </ConnectedRouter>
 );
 
-const goTo = (route) => {
+const goTo = route => {
   history.push(route);
 };
 
