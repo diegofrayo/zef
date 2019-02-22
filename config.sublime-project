@@ -1,0 +1,29 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "/Applications/XAMPP/xamppfiles/htdocs/dev/personal/archived/budget"
+		},
+		{
+			"path": "/Applications/XAMPP/xamppfiles/htdocs/dev/personal/library"
+		},
+		{
+			"path": "/Applications/XAMPP/xamppfiles/htdocs/dev/personal/notes"
+		}
+	],
+	"settings":
+	{
+		"SublimeLinter.linters.eslint.disable": false,
+		"SublimeLinter.linters.stylelint.disable": false,
+		"js_prettier":
+		{
+			"auto_format_on_save": true
+		},
+		"save_on_focus_lost": true,
+		"tab_size": 2,
+		"translate_tabs_to_spaces": true
+	}
+}
